@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CII MCM Trust Dharamshala | Skill Development</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <div class="contact-info">
+                <span><i data-lucide="phone" class="icon-sm"></i> +91 - 858 072 6048</span>
+                <span><i data-lucide="mail" class="icon-sm"></i> info@mehrchandmahajan.org</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/ciimcm" target="_blank"><i data-lucide="facebook" class="icon-sm"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 60px; width: auto; object-fit: contain;">
+            </a>
+            
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#courses">Programs</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <a href="#courses" class="btn btn-primary">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge">Empowering Youth & Women</span>
+                <h1>Transforming Lives Through <span>Skill Development</span></h1>
+                <p>Join CII MCM Trust Dharamshala to master industry-relevant skills. We provide high-quality training in stitching, beauty, IT, accounting, and technical trades to build your career.</p>
+                <div class="hero-buttons">
+                    <a href="#courses" class="btn btn-primary">Explore Programs <i data-lucide="arrow-right"></i></a>
+                    <a href="#about" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Orbital Constellation: institute at center, courses orbit around it -->
+                <div class="constellation" id="heroGraphic">
+                    <!-- SVG connection lines drawn behind everything -->
+                    <svg class="constellation-lines" viewBox="0 0 500 500" fill="none">
+                        <line class="conn-line" x1="250" y1="250" x2="250" y2="60"/>
+                        <line class="conn-line" x1="250" y1="250" x2="415" y2="155"/>
+                        <line class="conn-line" x1="250" y1="250" x2="415" y2="345"/>
+                        <line class="conn-line" x1="250" y1="250" x2="250" y2="440"/>
+                        <line class="conn-line" x1="250" y1="250" x2="85"  y2="345"/>
+                        <line class="conn-line" x1="250" y1="250" x2="85"  y2="155"/>
+                        <!-- Outer orbit ring -->
+                        <circle class="orbit-ring" cx="250" cy="250" r="190"/>
+                    </svg>
+
+                    <!-- Central Hub -->
+                    <div class="hub">
+                        <img src="assets/logo.png" alt="CII MCM Trust" class="hub-logo">
+                        <div class="hub-pulse"></div>
+                    </div>
+
+                    <!-- Orbiting Course Nodes -->
+                    <div class="orbit-node n1" data-label="Stitching" style="opacity:0.4; pointer-events:none; cursor:default;">
+                        <div class="node-icon"><i data-lucide="scissors"></i></div>
+                        <span class="node-label">Stitching</span>
+                    </div>
+                    <a href="it.html" class="orbit-node n2" data-label="IT Skills">
+                        <div class="node-icon"><i data-lucide="laptop"></i></div>
+                        <span class="node-label">IT Skills</span>
+                    </a>
+                    <a href="beauty.html" class="orbit-node n3" data-label="Beauty">
+                        <div class="node-icon"><i data-lucide="sparkles"></i></div>
+                        <span class="node-label">Beauty</span>
+                    </a>
+                    <div class="orbit-node n4" data-label="Tally" style="opacity:0.4; pointer-events:none; cursor:default;">
+                        <div class="node-icon"><i data-lucide="calculator"></i></div>
+                        <span class="node-label">Tally</span>
+                    </div>
+                    <div class="orbit-node n5" data-label="Electrician" style="opacity:0.4; pointer-events:none; cursor:default;">
+                        <div class="node-icon"><i data-lucide="zap"></i></div>
+                        <span class="node-label">Electrician</span>
+                    </div>
+                    <div class="orbit-node n6" data-label="JCB" style="opacity:0.4; pointer-events:none; cursor:default;">
+                        <div class="node-icon"><i data-lucide="truck"></i></div>
+                        <span class="node-label">JCB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modern curved divider -->
+        <div class="hero-shape">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L1440 120V0C1440 0 1140 120 720 120C300 120 0 0 0 0V120Z" fill="#F8FAFC"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-wrapper">
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="35">0</span>+</h3>
+                    <p>Years Old Trust</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="3514">0</span>+</h3>
+                    <p>Students Graduated</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="210">0</span>+</h3>
+                    <p>Women Employed</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="98">0</span>+</h3>
+                    <p>Cows Donated to Needy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="section bg-light">
+        <div class="container">
+            <div class="section-title text-center">
+                <span class="sub-title">Our Programs</span>
+                <h2>Discover Your Potential</h2>
+                <p>Industry-aligned training programs designed to make you job-ready. Learn from experts in a modern environment.</p>
+            </div>
+            
+            <div class="course-grid">
+                <!-- Course 1 (Hidden for now) 
+                <a href="stitching.html" class="course-card">
+                    <div class="course-image" style="background-image: url('assets/stitching_bg_1779177273552.png');">
+                        <div class="course-icon-badge bg-pink">
+                            <i data-lucide="scissors"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Stitching & Tailoring</h3>
+                        <p>Master garment construction, pattern making, and boutique management in our comprehensive 6-month program.</p>
+                        <span class="btn-text">Read More <i data-lucide="chevron-right"></i></span>
+                    </div>
+                </a>
+                -->
+
+                <!-- Course 2 -->
+                <a href="beauty.html" class="course-card">
+                    <div class="course-image" style="background-image: url('assets/beauty_bg_1779177289587.png');">
+                        <div class="course-icon-badge bg-purple">
+                            <i data-lucide="sparkles"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Beautician</h3>
+                        <p>Professional training in makeup artistry, skincare, and salon operations for a thriving career in wellness.</p>
+                        <span class="btn-text">Read More <i data-lucide="chevron-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Course 3 -->
+                <a href="it.html" class="course-card">
+                    <div class="course-image" style="background-image: url('assets/it_bg_1779177308984.png');">
+                        <div class="course-icon-badge bg-blue">
+                            <i data-lucide="laptop"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>IT & Computing</h3>
+                        <p>Learn essential digital skills, computer fundamentals, and modern workplace software for corporate roles.</p>
+                        <span class="btn-text">Read More <i data-lucide="chevron-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Course 4 (Hidden for now) 
+                <a href="tally.html" class="course-card">
+                    <div class="course-image" style="background-image: url('assets/tally_bg_1779177332494.png');">
+                        <div class="course-icon-badge bg-orange">
+                            <i data-lucide="calculator"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Tally & Accounting</h3>
+                        <p>Become a professional accountant with our intensive training on Tally ERP, GST filing, and financial management.</p>
+                        <span class="btn-text">Read More <i data-lucide="chevron-right"></i></span>
+                    </div>
+                </a>
+                -->
+
+                <!-- Course 5 (Hidden for now) 
+                <a href="electrician.html" class="course-card">
+                    <div class="course-image" style="background-image: url('assets/electrician_bg_1779177350356.png');">
+                        <div class="course-icon-badge bg-teal">
+                            <i data-lucide="zap"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Electrician</h3>
+                        <p>Practical, hands-on training in domestic and industrial wiring, circuit troubleshooting, and maintenance.</p>
+                        <span class="btn-text">Read More <i data-lucide="chevron-right"></i></span>
+                    </div>
+                </a>
+                -->
+
+                <!-- Course 6 (Hidden for now) 
+                <a href="jcb.html" class="course-card">
+                    <div class="course-image" style="background-image: url('assets/jcb_bg_1779177368364.png');">
+                        <div class="course-icon-badge bg-yellow">
+                            <i data-lucide="truck"></i>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3>JCB Trainer</h3>
+                        <p>Specialized heavy machinery training including simulator practice and on-site excavator handling.</p>
+                        <span class="btn-text">Read More <i data-lucide="chevron-right"></i></span>
+                    </div>
+                </a>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-top">
+            <div class="footer-col">
+                <a href="index.html" class="logo" style="margin-bottom: 1rem; display: inline-block;">
+                    <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 50px; width: auto; object-fit: contain;">
+                </a>
+                <p style="margin-top: 1rem;">Empowering the youth and women of Himachal Pradesh through excellence in skill development and vocational training.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#courses">Programs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul class="contact-list">
+                    <li><i data-lucide="map-pin"></i> VPO Khaniara, Dharamshala, District Kangra, HP - 176218</li>
+                    <li><i data-lucide="phone"></i> +91 - 858 072 6048</li>
+                    <li><i data-lucide="mail"></i> info@mehrchandmahajan.org</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 CII MCM Trust Dharamshala. All Rights Reserved.</p>
+            </div>
+        </div>
+    <script src="main.js"></script>
+</body>
+</html>

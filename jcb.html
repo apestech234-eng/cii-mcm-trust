@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JCB Trainer | CII MCM Trust</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* ===== JCB YELLOW & BLACK THEME ===== */
+        :root {
+            --clr-primary: #FFB300; /* JCB Yellow */
+            --clr-primary-light: #FFC107;
+            --clr-secondary: #212121; /* Dark Asphalt */
+            --clr-accent: #FFF8E1;
+        }
+
+        .course-hero {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            padding: 4rem 0 6rem; position: relative; overflow: hidden;
+            border-bottom: 1px solid rgba(255, 179, 0, 0.3);
+        }
+        .course-hero-container { display: grid; gap: 4rem; align-items: center; }
+        @media (min-width: 992px) { .course-hero-container { grid-template-columns: 1.1fr 0.9fr; } }
+        .course-hero-content h1 { font-size: 3rem; margin-bottom: 1.5rem; color: var(--clr-secondary); font-weight: 800; text-transform: uppercase; }
+        .course-hero-content p { font-size: 1.125rem; color: #424242; margin-bottom: 2rem; line-height: 1.7; }
+        .jcb-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background-color: var(--clr-secondary); color: var(--clr-primary);
+            padding: 0.5rem 1rem; border-radius: 5px; font-weight: 800; font-size: 0.875rem;
+            margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .course-hero-image img {
+            border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0, 0.3);
+            width: 100%; display: block; border: 4px solid var(--clr-secondary);
+        }
+
+        .quick-details { margin-top: -3rem; position: relative; z-index: 10; }
+        .quick-details-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+            background: var(--clr-secondary); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-lg);
+        }
+        @media (min-width: 992px) { .quick-details-grid { grid-template-columns: repeat(4, 1fr); } }
+        .detail-item { display: flex; align-items: flex-start; gap: 1rem; }
+        .detail-icon {
+            width: 48px; height: 48px; background-color: var(--clr-primary); color: var(--clr-secondary);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+        }
+        .detail-content h4 { font-size: 0.875rem; color: rgba(255,255,255,0.6); margin-bottom: 0.25rem; text-transform: uppercase; }
+        .detail-content p { font-size: 1.1rem; font-weight: 700; color: var(--clr-white); }
+
+        .course-details-section { padding: 5rem 0; }
+        .course-details-grid { display: grid; gap: 4rem; }
+        @media (min-width: 992px) { .course-details-grid { grid-template-columns: 2fr 1fr; } }
+        
+        .content-block h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--clr-secondary); text-transform: uppercase; font-weight: 800;}
+        .content-block p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+        
+        .curriculum-list { margin-top: 3rem; display: grid; gap: 1.5rem; }
+        @media (min-width: 768px) { .curriculum-list { grid-template-columns: repeat(2, 1fr); } }
+        
+        .module-item {
+            background-color: var(--clr-white); padding: 1.5rem; border-radius: 8px;
+            border: 2px solid #EEEEEE; border-top: 6px solid var(--clr-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .module-item h4 { margin-bottom: 0.5rem; color: var(--clr-secondary); display: flex; align-items: center; gap: 0.5rem; font-weight: 800;}
+        .module-item h4 i { color: var(--clr-primary); width: 20px; height: 20px; }
+
+        .enroll-sidebar {
+            background: var(--clr-primary); padding: 2.5rem; border-radius: 8px;
+            position: sticky; top: 100px; color: var(--clr-secondary);
+            box-shadow: var(--shadow-md); border: 4px solid var(--clr-secondary);
+        }
+        .enroll-sidebar h3 { color: var(--clr-secondary); font-size: 1.75rem; margin-bottom: 1.5rem; font-weight: 800; text-transform: uppercase;}
+        .enroll-sidebar p { color: #424242; margin-bottom: 2rem; font-weight: 500;}
+        .enroll-sidebar .btn {
+            width: 100%; background-color: var(--clr-secondary); color: var(--clr-primary);
+            font-size: 1.1rem; padding: 1rem; border-radius: 4px; font-weight: 800; text-transform: uppercase;
+        }
+        .enroll-sidebar .btn:hover { background-color: #000; transform: translateY(-2px); }
+        .partnership-box { margin-top: 2rem; padding-top: 2rem; border-top: 2px solid rgba(0,0,0,0.1); display: flex; align-items: center; gap: 1rem; }
+        .partnership-box i { color: var(--clr-secondary); width: 32px; height: 32px; }
+        .partnership-box p { margin: 0; font-size: 0.875rem; font-weight: 800; line-height: 1.4; color: var(--clr-secondary); }
+    </style>
+</head>
+<body>
+    <div class="topbar"><div class="container topbar-inner"><div class="contact-info"><span><i data-lucide="phone" class="icon-sm"></i> +91 - 858 072 6048</span></div></div></div>
+    
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 60px; width: auto; object-fit: contain;">
+            </a>
+            <div class="nav-links"><a href="index.html">Back to Home</a></div>
+        </div>
+    </nav>
+
+    <header class="course-hero">
+        <div class="container course-hero-container">
+            <div class="course-hero-content reveal">
+                <div class="jcb-badge"><i data-lucide="cone" style="width: 18px; height: 18px;"></i> Heavy Machinery Ops</div>
+                <h1>JCB Excavator Trainer</h1>
+                <p>Master the operation of heavy earth-moving machinery. Combine cutting-edge virtual simulator practice with on-site real-world excavator handling.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a href="#enroll" class="btn" style="background-color: var(--clr-secondary); color: var(--clr-primary); padding: 1rem 2rem; border-radius: 4px; font-weight: 800; text-transform: uppercase;">Apply Now <i data-lucide="arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="course-hero-image reveal reveal-delay-2 card-3d-hover hero-carousel">
+                <img src="assets/jcb_lab.png" class="carousel-slide active" alt="JCB Lab photo 1">
+                <img src="https://placehold.co/800x600/eeeeee/999999?text=Upload+Photo+2" class="carousel-slide" alt="JCB Lab photo 2">
+                <img src="https://placehold.co/800x600/eeeeee/999999?text=Upload+Photo+3" class="carousel-slide" alt="JCB Lab photo 3">
+            </div>
+        </div>
+    </header>
+
+    <div class="quick-details reveal reveal-delay-1">
+        <div class="container">
+            <div class="quick-details-grid">
+                <div class="detail-item"><div class="detail-icon"><i data-lucide="clock"></i></div><div class="detail-content"><h4>Duration</h4><p>2 Months</p></div></div>
+                <div class="detail-item"><div class="detail-icon"><i data-lucide="indian-rupee"></i></div><div class="detail-content"><h4>Course Fee</h4><p>₹5,000 / Month</p></div></div>
+                <div class="detail-item"><div class="detail-icon"><i data-lucide="graduation-cap"></i></div><div class="detail-content"><h4>Eligibility</h4><p>18+ Years, Valid DL</p></div></div>
+                <div class="detail-item"><div class="detail-icon"><i data-lucide="file-check"></i></div><div class="detail-content"><h4>Certification</h4><p>Operator License</p></div></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="course-details-section">
+        <div class="container">
+            <div class="course-details-grid">
+                <div class="content-block">
+                    <h2 class="reveal">Course Overview</h2>
+                    <p class="reveal reveal-delay-1">The construction and infrastructure sector is booming, leading to a massive shortage of certified heavy machinery operators. Our JCB Trainer program is a fast-tracked, intensive course.</p>
+                    <p class="reveal reveal-delay-2">To ensure absolute safety and mastery, students first practice on state-of-the-art VR simulators before moving to our secure outdoor site for live hands-on operation of actual JCB excavators.</p>
+
+                    <h2 class="reveal" style="margin-top: 4rem;">What You Will Learn</h2>
+                    <div class="curriculum-list">
+                        <div class="module-item reveal reveal-delay-1 card-3d-hover">
+                            <h4><i data-lucide="gamepad-2"></i> VR Simulation</h4>
+                            <p>Master controls and spatial awareness safely on digital simulators before operating real machines.</p>
+                        </div>
+                        <div class="module-item reveal reveal-delay-2 card-3d-hover">
+                            <h4><i data-lucide="shovel"></i> Trenching & Loading</h4>
+                            <p>Real-world practice of digging, trenching, material loading, and site leveling.</p>
+                        </div>
+                        <div class="module-item reveal reveal-delay-3 card-3d-hover">
+                            <h4><i data-lucide="wrench"></i> Daily Maintenance</h4>
+                            <p>Learn to perform vital daily checks, greasing, and minor mechanical troubleshooting.</p>
+                        </div>
+                        <div class="module-item reveal reveal-delay-4 card-3d-hover">
+                            <h4><i data-lucide="hard-hat"></i> Safety Regulations</h4>
+                            <p>Strict adherence to construction site safety, hand signals, and hazard identification.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar reveal reveal-delay-2">
+                    <div id="enroll" class="enroll-sidebar card-3d-hover">
+                        <h3>Build The Future</h3>
+                        <p>Certified operators earn highly competitive salaries. Seats are strictly limited to 5 students per batch for maximum machine time.</p>
+                        <button class="btn">Apply for Admission</button>
+                        <div class="partnership-box"><i data-lucide="shield-alert"></i><p>Mandatory safety briefing and gear provided prior to all practical sessions.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer"><div class="footer-bottom"><div class="container"><p>&copy; 2026 CII MCM Trust Dharamshala.</p></div></div></footer>
+    <script src="main.js"></script>
+</body>
+</html>

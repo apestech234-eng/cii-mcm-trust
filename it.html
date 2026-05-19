@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT & Computing | CII MCM Trust x NIIT Foundation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== NIIT FOUNDATION GREEN/BLUE THEME OVERRIDES ===== */
+        :root {
+            --clr-primary: #004B87;
+            /* NIIT Blue */
+            --clr-primary-light: #0066B3;
+            --clr-secondary: #00A651;
+            /* NIIT Green */
+            --clr-accent: #8DC63F;
+            /* Light Green */
+        }
+
+        /* ===== COURSE HERO ===== */
+        .course-hero {
+            background-color: var(--clr-bg-light);
+            padding: 4rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .course-hero-container {
+            display: grid;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .course-hero-container {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+
+        .course-hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--clr-primary);
+        }
+
+        .course-hero-content p {
+            font-size: 1.125rem;
+            color: var(--clr-text-main);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .niit-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(0, 166, 81, 0.1);
+            color: var(--clr-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 166, 81, 0.2);
+        }
+
+        .course-hero-image {
+            position: relative;
+        }
+
+        .course-hero-image img {
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            display: block;
+        }
+
+        .course-hero-image::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background-color: var(--clr-secondary);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .course-hero-image::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 150px;
+            height: 150px;
+            background-color: var(--clr-primary);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* ===== QUICK DETAILS BAR ===== */
+        .quick-details {
+            margin-top: -3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .quick-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            background: var(--clr-white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        @media (min-width: 992px) {
+            .quick-details-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .detail-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(0, 75, 135, 0.05);
+            color: var(--clr-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .detail-content h4 {
+            font-size: 0.875rem;
+            color: var(--clr-text-muted);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-content p {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--clr-heading);
+        }
+
+        /* ===== COURSE CONTENT ===== */
+        .course-details-section {
+            padding: 5rem 0;
+        }
+
+        .course-details-grid {
+            display: grid;
+            gap: 4rem;
+        }
+
+        @media (min-width: 992px) {
+            .course-details-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .content-block h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--clr-primary);
+        }
+
+        .content-block p {
+            margin-bottom: 1.5rem;
+            color: var(--clr-text-main);
+            font-size: 1.1rem;
+        }
+
+        .curriculum-list {
+            margin-top: 3rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .curriculum-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .module-item {
+            background-color: var(--clr-bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--clr-secondary);
+        }
+
+        .module-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--clr-heading);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .module-item h4 i {
+            color: var(--clr-secondary);
+            width: 20px;
+            height: 20px;
+        }
+
+        .module-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Sidebar */
+        .enroll-sidebar {
+            background-color: var(--clr-primary);
+            color: var(--clr-white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .enroll-sidebar h3 {
+            color: var(--clr-white);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .enroll-sidebar p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .enroll-sidebar .btn {
+            width: 100%;
+            background-color: var(--clr-secondary);
+            box-shadow: 0 4px 15px rgba(0, 166, 81, 0.4);
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        .enroll-sidebar .btn:hover {
+            background-color: #008C44;
+        }
+
+        .partnership-box {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .partnership-box i {
+            color: var(--clr-secondary);
+            width: 32px;
+            height: 32px;
+        }
+
+        .partnership-box p {
+            margin: 0;
+            font-size: 0.875rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <div class="contact-info">
+                <span><i data-lucide="phone" class="icon-sm"></i> +91 - 858 072 6048</span>
+                <span><i data-lucide="mail" class="icon-sm"></i> info@mehrchandmahajan.org</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/ciimcm" target="_blank"><i data-lucide="facebook"
+                        class="icon-sm"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 60px; width: auto; object-fit: contain;">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Back to Home</a>
+                <a href="index.html#courses" class="active">All Programs</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Hero -->
+    <header class="course-hero">
+        <div class="container course-hero-container">
+            <div class="course-hero-content">
+                <div class="niit-badge">
+                    <i data-lucide="award" style="width: 18px; height: 18px;"></i> In Collaboration with NIIT Foundation
+                </div>
+                <h1>IT & Computing</h1>
+                <p>Master essential digital skills, computer fundamentals, and modern workplace software. This highly
+                    structured program, backed by the NIIT Foundation, is designed to take you from absolute basics to
+                    corporate-ready proficiency.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a href="#enroll" class="btn btn-primary">Enroll Today <i data-lucide="arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="course-hero-image reveal reveal-delay-2 card-3d-hover hero-carousel">
+                <img src="assets/it_lab.png" class="carousel-slide active" alt="IT Lab photo 1">
+                <img src="https://placehold.co/800x600/eeeeee/999999?text=Upload+Photo+2" class="carousel-slide" alt="IT Lab photo 2">
+                <img src="https://placehold.co/800x600/eeeeee/999999?text=Upload+Photo+3" class="carousel-slide" alt="IT Lab photo 3">
+            </div>
+        </div>
+    </header>
+
+    <!-- Quick Details -->
+    <div class="quick-details">
+        <div class="container">
+            <div class="quick-details-grid">
+                <div class="detail-item">
+                    <div class="detail-icon"><i data-lucide="clock"></i></div>
+                    <div class="detail-content">
+                        <h4>Duration</h4>
+                        <p>12 Months</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon"><i data-lucide="indian-rupee"></i></div>
+                    <div class="detail-content">
+                        <h4>Course Fee</h4>
+                        <p>₹2,500 / Month</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon"><i data-lucide="graduation-cap"></i></div>
+                    <div class="detail-content">
+                        <h4>Eligibility</h4>
+                        <p>10th / 12th Pass</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon"><i data-lucide="file-check"></i></div>
+                    <div class="detail-content">
+                        <h4>Certification</h4>
+                        <p>NIIT Foundation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Details Content -->
+    <section class="course-details-section">
+        <div class="container">
+            <div class="course-details-grid">
+                <!-- Main Content -->
+                <div class="content-block">
+                    <h2>Course Overview</h2>
+                    <p>The digital revolution has transformed every industry, making IT skills indispensable for career
+                        growth. Our IT & Computing course, in strategic partnership with the <strong>NIIT
+                            Foundation</strong>, offers a rigorous curriculum designed for students who want to excel in
+                        modern corporate environments.</p>
+                    <p>Through hands-on practical training in our state-of-the-art computer labs, students will learn to
+                        operate operating systems, master office productivity suites, understand fundamental coding
+                        logic, and manage network security basics.</p>
+
+                    <h2 style="margin-top: 4rem;">What You Will Learn</h2>
+                    <div class="curriculum-list">
+                        <div class="module-item">
+                            <h4><i data-lucide="monitor-play"></i> Computer Fundamentals</h4>
+                            <p>Hardware, Software, OS basics, and understanding how computers process data.</p>
+                        </div>
+                        <div class="module-item">
+                            <h4><i data-lucide="file-spreadsheet"></i> Office Productivity Suites</h4>
+                            <p>Advanced MS Word formatting, Excel logic/formulas, and PowerPoint presentations.</p>
+                        </div>
+                        <div class="module-item">
+                            <h4><i data-lucide="globe"></i> Internet & Networking</h4>
+                            <p>Navigating the web safely, email etiquette, and basic network troubleshooting.</p>
+                        </div>
+                        <div class="module-item">
+                            <h4><i data-lucide="code"></i> Coding Logic & Basics</h4>
+                            <p>Introduction to programming concepts, variables, and logic gates.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <div id="enroll" class="enroll-sidebar">
+                        <h3>Start Your Tech Journey</h3>
+                        <p>Admissions are currently open for the upcoming batch. Seats are strictly limited to ensure
+                            personal attention in the lab.</p>
+                        <button class="btn btn-primary">Apply for Admission</button>
+
+                        <div class="partnership-box">
+                            <i data-lucide="shield-check"></i>
+                            <p>Official Certification provided jointly by CII MCM Trust and NIIT Foundation upon
+                                completion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-top">
+            <div class="footer-col">
+                <a href="index.html" class="logo" style="margin-bottom: 1rem; display: inline-block;">
+                    <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 50px; width: auto; object-fit: contain;">
+                </a>
+                <p style="margin-top: 1rem;">Empowering the youth and women of Himachal Pradesh through excellence in
+                    skill development and vocational training.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#courses">Programs</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul class="contact-list">
+                    <li><i data-lucide="map-pin"></i> VPO Khaniara, Dharamshala, District Kangra, HP - 176218</li>
+                    <li><i data-lucide="phone"></i> +91 - 858 072 6048</li>
+                    <li><i data-lucide="mail"></i> info@mehrchandmahajan.org</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 CII MCM Trust Dharamshala. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
