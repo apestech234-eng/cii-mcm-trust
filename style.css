@@ -1296,6 +1296,81 @@ ul { list-style: none; }
     fill: none;
 }
 
+/* Mobile Toggle Button */
+.nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--clr-heading);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: var(--transition);
+}
+.nav-toggle:hover {
+    color: var(--clr-secondary);
+}
+.nav-toggle svg {
+    width: 28px;
+    height: 28px;
+}
+
+@media (max-width: 991.98px) {
+    .nav-toggle {
+        display: inline-flex;
+    }
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    .navbar .main-logo {
+        height: 70px !important;
+    }
+    .navbar .btn-primary {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.875rem !important;
+        white-space: nowrap !important;
+        margin-left: auto;
+        margin-right: 0.75rem;
+    }
+    
+    /* Navigation Drawer */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: var(--clr-card-bg);
+        box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+        padding: 6rem 2rem 2rem;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 105;
+        gap: 1.5rem;
+    }
+    .nav-links.active {
+        right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .main-logo {
+        height: 55px !important;
+    }
+    .navbar .btn-primary {
+        padding: 0.40rem 0.8rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .nav-toggle {
+        display: none;
+    }
+}
+
 
 
 
