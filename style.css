@@ -1281,10 +1281,27 @@ ul { list-style: none; }
 }
 .footer-socials a:hover {
     color: #fff;
-    background-color: var(--clr-secondary);
-    border-color: var(--clr-secondary);
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+}
+.footer-socials a[aria-label="Facebook"]:hover {
+    background-color: #1877F2;
+    border-color: #1877F2;
+    box-shadow: 0 6px 20px rgba(24, 119, 242, 0.4);
+}
+.footer-socials a[aria-label="Instagram"]:hover {
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-color: #dc2743;
+    box-shadow: 0 6px 20px rgba(220, 39, 67, 0.4);
+}
+.footer-socials a[aria-label="LinkedIn"]:hover {
+    background-color: #0A66C2;
+    border-color: #0A66C2;
+    box-shadow: 0 6px 20px rgba(10, 102, 194, 0.4);
+}
+.footer-socials a[aria-label="YouTube"]:hover {
+    background-color: #FF0000;
+    border-color: #FF0000;
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
 }
 .footer-socials a i,
 .footer-socials a svg {
