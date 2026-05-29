@@ -165,6 +165,141 @@ a{color:inherit;text-decoration:none}
 .exc-smoke{position:absolute;top:-8px;left:0;width:6px;height:6px;background:rgba(255,255,255,.3);border-radius:50%;animation:smoke 1.5s ease-out infinite}
 .exc-smoke:nth-child(2){animation-delay:.5s;left:3px}
 @keyframes smoke{0%{opacity:.6;transform:translateY(0) scale(.5)}100%{opacity:0;transform:translateY(-20px) scale(1.5)}}
+
+/* ===== MOBILE MEDIA QUERY OVERRIDES ===== */
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 1rem 1.5rem !important;
+    }
+    
+    .slide {
+        position: absolute !important;
+        inset: 0 !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        padding: 5.5rem 1rem 6.5rem !important; /* Top padding for top bar, bottom padding for controls */
+        overflow-y: auto !important; /* Enable native vertical scrolling for overflow */
+        -webkit-overflow-scrolling: touch;
+        transform: none !important; /* Disable 3D transforms on mobile for smooth fading/scrolling */
+    }
+
+    .slide-inner {
+        width: 100% !important;
+    }
+
+    .slide-inner h2 {
+        font-size: 1.8rem !important;
+        letter-spacing: 1px !important;
+        line-height: 1.25 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .slide-inner .sub {
+        font-size: 0.9rem !important;
+        margin-bottom: 1.5rem !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Convert grid layouts into horizontal swipe sliders on phone */
+    .logo-grid, .stats-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 1.2rem !important;
+        padding: 0.5rem 1rem 1.5rem !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+    
+    .logo-grid::-webkit-scrollbar, .stats-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .logo-card, .stat-card {
+        flex: 0 0 78% !important; /* Shows a preview of the next card */
+        scroll-snap-align: center !important;
+        margin: 0 !important;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+    }
+
+    .stat-card {
+        padding: 2rem 1rem !important;
+    }
+
+    .logo-card {
+        padding: 1.75rem 1rem !important;
+    }
+
+    /* Gallery carousel adjustments for swipe on phone */
+    .gallery-wrap {
+        padding: 0 1rem !important;
+    }
+    
+    .gallery-track {
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 1.2rem !important;
+        padding-bottom: 1.5rem !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+    
+    .gallery-track::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .gallery-card {
+        flex: 0 0 78% !important;
+        scroll-snap-align: center !important;
+        min-width: 200px !important;
+    }
+
+    .gal-btn {
+        display: none !important; /* Swipe gesture is easier on mobile */
+    }
+
+    /* Polaroid cards scaling */
+    .polar-card {
+        width: 180px !important;
+        padding: 0.8rem 0.8rem 1.4rem !important;
+    }
+
+    .polar-group {
+        gap: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    /* Video section adjustments */
+    .video-layout {
+        gap: 1.5rem !important;
+    }
+    
+    .playlist {
+        max-height: 220px !important;
+        width: 100% !important;
+        padding: 1rem !important;
+    }
+
+    /* Controls bar styling */
+    .controls {
+        bottom: 1.25rem !important;
+        gap: 1.5rem !important;
+        background: rgba(8, 8, 12, 0.85) !important;
+        padding: 0.5rem 1.5rem !important;
+        border-radius: 100px !important;
+        backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+    }
+    
+    .ctrl {
+        width: 38px !important;
+        height: 38px !important;
+    }
+}
 </style>
 </head>
 <body>
