@@ -1,5 +1,7 @@
 // Initialize Lucide Icons
-lucide.createIcons();
+if (window.lucide) {
+    lucide.createIcons();
+}
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -99,40 +101,11 @@ document.querySelectorAll('.hero-carousel').forEach(carousel => {
     }
 });
 
-// ===== CONSTELLATION MOUSE PARALLAX =====
+// ===== CONSTELLATION HOVER INTERACTIONS =====
 const heroGraphic = document.getElementById('heroGraphic');
 if (heroGraphic) {
     const nodes = heroGraphic.querySelectorAll('.orbit-node');
-    const hub   = heroGraphic.querySelector('.hub');
     const lines = heroGraphic.querySelectorAll('.conn-line');
-    const depths = [0.03, 0.05, 0.04, 0.035, 0.055, 0.045];
-
-    heroGraphic.addEventListener('mousemove', (e) => {
-        const rect = heroGraphic.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
-        const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
-
-        // Move each node at its own depth
-        nodes.forEach((node, i) => {
-            const d = depths[i] || 0.04;
-            const mx = x * d * 80;
-            const my = y * d * 80;
-            node.style.transform += ''; // read
-            node.style.setProperty('--px', `${mx}px`);
-            node.style.setProperty('--py', `${my}px`);
-            node.style.transform = `translate(${mx}px, ${my}px)`;
-        });
-
-        // Gently shift the hub in the opposite direction for depth
-        if (hub) {
-            hub.style.transform = `translate(calc(-50% + ${-x * 6}px), calc(-50% + ${-y * 6}px))`;
-        }
-    });
-
-    heroGraphic.addEventListener('mouseleave', () => {
-        nodes.forEach(n => { n.style.transform = ''; });
-        if (hub) hub.style.transform = 'translate(-50%, -50%)';
-    });
 
     // Glow the connection line when hovering its node
     nodes.forEach((node, i) => {
@@ -152,3 +125,162 @@ if (heroGraphic) {
         });
     });
 }
+
+// ===== 3D WAVE MESH ANIMATION =====
+function initMesh(canvas) {
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = canvas.offsetWidth;
+    let height = canvas.height = canvas.offsetHeight;
+
+    // Handle resize
+    const handleResize = () => {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+    };
+    window.addEventListener('resize', handleResize);
+
+    // Read custom color from data-mesh-color
+    const colorAttr = canvas.getAttribute('data-mesh-color') || 'rgba(147, 197, 253, 0.16)';
+    let baseColor = 'rgba(147, 197, 253, ';
+    let baseOpacityScale = 0.16;
+
+    const rgbaMatch = colorAttr.match(/rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\d.]+)\s*\)/);
+    if (rgbaMatch) {
+        baseColor = `rgba(${rgbaMatch[1]}, ${rgbaMatch[2]}, ${rgbaMatch[3]}, `;
+        baseOpacityScale = parseFloat(rgbaMatch[4]);
+    } else {
+        const rgbMatch = colorAttr.match(/rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/);
+        if (rgbMatch) {
+            baseColor = `rgba(${rgbMatch[1]}, ${rgbMatch[2]}, ${rgbMatch[3]}, `;
+            baseOpacityScale = 1.0;
+        }
+    }
+
+    const cols = 28;
+    const rows = 18;
+    const spacingX = 40;
+    const spacingZ = 25;
+    const perspective = 250;
+    const tiltOffset = 0.9;
+    
+    let time = 0;
+    
+    function animate() {
+        if (!document.body.contains(canvas)) {
+            // Cleanup listeners if element was removed
+            window.removeEventListener('resize', handleResize);
+            return;
+        }
+        ctx.clearRect(0, 0, width, height);
+        time += 0.015; // Slow, elegant motion
+        
+        const centerX = width / 2;
+        const centerY = height * 0.3; // Perspective vanishing point at 30% height
+        
+        const points = [];
+        
+        // Calculate points with 3D projection & Hexagonal layout
+        for (let r = 0; r < rows; r++) {
+            points[r] = [];
+            const z_scale = (rows - 1 - r) * spacingZ;
+            const scale = perspective / (perspective + z_scale);
+            
+            // Fade out grid in the distance (depth opacity)
+            const depthOpacity = Math.pow(scale, 1.8);
+            
+            for (let c = 0; c < cols; c++) {
+                // Stagger alternate rows by half spacingX for hexagonal layout
+                const stagger = (r % 2 === 0) ? 0 : spacingX / 2;
+                const x3d = (c - cols / 2) * spacingX + stagger;
+                
+                // Waving motion based on sine/cosine combinations
+                const wave1 = Math.sin(c * 0.2 + time) * 15;
+                const wave2 = Math.cos(r * 0.25 - time * 0.6) * 10;
+                const wave3 = Math.sin((c + r) * 0.12 + time * 0.4) * 6;
+                const y3d = wave1 + wave2 + wave3;
+                
+                const screenX = centerX + x3d * scale;
+                const screenY = centerY + (r * spacingZ * tiltOffset + y3d) * scale;
+                
+                // Fade out edges
+                const edgeDist = Math.abs(c - cols / 2) / (cols / 2);
+                const edgeOpacity = 1.0 - Math.pow(edgeDist, 2.2);
+                
+                const opacity = Math.max(0, Math.min(1, depthOpacity * edgeOpacity));
+                
+                points[r][c] = { x: screenX, y: screenY, opacity: opacity };
+            }
+        }
+        
+        // Draw connection grid lines
+        ctx.lineWidth = 1.0;
+        
+        // 1. Draw horizontal connections (only for alternate columns on each row to form hexagons)
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols - 1; c++) {
+                if (c % 2 === 0) {
+                    const p1 = points[r][c];
+                    const p2 = points[r][c + 1];
+                    
+                    if (p1.y > 0 && p2.y > 0 && p1.y < height && p2.y < height) {
+                        const avgOpacity = (p1.opacity + p2.opacity) / 2;
+                        if (avgOpacity > 0.02) {
+                            ctx.strokeStyle = `${baseColor}${avgOpacity * baseOpacityScale})`;
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 2. Draw diagonal connections (two downwards diagonals for each node depending on whether row is even or odd)
+        for (let r = 0; r < rows - 1; r++) {
+            for (let c = 0; c < cols; c++) {
+                // Determine target column offsets
+                let targets = [];
+                if (r % 2 === 0) {
+                    // Even rows: connect to c and c-1 on row below
+                    targets = [c, c - 1];
+                } else {
+                    // Odd rows: connect to c and c+1 on row below
+                    targets = [c, c + 1];
+                }
+                
+                const p1 = points[r][c];
+                
+                targets.forEach(tCol => {
+                    if (tCol >= 0 && tCol < cols) {
+                        const p2 = points[r + 1][tCol];
+                        if (p1.y > 0 && p2.y > 0 && p1.y < height && p2.y < height) {
+                            const avgOpacity = (p1.opacity + p2.opacity) / 2;
+                            if (avgOpacity > 0.02) {
+                                ctx.strokeStyle = `${baseColor}${avgOpacity * baseOpacityScale})`;
+                                ctx.beginPath();
+                                ctx.moveTo(p1.x, p1.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+}
+
+// Initialize all canvases with class 'hero-mesh'
+const meshes = document.querySelectorAll('.hero-mesh');
+meshes.forEach(canvas => {
+    initMesh(canvas);
+});
+
+
+
+

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JCB Training Portfolio | CII MCM Trust</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:#08080c;color:#fff;overflow:hidden;height:100vh}
+a{color:inherit;text-decoration:none}
+
+/* PARTICLES */
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* PROGRESS BAR */
+.progress-top{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#FFB300,#FFC107,#FF8F00);z-index:1001;transition:width .6s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(255,179,0,.6)}
+
+/* AMBIENT GLOW */
+.ambient-glow{position:fixed;top:50%;left:50%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,179,0,.08) 0%,transparent 70%);transform:translate(-50%,-50%);pointer-events:none;z-index:0;transition:opacity .8s;animation:glowPulse 4s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}}
+
+/* ENTRANCE ANIMATIONS */
+.slide-inner > *{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.slide.active .slide-inner > *{opacity:1;transform:translateY(0)}
+.slide.active .slide-inner > *:nth-child(1){transition-delay:.1s}
+.slide.active .slide-inner > *:nth-child(2){transition-delay:.25s}
+.slide.active .slide-inner > *:nth-child(3){transition-delay:.4s}
+
+/* NAV */
+.top-bar{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 3rem}
+.back-btn{display:flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.7);font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;transition:color .3s}
+.back-btn:hover{color:#FFB300}
+.back-btn i{width:20px;height:20px}
+.slide-counter{color:rgba(255,255,255,.5);font-weight:700;font-size:.9rem;letter-spacing:1px}
+
+/* SLIDES — 3D perspective scroll */
+.slides-wrap{position:relative;width:100%;height:100vh;perspective:1200px;overflow:hidden}
+.slides-track{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:transform 1s cubic-bezier(.16,1,.3,1),opacity .8s ease,visibility .8s;padding:2rem;backface-visibility:hidden}
+.slide.active{opacity:1;visibility:visible;pointer-events:auto}
+.slide-inner{width:90%;max-width:1100px;text-align:center}
+.slide-inner h2{font-size:2.8rem;font-weight:800;text-transform:uppercase;color:#FFB300;margin-bottom:.5rem;letter-spacing:1.5px}
+.slide-inner .sub{font-size:1.1rem;color:rgba(255,255,255,.6);margin-bottom:2.5rem;line-height:1.6}
+
+/* CONTROLS */
+.controls{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:2rem;z-index:1000}
+.ctrl{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.ctrl:hover{background:#FFB300;border-color:#FFB300;color:#212121}
+.ctrl i{width:20px;height:20px}
+.dots{display:flex;gap:.7rem}
+.dots button{width:10px;height:10px;border-radius:50%;border:none;background:rgba(255,255,255,.25);cursor:pointer;transition:all .3s}
+.dots button.active{background:#FFB300;transform:scale(1.4);box-shadow:0 0 10px rgba(255,179,0,.5)}
+
+/* LOGO GRID */
+.logo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
+@media(max-width:768px){.logo-grid{grid-template-columns:repeat(2,1fr)}}
+.logo-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:2rem 1rem;text-align:center;transition:all .3s;cursor:pointer}
+.logo-card:hover{background:rgba(255,179,0,.05);border-color:rgba(255,179,0,.4);transform:translateY(-8px)}
+.logo-icon{width:60px;height:60px;background:rgba(255,255,255,.04);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:#FFB300;border:1px solid rgba(255,179,0,.15);transition:all .3s}
+.logo-card:hover .logo-icon{background:#FFB300;color:#212121}
+.logo-icon i{width:28px;height:28px}
+.logo-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
+.logo-card span{font-size:.8rem;color:rgba(255,255,255,.45)}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+.stat-card{background:linear-gradient(135deg,rgba(33,33,33,.6),rgba(18,18,18,.8));border:2px solid rgba(255,255,255,.05);border-top:4px solid #FFB300;border-radius:20px;padding:2.5rem 1rem;text-align:center;transition:all .3s}
+.stat-card:hover{transform:translateY(-8px);border-color:rgba(255,179,0,.5)}
+.stat-num{font-size:3rem;font-weight:800;color:#FFB300;margin-bottom:.3rem}
+.stat-label{font-size:1rem;font-weight:700;margin-bottom:.2rem}
+.stat-sub{font-size:.8rem;color:rgba(255,255,255,.45)}
+/* GALLERY CAROUSEL */
+.gallery-wrap{position:relative;max-width:1000px;margin:0 auto;padding:0 3.5rem}
+.gallery-track{display:flex;gap:2rem;overflow:hidden;scroll-behavior:smooth}
+.gallery-card{flex:0 0 calc(33.333% - 1.34rem);min-width:260px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;cursor:pointer;transition:all .4s}
+.gallery-card:hover{transform:translateY(-12px);border-color:rgba(255,179,0,.5);box-shadow:0 25px 50px rgba(0,0,0,.5)}
+.gallery-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .6s}
+.gallery-card:hover img{transform:scale(1.1)}
+.gallery-card .info{padding:1.2rem;background:rgba(18,18,22,.85)}
+.gallery-card .info h4{font-size:1.15rem;font-weight:700;margin-bottom:.2rem}
+.gallery-card .info p{font-size:.8rem;color:#FFB300;font-weight:700;text-transform:uppercase}
+.gal-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.6);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;z-index:5;backdrop-filter:blur(8px)}
+.gal-btn:hover{background:#FFB300;border-color:#FFB300;color:#212121}
+.gal-btn i{width:20px;height:20px}
+.gal-btn.gal-prev{left:0}
+.gal-btn.gal-next{right:0}
+@media(max-width:768px){.gallery-card{flex:0 0 calc(100% - 1rem)}}
+
+/* VIDEO */
+.video-layout{display:flex;gap:2rem;max-width:1100px;margin:0 auto;align-items:stretch}
+@media(max-width:991px){.video-layout{flex-direction:column;align-items:center}}
+.vid-wrap{flex:1.3;position:relative;background:#000;border-radius:20px;overflow:hidden;border:3px solid #212121;aspect-ratio:16/9}
+.vid-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+.vid-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4);cursor:pointer;transition:opacity .3s}
+.vid-wrap.playing .vid-overlay{opacity:0;pointer-events:none}
+.play-circle{width:70px;height:70px;background:#FFB300;border:none;border-radius:50%;color:#212121;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 25px rgba(255,179,0,.5)}
+.play-circle i{width:28px;height:28px;margin-left:3px}
+.playlist{flex:.7;background:rgba(20,20,24,.6);border:1px solid rgba(255,255,255,.05);border-radius:20px;padding:1.2rem;display:flex;flex-direction:column;max-height:400px}
+.playlist h3{font-size:1rem;font-weight:800;color:#FFB300;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:.8rem;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.playlist h3 i{width:18px;height:18px}
+.pl-list{display:flex;flex-direction:column;gap:.7rem;overflow-y:auto}
+.pl-item{display:flex;gap:.8rem;align-items:center;padding:.7rem .8rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:14px;cursor:pointer;transition:all .3s}
+.pl-item:hover{background:rgba(255,179,0,.05);border-color:rgba(255,179,0,.25);transform:translateY(-2px)}
+.pl-item.active{background:rgba(255,179,0,.08);border-color:#FFB300}
+.pl-icon{width:44px;height:44px;background:rgba(255,179,0,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#FFB300;transition:all .3s;flex-shrink:0}
+.pl-item:hover .pl-icon,.pl-item.active .pl-icon{background:#FFB300;color:#212121}
+.pl-icon i{width:18px;height:18px}
+.pl-meta h4{font-size:.9rem;font-weight:700;margin-bottom:.15rem}
+.pl-meta span{font-size:.75rem;color:rgba(255,255,255,.4)}
+
+/* POLAROID SLIDER */
+.polar-wrap{width:100%;max-width:950px;overflow:hidden;margin:0 auto;padding:2rem 0;mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent)}
+.polar-track{display:flex;width:max-content;animation:marquee 20s linear infinite}
+.polar-wrap:hover .polar-track{animation-play-state:paused}
+.polar-group{display:flex;gap:2.5rem;padding-right:2.5rem}
+.polar-card{background:#fff;padding:1rem 1rem 1.8rem;border-radius:6px;box-shadow:0 15px 35px rgba(0,0,0,.4);width:240px;flex-shrink:0;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.polar-card:hover{transform:scale(1.08);box-shadow:0 25px 50px rgba(0,0,0,.6);z-index:5}
+.polar-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;pointer-events:none}
+.polar-card p{font-weight:700;font-size:.85rem;color:#212121;margin-top:1rem;text-align:center;pointer-events:none}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ZOOM MODAL */
+.zoom-modal{position:fixed;inset:0;background:rgba(6,6,8,.96);backdrop-filter:blur(15px);z-index:10000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;padding:2rem}
+.zoom-modal.open{opacity:1;pointer-events:auto}
+.zoom-box{background:rgba(20,20,24,.9);border:1px solid rgba(255,179,0,.25);border-radius:24px;max-width:900px;width:100%;overflow:hidden;position:relative;transform:scale(.9);transition:transform .4s}
+.zoom-modal.open .zoom-box{transform:scale(1)}
+.zoom-x{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.05);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;z-index:10}
+.zoom-x:hover{background:#FFB300;color:#212121}
+.zoom-body{display:grid;gap:2rem;padding:2.5rem}
+@media(min-width:768px){.zoom-body{grid-template-columns:1.3fr .7fr;align-items:center}}
+.zoom-body img{width:100%;border-radius:14px;display:block;border:3px solid #212121}
+.zoom-info h3{font-size:1.6rem;color:#FFB300;font-weight:800;text-transform:uppercase;margin-bottom:.8rem}
+.zoom-info p{font-size:1rem;color:rgba(255,255,255,.7);line-height:1.6}
+
+/* ===== AURORA BACKGROUND (toggle: ENABLE_AURORA) ===== */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.85}
+.aurora-blob{position:absolute;border-radius:50%;filter:blur(80px);animation:auroraMove 12s ease-in-out infinite alternate}
+.aurora-blob:nth-child(1){width:600px;height:600px;background:rgba(255,179,0,.25);top:-10%;left:10%;animation-duration:10s}
+.aurora-blob:nth-child(2){width:500px;height:500px;background:rgba(255,143,0,.2);bottom:10%;right:5%;animation-duration:14s;animation-delay:-3s}
+.aurora-blob:nth-child(3){width:450px;height:450px;background:rgba(255,193,7,.18);top:40%;left:60%;animation-duration:16s;animation-delay:-7s}
+@keyframes auroraMove{0%{transform:translate(0,0) scale(1)}33%{transform:translate(80px,-60px) scale(1.2)}66%{transform:translate(-50px,40px) scale(.9)}100%{transform:translate(30px,-30px) scale(1.1)}}
+
+/* ===== EXCAVATOR ANIMATION (toggle: ENABLE_EXCAVATOR) ===== */
+.excavator-scene{position:fixed;bottom:0;left:0;right:0;height:80px;z-index:999;pointer-events:none;overflow:hidden}
+.excavator-ground{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,rgba(255,179,0,.3),rgba(255,179,0,.5),rgba(255,179,0,.3),transparent)}
+.excavator{position:absolute;bottom:4px;animation:excavatorDrive 18s linear infinite}
+@keyframes excavatorDrive{0%{left:-120px}100%{left:calc(100% + 120px)}}
+.exc-body{width:70px;height:30px;background:#FFB300;border-radius:4px 8px 2px 2px;position:relative;box-shadow:0 2px 10px rgba(255,179,0,.4)}
+.exc-body::before{content:'JCB';position:absolute;top:6px;left:8px;font-size:10px;font-weight:800;color:#212121;font-family:'Outfit',sans-serif}
+.exc-cabin{position:absolute;top:-18px;right:4px;width:22px;height:20px;background:#212121;border-radius:3px 3px 0 0;border:2px solid #FFB300}
+.exc-cabin::after{content:'';position:absolute;top:3px;left:3px;width:12px;height:8px;background:rgba(135,206,250,.4);border-radius:2px}
+.exc-arm{position:absolute;top:-14px;left:8px;width:40px;height:6px;background:#FFB300;border-radius:3px;transform-origin:left center;animation:armDig 3s ease-in-out infinite}
+.exc-forearm{position:absolute;right:-22px;top:-4px;width:24px;height:5px;background:#FFC107;border-radius:2px;transform-origin:left center;animation:forearmDig 3s ease-in-out infinite}
+.exc-bucket{position:absolute;right:-10px;top:-2px;width:12px;height:10px;border:3px solid #FF8F00;border-top:none;border-radius:0 0 3px 3px;transform-origin:top center;animation:bucketDig 3s ease-in-out infinite}
+@keyframes armDig{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(-20deg)}}
+@keyframes forearmDig{0%,100%{transform:rotate(10deg)}50%{transform:rotate(30deg)}}
+@keyframes bucketDig{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(20deg)}}
+.exc-tracks{display:flex;gap:2px;position:absolute;bottom:-6px;left:4px}
+.exc-wheel{width:10px;height:10px;background:#333;border-radius:50%;border:2px solid #555;animation:wheelSpin 1s linear infinite}
+@keyframes wheelSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.exc-exhaust{position:absolute;top:-22px;left:20px;width:4px;height:6px;background:#555;border-radius:2px}
+.exc-smoke{position:absolute;top:-8px;left:0;width:6px;height:6px;background:rgba(255,255,255,.3);border-radius:50%;animation:smoke 1.5s ease-out infinite}
+.exc-smoke:nth-child(2){animation-delay:.5s;left:3px}
+@keyframes smoke{0%{opacity:.6;transform:translateY(0) scale(.5)}100%{opacity:0;transform:translateY(-20px) scale(1.5)}}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="ambient-glow"></div>
+<div class="progress-top" id="progressBar" style="width:20%"></div>
+
+<!-- Aurora (toggle: ENABLE_AURORA) -->
+<div class="aurora" id="auroraEl">
+    <div class="aurora-blob"></div>
+    <div class="aurora-blob"></div>
+    <div class="aurora-blob"></div>
+</div>
+
+<!-- Excavator (toggle: ENABLE_EXCAVATOR) -->
+<div class="excavator-scene" id="excavatorEl">
+    <div class="excavator-ground"></div>
+    <div class="excavator">
+        <div class="exc-body">
+            <div class="exc-cabin"></div>
+            <div class="exc-arm">
+                <div class="exc-forearm">
+                    <div class="exc-bucket"></div>
+                </div>
+            </div>
+            <div class="exc-exhaust">
+                <div class="exc-smoke"></div>
+                <div class="exc-smoke"></div>
+            </div>
+        </div>
+        <div class="exc-tracks">
+            <div class="exc-wheel"></div>
+            <div class="exc-wheel"></div>
+            <div class="exc-wheel"></div>
+            <div class="exc-wheel"></div>
+        </div>
+    </div>
+</div>
+
+<div class="top-bar">
+    <a href="jcb.html" class="back-btn"><i data-lucide="arrow-left"></i> Back to JCB Course</a>
+    <div class="slide-counter" id="counter">1 / 5</div>
+</div>
+
+<div class="slides-wrap" id="slidesWrap">
+<div class="slides-track" id="slidesTrack">
+    <!-- Slide 1 -->
+    <div class="slide active" data-idx="0">
+        <div class="slide-inner">
+            <h2>Industrial Collaborators</h2>
+            <p class="sub">Proud partnerships that power our world-class training program</p>
+            <div class="logo-grid">
+                <div class="logo-card"><div class="logo-icon"><i data-lucide="building-2"></i></div><h3>JCB India</h3><span>Equipment Partner</span></div>
+                <div class="logo-card"><div class="logo-icon"><i data-lucide="landmark"></i></div><h3>CII Foundation</h3><span>Strategic Partner</span></div>
+                <div class="logo-card"><div class="logo-icon"><i data-lucide="graduation-cap"></i></div><h3>NSDC</h3><span>Certification Body</span></div>
+                <div class="logo-card"><div class="logo-icon"><i data-lucide="shield-check"></i></div><h3>Govt. of India</h3><span>Skill India Mission</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" data-idx="1">
+        <div class="slide-inner">
+            <h2>Training Impact</h2>
+            <p class="sub">Our numbers speak for the quality of training we deliver</p>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-num" data-val="1200">0</div><div class="stat-label">Trainees</div><div class="stat-sub">Trained since 2018</div></div>
+                <div class="stat-card"><div class="stat-num" data-val="95">0</div><div class="stat-label">Placement</div><div class="stat-sub">Employment rate</div></div>
+                <div class="stat-card"><div class="stat-num" data-val="45">0</div><div class="stat-label">Batches</div><div class="stat-sub">Completed</div></div>
+                <div class="stat-card"><div class="stat-num" data-val="100">0</div><div class="stat-label">Certified</div><div class="stat-sub">Industry standard</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" data-idx="2">
+        <div class="slide-inner">
+            <h2>Training Gallery</h2>
+            <p class="sub">Real moments from our hands-on training sessions</p>
+            <div class="gallery-wrap">
+                <button class="gal-btn gal-prev" id="galPrev"><i data-lucide="chevron-left"></i></button>
+                <div class="gallery-track" id="galTrack">
+                    <div class="gallery-card" data-src="assets/jcb_convocation.png" data-desc="Graduation ceremony celebrating trainee achievements."><img src="assets/jcb_convocation.png" alt="Convocation"><div class="info"><h4>Convocation Day</h4><p>Graduation Ceremony</p></div></div>
+                    <div class="gallery-card" data-src="assets/jcb_simulator.png" data-desc="Hands-on simulator practice with precision controls."><img src="assets/jcb_simulator.png" alt="Simulator"><div class="info"><h4>Simulator Practice</h4><p>Joystick Controls</p></div></div>
+                    <div class="gallery-card" data-src="assets/jcb_field.png" data-desc="Real excavator handling on our outdoor training ground."><img src="assets/jcb_field.png" alt="Field"><div class="info"><h4>On-Field Training</h4><p>Live Excavator</p></div></div>
+                    <div class="gallery-card" data-src="assets/jcb_lab.png" data-desc="Our advanced VR simulator lab for pre-field training."><img src="assets/jcb_lab.png" alt="Lab"><div class="info"><h4>VR Simulator Lab</h4><p>Pre-field Training</p></div></div>
+                </div>
+                <button class="gal-btn gal-next" id="galNext"><i data-lucide="chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide" data-idx="3">
+        <div class="slide-inner">
+            <h2 id="vidTitle">Operator in Action</h2>
+            <p class="sub" id="vidDesc">Watch our trainees operate heavy machinery with precision and safety</p>
+            <div class="video-layout">
+                <div class="vid-wrap" id="vidWrap">
+                    <video id="mainVid" loop muted playsinline>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-construction-site-with-excavator-in-action-40093-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="vid-overlay" id="vidOverlay"><button class="play-circle"><i data-lucide="play"></i></button></div>
+                </div>
+                <div class="playlist">
+                    <h3><i data-lucide="play-square"></i> Training Playlist</h3>
+                    <div class="pl-list" id="plList">
+                        <div class="pl-item active" data-src="https://assets.mixkit.co/videos/preview/mixkit-construction-site-with-excavator-in-action-40093-large.mp4" data-title="Operator in Action" data-desc="Watch our trainees operate heavy machinery with precision and safety.">
+                            <div class="pl-icon"><i data-lucide="play"></i></div>
+                            <div class="pl-meta"><h4>Excavator Handling</h4><span>On-site operations</span></div>
+                        </div>
+                        <div class="pl-item" data-src="https://assets.mixkit.co/videos/preview/mixkit-excavator-moving-earth-on-a-construction-site-40094-large.mp4" data-title="Earth Moving Operation" data-desc="Trainees mastering precision digging and earth-moving tasks.">
+                            <div class="pl-icon"><i data-lucide="play"></i></div>
+                            <div class="pl-meta"><h4>Earth Moving</h4><span>Precision digging</span></div>
+                        </div>
+                        <div class="pl-item" data-src="https://assets.mixkit.co/videos/preview/mixkit-yellow-excavator-working-on-a-construction-site-40092-large.mp4" data-title="Site Preparation" data-desc="Learn trenching, loading, and ground leveling on-field.">
+                            <div class="pl-icon"><i data-lucide="play"></i></div>
+                            <div class="pl-meta"><h4>Site Preparation</h4><span>Trenching & leveling</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide" data-idx="4">
+        <div class="slide-inner">
+            <h2>Celebrating Graduation</h2>
+            <p class="sub">Our graduates ready to take on professional machine operator careers</p>
+            <div class="polar-wrap" id="polarWrap">
+                <div class="polar-track">
+                    <div class="polar-group">
+                        <div class="polar-card" data-desc="Class of 2026 trainees celebrating graduation."><img src="assets/jcb_convocation.png" alt="Graduation"><p>Class of 2026 Graduation</p></div>
+                        <div class="polar-card" data-desc="Trainees receiving operator licenses on-field."><img src="assets/jcb_field.png" alt="License"><p>Hands-on License Ceremony</p></div>
+                        <div class="polar-card" data-desc="Students completing simulator batches."><img src="assets/jcb_simulator.png" alt="Simulator"><p>Simulator Training Complete</p></div>
+                        <div class="polar-card" data-desc="VR training sessions at our lab."><img src="assets/jcb_lab.png" alt="VR Lab"><p>VR Control Basics Mastered</p></div>
+                    </div>
+                    <div class="polar-group">
+                        <div class="polar-card" data-desc="Class of 2026 trainees celebrating graduation."><img src="assets/jcb_convocation.png" alt="Graduation"><p>Class of 2026 Graduation</p></div>
+                        <div class="polar-card" data-desc="Trainees receiving operator licenses on-field."><img src="assets/jcb_field.png" alt="License"><p>Hands-on License Ceremony</p></div>
+                        <div class="polar-card" data-desc="Students completing simulator batches."><img src="assets/jcb_simulator.png" alt="Simulator"><p>Simulator Training Complete</p></div>
+                        <div class="polar-card" data-desc="VR training sessions at our lab."><img src="assets/jcb_lab.png" alt="VR Lab"><p>VR Control Basics Mastered</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Zoom Modal -->
+<div class="zoom-modal" id="zoomModal">
+    <div class="zoom-box">
+        <button class="zoom-x" id="zoomClose">&times;</button>
+        <div class="zoom-body">
+            <img id="zoomImg" src="" alt="Zoom">
+            <div class="zoom-info"><h3 id="zoomTitle"></h3><p id="zoomDesc"></p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+    <button class="ctrl" id="prevBtn"><i data-lucide="chevron-left"></i></button>
+    <div class="dots" id="dotsWrap">
+        <button class="active" data-i="0"></button>
+        <button data-i="1"></button>
+        <button data-i="2"></button>
+        <button data-i="3"></button>
+        <button data-i="4"></button>
+    </div>
+    <button class="ctrl" id="nextBtn"><i data-lucide="chevron-right"></i></button>
+</div>
+
+<script>
+lucide.createIcons();
+
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dots button');
+const counter = document.getElementById('counter');
+let cur = 0, transitioning = false, statsTimer = null;
+
+const progressBar = document.getElementById('progressBar');
+
+function go(i) {
+    if (i < 0 || i >= slides.length || transitioning) return;
+    transitioning = true;
+    cur = i;
+    slides.forEach((s,idx) => {
+        let z = 0;
+        if (idx === i) { z = 0; s.classList.add('active'); }
+        else if (idx < i) { z = (i - idx) * 800; s.classList.remove('active'); }
+        else { z = (i - idx) * 800; s.classList.remove('active'); }
+        s.style.transform = 'translateZ(' + z + 'px)';
+    });
+    dots.forEach((d,idx) => d.classList.toggle('active', idx === i));
+    counter.textContent = (i+1) + ' / ' + slides.length;
+    progressBar.style.width = ((i+1)/slides.length*100) + '%';
+    // Stats: reset numbers, then animate after entrance animation finishes
+    if (statsTimer) { clearTimeout(statsTimer); statsTimer = null; }
+    if (i === 1) {
+        resetStats();
+        statsTimer = setTimeout(runStats, 800);
+    }
+    if (i === 3) { setTimeout(() => vid.play().catch(()=>{}), 400); vidWrap.classList.add('playing'); }
+    else { vid.pause(); vidWrap.classList.remove('playing'); }
+    setTimeout(() => transitioning = false, 800);
+}
+
+// Mouse parallax on non-interactive slides (1-3)
+document.addEventListener('mousemove', e => {
+    if (cur > 2) return;
+    const x = (e.clientX / window.innerWidth - 0.5) * 8;
+    const y = (e.clientY / window.innerHeight - 0.5) * 8;
+    const active = slides[cur];
+    if (active) {
+        const inner = active.querySelector('.slide-inner');
+        if (inner) inner.style.transform = 'rotateY('+x+'deg) rotateX('+(-y)+'deg)';
+    }
+});
+
+// Particles
+(function(){
+    const c = document.getElementById('particles');
+    const ctx = c.getContext('2d');
+    let w, h, pts = [];
+    function resize(){ w = c.width = window.innerWidth; h = c.height = window.innerHeight; }
+    window.addEventListener('resize', resize); resize();
+    for(let i=0;i<60;i++) pts.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.5,dx:(Math.random()-.5)*.4,dy:(Math.random()-.5)*.3,o:Math.random()*.5+.2});
+    function draw(){
+        ctx.clearRect(0,0,w,h);
+        pts.forEach(p=>{
+            p.x+=p.dx; p.y+=p.dy;
+            if(p.x<0)p.x=w; if(p.x>w)p.x=0; if(p.y<0)p.y=h; if(p.y>h)p.y=0;
+            ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+            ctx.fillStyle='rgba(255,179,0,'+p.o+')'; ctx.fill();
+        });
+        // draw lines between close particles
+        for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
+            const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+            const dist=Math.sqrt(dx*dx+dy*dy);
+            if(dist<120){
+                ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y);
+                ctx.strokeStyle='rgba(255,179,0,'+(0.08*(1-dist/120))+')'; ctx.stroke();
+            }
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+})();
+
+document.getElementById('prevBtn').onclick = () => go(cur - 1);
+document.getElementById('nextBtn').onclick = () => go(cur + 1);
+dots.forEach(d => d.onclick = () => go(+d.dataset.i));
+
+document.addEventListener('wheel', e => {
+    if (e.target.closest('.pl-list')) return;
+    e.preventDefault();
+    if (!transitioning && Math.abs(e.deltaY) > 10) go(cur + (e.deltaY > 0 ? 1 : -1));
+}, { passive: false });
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') go(cur + 1);
+    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') go(cur - 1);
+});
+
+// Stats
+function resetStats() {
+    document.querySelectorAll('.stat-num').forEach(el => { el.textContent = '0'; });
+}
+function runStats() {
+    document.querySelectorAll('.stat-num').forEach(el => {
+        const t = +el.dataset.val; let c = 0;
+        const iv = setInterval(() => {
+            c += t / 40;
+            if (c >= t) { clearInterval(iv); c = t; }
+            let s = Math.ceil(c);
+            if (t === 1200) el.textContent = s.toLocaleString() + '+';
+            else if (t === 95 || t === 100) el.textContent = s + '%';
+            else if (t === 45) el.textContent = s + '+';
+            else el.textContent = s;
+        }, 40);
+    });
+}
+
+// Video
+const vid = document.getElementById('mainVid');
+const vidWrap = document.getElementById('vidWrap');
+document.getElementById('vidOverlay').onclick = () => { vid.play(); vidWrap.classList.add('playing'); };
+vid.onclick = () => { if (vid.paused) { vid.play(); vidWrap.classList.add('playing'); } else { vid.pause(); vidWrap.classList.remove('playing'); } };
+
+// Playlist
+document.getElementById('plList').addEventListener('click', e => {
+    const item = e.target.closest('.pl-item');
+    if (!item || item.classList.contains('active')) return;
+    document.querySelectorAll('.pl-item').forEach(x => x.classList.remove('active'));
+    item.classList.add('active');
+    vid.src = item.dataset.src;
+    vid.load();
+    vid.play().catch(()=>{});
+    vidWrap.classList.add('playing');
+    document.getElementById('vidTitle').textContent = item.dataset.title;
+    document.getElementById('vidDesc').textContent = item.dataset.desc;
+});
+
+// Gallery carousel nav (infinite loop)
+const galTrack = document.getElementById('galTrack');
+const galCard = galTrack.querySelector('.gallery-card');
+const galScroll = galCard ? galCard.offsetWidth + 32 : 300;
+document.getElementById('galPrev').onclick = (e) => {
+    e.stopPropagation();
+    if (galTrack.scrollLeft <= 0) {
+        galTrack.scrollTo({ left: galTrack.scrollWidth, behavior: 'smooth' });
+    } else {
+        galTrack.scrollBy({ left: -galScroll, behavior: 'smooth' });
+    }
+};
+document.getElementById('galNext').onclick = (e) => {
+    e.stopPropagation();
+    if (galTrack.scrollLeft + galTrack.clientWidth >= galTrack.scrollWidth - 10) {
+        galTrack.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+        galTrack.scrollBy({ left: galScroll, behavior: 'smooth' });
+    }
+};
+
+// Gallery zoom (event delegation on track)
+galTrack.addEventListener('click', e => {
+    const c = e.target.closest('.gallery-card');
+    if (!c) return;
+    openZoom(c.dataset.src, c.querySelector('h4').textContent, c.dataset.desc);
+});
+
+// Polaroid zoom
+document.getElementById('polarWrap').addEventListener('click', e => {
+    const card = e.target.closest('.polar-card');
+    if (!card) return;
+    openZoom(card.querySelector('img').src, card.querySelector('p').textContent, card.dataset.desc);
+});
+
+// Zoom modal
+const zm = document.getElementById('zoomModal');
+function openZoom(src, title, desc) {
+    document.getElementById('zoomImg').src = src;
+    document.getElementById('zoomTitle').textContent = title;
+    document.getElementById('zoomDesc').textContent = desc;
+    zm.classList.add('open');
+}
+document.getElementById('zoomClose').onclick = () => zm.classList.remove('open');
+zm.onclick = e => { if (e.target === zm) zm.classList.remove('open'); };
+
+// ===== EFFECT TOGGLES =====
+// Set to false to hide an effect. Just change true → false and refresh.
+const ENABLE_AURORA = true;
+const ENABLE_EXCAVATOR = false;
+
+if (!ENABLE_AURORA) document.getElementById('auroraEl').style.display = 'none';
+if (!ENABLE_EXCAVATOR) document.getElementById('excavatorEl').style.display = 'none';
+</script>
+</body>
+</html>

@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Profile | MCM Trust — Empowering Communities Since 1972</title>
+    <meta name="description" content="Discover the full profile of Mehr Chand Mahajan (MCM) Trust — our five-decade legacy, leadership, programs, and transformative impact across Himachal Pradesh.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <link rel="stylesheet" href="style.css?v=1.9">
+
+    <style>
+    /* ===== PAGE-SPECIFIC BRAND THEME OVERRIDES ===== */
+    body {
+        background-color: var(--clr-bg);
+        color: var(--clr-text-main);
+    }
+
+    /* SECTION STRUCTURE */
+    .wrap {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    /* SECTION EYECATCHER / TAG */
+    .sec-eye {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--clr-secondary);
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+    .sec-eye::before {
+        content: '';
+        width: 20px;
+        height: 2px;
+        background-color: var(--clr-secondary);
+    }
+    .sec-h2 {
+        font-size: 2.5rem;
+        color: var(--clr-heading);
+        font-weight: 800;
+        line-height: 1.2;
+    }
+    .sec-h2 em {
+        font-style: normal;
+        color: var(--clr-secondary);
+    }
+    .sec-p {
+        color: var(--clr-text-muted);
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-top: 0.75rem;
+    }
+
+    /* PROFILE HERO */
+    .profile-hero {
+        background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+        padding: 8rem 1.5rem 6rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        color: var(--clr-white);
+    }
+    .profile-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(233, 30, 99, 0.15), transparent 70%);
+        border-radius: 50%;
+        animation: heroFloat 10s ease-in-out infinite alternate;
+    }
+    .profile-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
+        border-radius: 50%;
+        animation: heroFloat 12s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes heroFloat {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(40px, -30px) scale(1.15); }
+    }
+    .profile-hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .profile-hero .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(255,255,255,0.1);
+        color: var(--clr-white);
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 0.5rem 1.25rem;
+        border-radius: 100px;
+        margin-bottom: 2rem;
+    }
+    .profile-hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        line-height: 1.15;
+        color: var(--clr-white);
+        margin-bottom: 1.5rem;
+    }
+    .profile-hero h1 em {
+        font-style: normal;
+        color: var(--clr-accent);
+    }
+    .profile-hero p {
+        font-size: 1.15rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+    }
+    .profile-hero .hero-btns {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 4rem;
+    }
+    .profile-hero .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 2.5rem;
+    }
+    @media (min-width: 768px) {
+        .profile-hero .hero-stats {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+    .profile-hero .hstat {
+        text-align: center;
+    }
+    .profile-hero .hstat-n {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--clr-accent);
+        line-height: 1;
+    }
+    .profile-hero .hstat-l {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 0.5rem;
+    }
+
+    /* SCROLL INDICATOR */
+    .hero-scroll {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255,255,255,0.4);
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 3rem;
+    }
+    .scroll-bar {
+        width: 2px;
+        height: 40px;
+        background: linear-gradient(to bottom, var(--clr-secondary), transparent);
+        animation: sb 2s ease-in-out infinite;
+    }
+    @keyframes sb {
+        0%,100% { opacity: .3; transform: scaleY(1); }
+        50% { opacity: 1; transform: scaleY(1.3); }
+    }
+
+    /* TRUSTEE SECTION */
+    .trustee-grid {
+        display: grid;
+        gap: 4rem;
+        align-items: center;
+    }
+    @media (min-width: 992px) {
+        .trustee-grid {
+            grid-template-columns: 1fr 1.2fr;
+        }
+    }
+    .t-portrait {
+        position: relative;
+        padding-bottom: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .t-portrait-img {
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: var(--shadow-lg);
+        border: 4px solid var(--clr-white);
+    }
+    .t-portrait-img img {
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+    }
+    .t-badge {
+        position: absolute;
+        top: 1.25rem;
+        left: 1.25rem;
+        background-color: var(--clr-secondary);
+        color: var(--clr-white);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 0.35rem 0.85rem;
+        border-radius: 50px;
+        z-index: 2;
+    }
+    .t-brand-box {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-light));
+        border-radius: 16px;
+        z-index: -1;
+    }
+    .quote-card {
+        background: var(--clr-white);
+        border-left: 5px solid var(--clr-secondary);
+        border-radius: 12px;
+        padding: 2.25rem;
+        position: relative;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-md);
+    }
+    .quote-card::before {
+        content: '\201C';
+        font-size: 8rem;
+        line-height: .6;
+        color: rgba(233, 30, 99, 0.08);
+        position: absolute;
+        top: 1.2rem;
+        left: 1.5rem;
+        pointer-events: none;
+    }
+    .quote-text {
+        font-style: italic;
+        color: var(--clr-text-main);
+        line-height: 1.85;
+        position: relative;
+        z-index: 1;
+        font-size: 1.1rem;
+    }
+    .sig-row {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        margin-top: 1.5rem;
+    }
+    .sig-av {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid var(--clr-secondary);
+        flex-shrink: 0;
+    }
+    .sig-av img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+    .sig-name {
+        font-weight: 700;
+        color: var(--clr-heading);
+    }
+    .sig-role {
+        font-size: 0.75rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+    .t-bio p {
+        font-size: 1rem;
+        color: var(--clr-text-muted);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
+    /* IMPACT COUNTERS */
+    .impact-head {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+    .impact-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 768px) {
+        .impact-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @media (min-width: 1200px) {
+        .impact-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+    .ic {
+        background: var(--clr-white);
+        border-radius: 16px;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(0,0,0,0.03);
+        transition: all 0.3s ease;
+    }
+    .ic:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+    .ic-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.25rem;
+        color: var(--clr-white);
+    }
+    .ic-n {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: var(--clr-heading);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+    .ic-l {
+        font-size: 0.85rem;
+        color: var(--clr-text-muted);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        line-height: 1.4;
+    }
+
+    /* JOURNEY TIMELINE */
+    .tl-head {
+        text-align: center;
+        margin-bottom: 4.5rem;
+    }
+    .tl-track {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        padding-left: 3rem;
+    }
+    .tl-line {
+        position: absolute;
+        left: 1rem;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, var(--clr-primary) 0%, var(--clr-secondary) 80%, transparent 100%);
+        border-radius: 3px;
+    }
+    .tl-item {
+        margin-bottom: 3rem;
+        position: relative;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .tl-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .tl-dot {
+        position: absolute;
+        left: calc(-3rem + 16px - 7px);
+        top: 1.5rem;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: var(--clr-secondary);
+        border: 3px solid var(--clr-white);
+        box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+    }
+    .tl-card {
+        background: var(--clr-white);
+        border: 1px solid #E2E8F0;
+        border-radius: 16px;
+        padding: 1.75rem;
+        transition: all .3s;
+        box-shadow: var(--shadow-sm);
+    }
+    .tl-card:hover {
+        background: var(--clr-white);
+        border-color: var(--clr-secondary);
+        transform: translateX(6px);
+        box-shadow: var(--shadow-md);
+    }
+    .tl-year {
+        font-size: 1.8rem;
+        font-weight: 850;
+        color: var(--clr-secondary);
+        margin-bottom: 0.25rem;
+        line-height: 1.1;
+    }
+    .tl-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--clr-heading);
+        margin-bottom: 0.5rem;
+    }
+    .tl-desc {
+        font-size: 0.95rem;
+        color: var(--clr-text-muted);
+        line-height: 1.7;
+    }
+
+    /* PROGRAMS INITIATIVES */
+    .prog-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+        margin-top: 3.5rem;
+    }
+    @media (min-width: 768px) {
+        .prog-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (min-width: 1024px) {
+        .prog-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .prog-card {
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        background: var(--clr-white);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+    }
+    .prog-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(233, 30, 99, 0.25);
+        box-shadow: var(--shadow-lg);
+    }
+    .prog-img {
+        height: 210px;
+        overflow: hidden;
+        position: relative;
+        background: var(--clr-bg-light);
+    }
+    .prog-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+    .prog-card:hover .prog-img img {
+        transform: scale(1.08);
+    }
+    .prog-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(15, 23, 42, 0.3), transparent);
+    }
+    .prog-badge {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--clr-secondary);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 0.3rem 0.8rem;
+        border-radius: 50px;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(0,0,0,0.03);
+    }
+    .prog-body {
+        padding: 1.75rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .prog-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--clr-heading);
+        margin-bottom: 0.5rem;
+    }
+    .prog-desc {
+        font-size: 0.95rem;
+        color: var(--clr-text-muted);
+        line-height: 1.7;
+        flex: 1;
+    }
+    .prog-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--clr-primary-light);
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-top: 1.25rem;
+        border-top: 1px solid #F1F5F9;
+        padding-top: 1rem;
+        transition: all 0.2s;
+    }
+    .prog-link:hover {
+        color: var(--clr-secondary);
+        gap: 0.6rem;
+    }
+
+    /* COMMUNITY IMPACT / ACTIVITIES */
+    .act-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+        margin-top: 3.5rem;
+    }
+    @media (min-width: 768px) {
+        .act-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (min-width: 1024px) {
+        .act-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .act-card {
+        background: var(--clr-white);
+        border: 1px solid #E2E8F0;
+        border-radius: 18px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s;
+        box-shadow: var(--shadow-sm);
+    }
+    .act-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--clr-primary), var(--clr-secondary));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+    .act-card:hover::after {
+        transform: scaleX(1);
+    }
+    .act-card:hover {
+        background: var(--clr-white);
+        border-color: var(--clr-secondary);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+    }
+    .act-ico {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        margin-bottom: 1.25rem;
+        background: rgba(233, 30, 99, 0.08);
+        border: 1px solid rgba(233, 30, 99, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--clr-secondary);
+    }
+    .act-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--clr-heading);
+        margin-bottom: 0.5rem;
+    }
+    .act-desc {
+        font-size: 0.93rem;
+        color: var(--clr-text-muted);
+        line-height: 1.7;
+    }
+
+    /* LEADERSHIP SECTION */
+    .tabs-row {
+        display: flex;
+        gap: 0.5rem;
+        background: #E2E8F0;
+        border-radius: 12px;
+        padding: 0.35rem;
+        width: fit-content;
+        margin: 2.5rem 0;
+    }
+    .tab-b {
+        padding: 0.6rem 1.75rem;
+        border-radius: 9px;
+        border: none;
+        background: transparent;
+        font-family: var(--font-main);
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #64748B;
+        cursor: pointer;
+        transition: all 0.25s;
+    }
+    .tab-b.on {
+        background: var(--clr-white);
+        color: var(--clr-primary);
+        box-shadow: var(--shadow-sm);
+    }
+    .panel {
+        display: none;
+    }
+    .panel.on {
+        display: block;
+    }
+    .ppl-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+        .ppl-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (min-width: 1200px) {
+        .ppl-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .pc {
+        background: var(--clr-white);
+        border: 1px solid #E2E8F0;
+        border-radius: 18px;
+        padding: 1.75rem;
+        display: flex;
+        gap: 1.2rem;
+        align-items: flex-start;
+        transition: all 0.3s;
+        box-shadow: var(--shadow-sm);
+    }
+    .pc:hover {
+        border-color: var(--clr-secondary);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+    }
+    .pc-av {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--clr-secondary);
+        flex-shrink: 0;
+        box-shadow: var(--shadow-sm);
+    }
+    .pc-av img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+    .pc-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--clr-heading);
+    }
+    .pc-role {
+        font-size: 0.72rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin: 0.15rem 0 0.5rem;
+    }
+    .pc-bio {
+        font-size: 0.88rem;
+        color: var(--clr-text-muted);
+        line-height: 1.65;
+    }
+
+    /* SKILL PROJECTS */
+    .sk-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+        margin-top: 3.5rem;
+    }
+    @media (min-width: 768px) {
+        .sk-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (min-width: 1024px) {
+        .sk-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .sk-card {
+        padding: 2rem;
+        border-radius: 18px;
+        border-left: 4px solid var(--clr-secondary);
+        background: var(--clr-bg-light);
+        border-top: 1px solid #E2E8F0;
+        border-right: 1px solid #E2E8F0;
+        border-bottom: 1px solid #E2E8F0;
+        transition: all 0.3s;
+        box-shadow: var(--shadow-sm);
+    }
+    .sk-card:hover {
+        background: var(--clr-white);
+        border-color: var(--clr-secondary);
+        transform: translateX(4px);
+        box-shadow: var(--shadow-md);
+    }
+    .sk-num {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: rgba(233, 30, 99, 0.12);
+        margin-bottom: 0.2rem;
+        line-height: 1;
+    }
+    .sk-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--clr-heading);
+        margin-bottom: 0.5rem;
+    }
+    .sk-desc {
+        font-size: 0.92rem;
+        color: var(--clr-text-muted);
+        line-height: 1.65;
+    }
+
+    /* TESTIMONIALS & PARTNERS */
+    .testi-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+        margin-top: 4rem;
+    }
+    @media (min-width: 768px) {
+        .testi-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (min-width: 1024px) {
+        .testi-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .tc {
+        background: var(--clr-white);
+        border: 1px solid #E2E8F0;
+        border-radius: 20px;
+        padding: 2.25rem;
+        transition: all 0.3s;
+        position: relative;
+        box-shadow: var(--shadow-sm);
+    }
+    .tc:hover {
+        border-color: var(--clr-secondary);
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-md);
+    }
+    .tc-ico {
+        color: rgba(233, 30, 99, 0.2);
+        margin-bottom: 1rem;
+    }
+    .tc-text {
+        font-style: italic;
+        font-size: 1.02rem;
+        color: var(--clr-text-main);
+        line-height: 1.8;
+        margin-bottom: 1.75rem;
+    }
+    .tc-user {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+    }
+    .tc-av {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid var(--clr-secondary);
+    }
+    .tc-av img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .tc-name {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--clr-heading);
+    }
+    .tc-course {
+        font-size: 0.8rem;
+        color: var(--clr-text-muted);
+        margin-top: 0.1rem;
+    }
+
+    .part-logos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem 2.5rem;
+        margin-top: 3.5rem;
+    }
+    .pl {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1.5rem;
+        border-radius: 12px;
+        border: 1px solid #E2E8F0;
+        background: var(--clr-bg-light);
+        transition: all 0.3s;
+    }
+    .pl img {
+        max-height: 44px;
+        max-width: 130px;
+        object-fit: contain;
+        filter: grayscale(1) opacity(0.6);
+        transition: all 0.3s;
+    }
+    .pl:hover {
+        border-color: var(--clr-secondary);
+        background: var(--clr-white);
+        box-shadow: var(--shadow-sm);
+    }
+    .pl:hover img {
+        filter: grayscale(0) opacity(1);
+    }
+    .pl-text {
+        font-size: 1.1rem;
+        font-weight: 750;
+        color: #94A3B8;
+        transition: color .3s;
+    }
+    .pl:hover .pl-text {
+        color: var(--clr-secondary);
+    }
+
+    /* NAVBAR SCROLL STICKY */
+    .navbar {
+        background-color: var(--clr-card-bg);
+        padding: 1rem 0;
+        box-shadow: var(--shadow-sm);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .navbar.scrolled {
+        padding: 0.75rem 0;
+        box-shadow: var(--shadow-md);
+    }
+    </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<a href="apply.html" class="topbar-ticker-link">
+    <div class="topbar">
+        <div class="ticker-wrap">
+            <div class="ticker-track">
+                <div class="ticker-content">
+                    <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                    <span class="ticker-star">&#9733;</span>
+                    <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                    <span class="ticker-star">&#9733;</span>
+                    <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                    <span class="ticker-star">&#9733;</span>
+                    <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                    <span class="ticker-star">&#9733;</span>
+                </div>
+                <div class="ticker-content" aria-hidden="true">
+                    <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                    <span class="ticker-star">&#9733;</span>
+                    <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                    <span class="ticker-star">&#9733;</span>
+                    <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                    <span class="ticker-star">&#9733;</span>
+                    <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                    <span class="ticker-star">&#9733;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">
+            <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="main-logo" style="height: 130px; width: auto; object-fit: contain;">
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="trust-profile.html" class="active">Trust Profile</a>
+            <a href="index.html#courses">Programs</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="apply.html" class="btn btn-primary">Apply Now</a>
+    </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════ -->
+<section class="profile-hero" id="home">
+    <div class="profile-hero-inner">
+        <div class="hero-tag" data-aos="fade-down" data-aos-duration="700">
+            <i data-lucide="sparkles" style="width:12px;height:12px"></i>
+            Est. 1972 &mdash; Mehr Chand Mahajan Trust
+        </div>
+        <h1 data-aos="fade-up" data-aos-delay="80">
+            Empowering Communities<br>
+            Through <em>Education</em> &amp; Skill Development
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="160">
+            A five-decade legacy of transforming lives across Himachal Pradesh — through vocational training, healthcare, and dignified livelihood support.
+        </p>
+        <div class="hero-btns" data-aos="fade-up" data-aos-delay="240">
+            <a href="#prog" class="btn btn-primary">Explore Our Work <i data-lucide="arrow-down" style="width:15px;height:15px"></i></a>
+            <a href="contact.html" class="btn btn-outline">Support Our Mission</a>
+        </div>
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="360">
+            <div class="hstat"><div class="hstat-n"><span class="ctr" data-t="60" data-suffix="K+">0</span></div><div class="hstat-l">Eye Camp Beneficiaries</div></div>
+            <div class="hstat"><div class="hstat-n"><span class="ctr" data-t="1800" data-suffix="+">0</span></div><div class="hstat-l">Students Skilled</div></div>
+            <div class="hstat"><div class="hstat-n"><span class="ctr" data-t="5000" data-suffix="+">0</span></div><div class="hstat-l">Women Trained</div></div>
+            <div class="hstat"><div class="hstat-n"><span class="ctr" data-t="54" data-suffix="+">0</span></div><div class="hstat-l">Years of Service</div></div>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <div class="scroll-bar"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ═══ MANAGING TRUSTEE ═══════════════════════════════════════ -->
+<section class="section" id="trustee">
+    <div class="wrap">
+        <div class="trustee-grid">
+            <div class="t-portrait" data-aos="fade-right" data-aos-duration="900">
+                <div class="t-portrait-img">
+                    <img src="assets/leader_vivek.png?v=6" alt="Mr. Vivek Mahajan – Managing Trustee">
+                    <div class="t-badge">Managing Trustee</div>
+                </div>
+                <div class="t-brand-box"></div>
+            </div>
+            <div class="t-right" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+                <span class="sec-eye">A Word From Leadership</span>
+                <h2 class="sec-h2">Message From Our <br><em>Managing Trustee</em></h2>
+                <div class="quote-card" style="margin-top: 1.5rem;">
+                    <p class="quote-text">
+                        "The MCM Trust was built on a singular belief — that every individual, regardless of their socioeconomic background, deserves a chance to build a dignified life. For over five decades, we have held true to this conviction, steadily expanding from financial charity to impactful, sustainable vocational education that transforms not just individuals, but entire families and communities."
+                    </p>
+                    <div class="sig-row">
+                        <div class="sig-av"><img src="assets/leader_vivek.png?v=6" alt="Mr. Vivek Mahajan"></div>
+                        <div>
+                            <div class="sig-name">Mr. Vivek Mahajan</div>
+                            <div class="sig-role">Managing Trustee — MCM Trust</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-bio">
+                    <p>Associated with the trust since 2007, Mr. Mahajan led the liaisoning with the HP Government and CII to establish the Dharamshala Skill Center. A seasoned ICT consultant with 30+ years of experience, he has designed infrastructures for IKEA, Air-India, ISB Hyderabad, Mercer, Stryker, and MG Motors.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ IMPACT COUNTERS ════════════════════════════════════════ -->
+<section class="section bg-light" id="impact">
+    <div class="wrap">
+        <div class="impact-head" data-aos="fade-up">
+            <span class="sec-eye" style="justify-content:center">Our Impact</span>
+            <h2 class="sec-h2" style="margin-top:.5rem">Decades of <em>Measurable</em> Change</h2>
+        </div>
+        <div class="impact-grid" data-aos="fade-up" data-aos-delay="100">
+            <div class="ic">
+                <div class="ic-icon bg-blue"><i data-lucide="eye"></i></div>
+                <div class="ic-n ctr" data-t="60000" data-suffix="+">0</div>
+                <div class="ic-l">Eye Camp<br>Beneficiaries</div>
+            </div>
+            <div class="ic">
+                <div class="ic-icon bg-pink"><i data-lucide="users"></i></div>
+                <div class="ic-n ctr" data-t="5000" data-suffix="+">0</div>
+                <div class="ic-l">Women<br>Trained</div>
+            </div>
+            <div class="ic">
+                <div class="ic-icon bg-purple"><i data-lucide="graduation-cap"></i></div>
+                <div class="ic-n ctr" data-t="1800" data-suffix="+">0</div>
+                <div class="ic-l">Students<br>Skilled</div>
+            </div>
+            <div class="ic">
+                <div class="ic-icon bg-teal"><i data-lucide="heart"></i></div>
+                <div class="ic-n ctr" data-t="200" data-suffix="+">0</div>
+                <div class="ic-l">Milch Cows<br>Donated</div>
+            </div>
+            <div class="ic">
+                <div class="ic-icon bg-orange"><i data-lucide="wind"></i></div>
+                <div class="ic-n ctr" data-t="100" data-suffix="+">0</div>
+                <div class="ic-l">O₂ Cylinders<br>Donated</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ JOURNEY TIMELINE ════════════════════════════════════════ -->
+<section class="section" id="journey">
+    <div class="wrap">
+        <div class="tl-head">
+            <span class="sec-eye" style="justify-content:center">Since 1972</span>
+            <h2 class="sec-h2" style="margin-top:.5rem">Our <em>Journey</em></h2>
+            <p class="sec-p" style="margin:.75rem auto 0;text-align:center">Five decades of compassion, perseverance, and lasting impact across Himachal Pradesh.</p>
+        </div>
+        <div class="tl-track">
+            <div class="tl-line"></div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-year">1972</div>
+                    <div class="tl-title">Trust Establishment</div>
+                    <p class="tl-desc">Founded in loving memory of late Chief Justice of India, Dr. Mehr Chand Mahajan. Initiated financial assistance for poor widows and medical camps in rural areas.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-year">2007</div>
+                    <div class="tl-title">First Vocational Center Launched</div>
+                    <p class="tl-desc">Launched the first Computer and Skill Center in Bhadwar, Kangra, enabling girls to earn livelihoods. Concurrently launched the Milch Cow Donation (Gau Dan) initiative.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-year">2018</div>
+                    <div class="tl-title">Strategic Partnership with CII</div>
+                    <p class="tl-desc">Signed a landmark agreement with the Confederation of Indian Industry (CII) to establish a state-of-the-art Multi-Skill Training Institute in Khaniyara, Dharamshala.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-year">2019</div>
+                    <div class="tl-title">Infrastructure Allotment</div>
+                    <p class="tl-desc">The Government of Himachal Pradesh provided initial building infrastructure to support the expanding multi-skill training center.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-year">2020</div>
+                    <div class="tl-title">Renovation &amp; COVID Relief</div>
+                    <p class="tl-desc">Full-scale renovation of HP Government facilities completed. Donated 100+ oxygen cylinders to Kangra District Administration during the COVID-19 crisis.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-year">2021</div>
+                    <div class="tl-title">Inauguration &amp; Full Operations</div>
+                    <p class="tl-desc">Multi-Skill Center became fully operational in February 2021, commencing industry-approved training in stitching, beauty, IT, electrical, and JCB operation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PROGRAMS ═══════════════════════════════════════════════ -->
+<section class="section bg-light" id="prog">
+    <div class="wrap">
+        <div data-aos="fade-up">
+            <span class="sec-eye">What We Do</span>
+            <h2 class="sec-h2" style="margin-top:.5rem">Our Programs &amp; <em>Initiatives</em></h2>
+            <p class="sec-p">From vocational excellence to grassroots healthcare — every initiative is rooted in creating lasting, dignified change.</p>
+        </div>
+        <div class="prog-grid">
+            <div class="prog-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="prog-img"><img src="assets/stitching_bg_1779177273552.png" alt="Stitching"><div class="prog-overlay"></div><span class="prog-badge">Skill Development</span></div>
+                <div class="prog-body">
+                    <div class="prog-title">Stitching &amp; Tailoring</div>
+                    <p class="prog-desc">Industry-certified programs empowering women with marketable skills. 41+ SINGER sewing machines distributed to graduates to launch their own enterprises.</p>
+                    <a href="stitching.html" class="prog-link">Learn More <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+                </div>
+            </div>
+            <div class="prog-card" data-aos="fade-up" data-aos-delay="80">
+                <div class="prog-img"><img src="assets/beauty_bg_1779177289587.png" alt="Beauty"><div class="prog-overlay"></div><span class="prog-badge">Women Empowerment</span></div>
+                <div class="prog-body">
+                    <div class="prog-title">Beauty &amp; Wellness</div>
+                    <p class="prog-desc">150 women certified in professional hair styling under REC Foundation CSR sponsorship, boosting salon placements across Himachal Pradesh.</p>
+                    <a href="beauty.html" class="prog-link">Learn More <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+                </div>
+            </div>
+            <div class="prog-card" data-aos="fade-up" data-aos-delay="160">
+                <div class="prog-img"><img src="assets/it_bg_1779177308984.png" alt="IT Training"><div class="prog-overlay"></div><span class="prog-badge">Digital Skills</span></div>
+                <div class="prog-body">
+                    <div class="prog-title">IT &amp; Computer Training</div>
+                    <p class="prog-desc">Practical digital literacy and IT skills programs preparing candidates for corporate employment and digital entrepreneurship in the modern economy.</p>
+                    <a href="it.html" class="prog-link">Learn More <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+                </div>
+            </div>
+            <div class="prog-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="prog-img"><img src="assets/electrician_bg_1779177350356.png" alt="Electrical"><div class="prog-overlay"></div><span class="prog-badge">Technical Trades</span></div>
+                <div class="prog-body">
+                    <div class="prog-title">Electrical Technician</div>
+                    <p class="prog-desc">Kaushal Sambal Initiative — 300 trained, 75+ immediately placed via campus interviews. Partnerships with M3M Foundation for maximum employment impact.</p>
+                    <a href="electrician.html" class="prog-link">Learn More <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+                </div>
+            </div>
+            <div class="prog-card" data-aos="fade-up" data-aos-delay="80">
+                <div class="prog-img"><img src="assets/jcb_bg_1779177368364.png" alt="JCB"><div class="prog-overlay"></div><span class="prog-badge">Heavy Equipment</span></div>
+                <div class="prog-body">
+                    <div class="prog-title">JCB &amp; Construction</div>
+                    <p class="prog-desc">Specialized heavy equipment operation training using a real JCB excavator, creating high-demand skilled operators for the infrastructure sector.</p>
+                    <a href="jcb.html" class="prog-link">Learn More <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+                </div>
+            </div>
+            <div class="prog-card" data-aos="fade-up" data-aos-delay="160">
+                <div class="prog-img"><img src="assets/tally_bg_1779177332494.png" alt="Tally"><div class="prog-overlay"></div><span class="prog-badge">Finance &amp; Commerce</span></div>
+                <div class="prog-body">
+                    <div class="prog-title">Tally &amp; Accounting</div>
+                    <p class="prog-desc">Industry-standard accounting and GST filing with Tally certification, opening pathways to banking, SMEs, and corporate finance employment.</p>
+                    <a href="tally.html" class="prog-link">Learn More <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ACTIVITIES ═════════════════════════════════════════════ -->
+<section class="section" id="activities">
+    <div class="wrap">
+        <div data-aos="fade-up">
+            <span class="sec-eye">Community Impact</span>
+            <h2 class="sec-h2" style="margin-top:.5rem">Social Welfare &amp; <em>Livelihood</em></h2>
+            <p class="sec-p">Beyond the classroom — welfare activities that uplift communities and restore dignity.</p>
+        </div>
+        <div class="act-grid">
+            <div class="act-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="act-ico"><i data-lucide="sprout"></i></div>
+                <div class="act-title">Cow Donation (Gau Dan)</div>
+                <p class="act-desc">In collaboration with the Lions Club, 200+ milch cows donated to widows and single women in rural Dharamshala, creating sustainable dairy income and long-term financial independence.</p>
+            </div>
+            <div class="act-card" data-aos="fade-up" data-aos-delay="60">
+                <div class="act-ico"><i data-lucide="eye"></i></div>
+                <div class="act-title">Eye Check-Up Camps</div>
+                <p class="act-desc">Free medical eye camps with Vision Springs across Kangra, Bangalore, Jaipur, Ludhiana, and Kutch — screening 60,000+ beneficiaries and distributing customised spectacles free of charge.</p>
+            </div>
+            <div class="act-card" data-aos="fade-up" data-aos-delay="120">
+                <div class="act-ico"><i data-lucide="heart-handshake"></i></div>
+                <div class="act-title">Cataract Surgery Initiative</div>
+                <p class="act-desc">Providing Ayushman/Himcare health cards to underprivileged cataract patients and coordinating surgeries with leading local hospitals — restoring sight and independence.</p>
+            </div>
+            <div class="act-card" data-aos="fade-up" data-aos-delay="180">
+                <div class="act-ico"><i data-lucide="book-open"></i></div>
+                <div class="act-title">Beti Ki Pathshala</div>
+                <p class="act-desc">Two street children schools in Delhi under the "Beti Ki Pathshala" initiative providing quality education to the most marginalised girls and children, run by Trustee Mrs. Anushree Mahajan.</p>
+            </div>
+            <div class="act-card" data-aos="fade-up" data-aos-delay="240">
+                <div class="act-ico"><i data-lucide="users"></i></div>
+                <div class="act-title">Women Empowerment</div>
+                <p class="act-desc">Supporting underprivileged girls' marriages, distributing free SINGER machines to tailoring graduates, and running health &amp; hygiene camps in schools and Anganwadi centers.</p>
+            </div>
+            <div class="act-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="act-ico"><i data-lucide="shield-alert"></i></div>
+                <div class="act-title">COVID-19 Pandemic Relief</div>
+                <p class="act-desc">At the height of the COVID crisis, the MCM Trust donated 100+ high-capacity oxygen cylinders directly to Kangra District Administration, saving lives in district hospitals.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ LEADERSHIP ═════════════════════════════════════════════ -->
+<section class="section bg-light" id="leadership">
+    <div class="wrap">
+        <div data-aos="fade-up">
+            <span class="sec-eye">Guided By Experience</span>
+            <h2 class="sec-h2" style="margin-top:.5rem">Leadership &amp; <em>Advisory Boards</em></h2>
+            <p class="sec-p">Distinguished leaders, jurists, and industry veterans united by a shared commitment to community upliftment.</p>
+        </div>
+        <div class="tabs-row" data-aos="fade-up" data-aos-delay="80">
+            <button class="tab-b on" onclick="switchTab(event,'bt')">Board of Trustees</button>
+            <button class="tab-b" onclick="switchTab(event,'ct')">Advisory Council</button>
+        </div>
+        <div class="panel on" id="bt">
+            <div class="ppl-grid">
+                <div class="pc" data-aos="fade-up" data-aos-delay="0">
+                    <div class="pc-av"><img src="assets/leader_vivek.png?v=6" alt="Mr. Vivek Mahajan"></div>
+                    <div>
+                        <div class="pc-name">Mr. Vivek Mahajan</div>
+                        <div class="pc-role">Managing Trustee</div>
+                        <p class="pc-bio">Associated with the trust since 2007. ICT consultant and AV-IT designer with 30+ years of experience. Led the HP Government and CII partnership to establish the Dharamshala Skill Center.</p>
+                    </div>
+                </div>
+                <div class="pc" data-aos="fade-up" data-aos-delay="80">
+                    <div class="pc-av"><img src="assets/leader_sooden.png?v=6" alt="Mr. L.P. Sooden"></div>
+                    <div>
+                        <div class="pc-name">Mr. L.P. Sooden</div>
+                        <div class="pc-role">Trustee</div>
+                        <p class="pc-bio">Associated with MCM Trust for 30+ years. Lawyer providing free legal aid to underprivileged families. Life Patron of Lions Club, Dharamshala. Instrumental in the Gau Dan initiative.</p>
+                    </div>
+                </div>
+                <div class="pc" data-aos="fade-up" data-aos-delay="160">
+                    <div class="pc-av"><img src="assets/leader_anushree.png?v=6" alt="Mrs. Anushree Mahajan"></div>
+                    <div>
+                        <div class="pc-name">Mrs. Anushree Mahajan</div>
+                        <div class="pc-role">Trustee</div>
+                        <p class="pc-bio">St. Stephen's College alumna. FICCI FLO Delhi Governing Body Member. Recognised by the United Nations, honoured by the VP of India at Bharat Mandapam. Runs Beti Ki Pathshala.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel" id="ct">
+            <div class="ppl-grid">
+                <div class="pc" data-aos="fade-up" data-aos-delay="0">
+                    <div class="pc-av"><img src="assets/council_gupta.png?v=6" alt="Justice Deepak Gupta"></div>
+                    <div>
+                        <div class="pc-name">Justice Deepak Gupta</div>
+                        <div class="pc-role">Advisory Council Member</div>
+                        <p class="pc-bio">Former Judge, Supreme Court of India (2017). First Chief Justice of HC Tripura, then Chhattisgarh. Expert in Constitutional, Environmental and Child Rights law.</p>
+                    </div>
+                </div>
+                <div class="pc" data-aos="fade-up" data-aos-delay="80">
+                    <div class="pc-av"><img src="assets/council_krishnan.png?v=6" alt="Mr. V. Krishnan"></div>
+                    <div>
+                        <div class="pc-name">Mr. V. Krishnan</div>
+                        <div class="pc-role">Advisory Council Member</div>
+                        <p class="pc-bio">Co-founder and Director of Justdial. 25+ years in strategic planning. Active angel investor in tech and digital services sectors across India.</p>
+                    </div>
+                </div>
+                <div class="pc" data-aos="fade-up" data-aos-delay="160">
+                    <div class="pc-av"><img src="assets/council_singh.png?v=6" alt="Mrs. Charanjit Singh"></div>
+                    <div>
+                        <div class="pc-name">Mrs. Charanjit Singh</div>
+                        <div class="pc-role">Advisory Council Member</div>
+                        <p class="pc-bio">50+ years of entrepreneurial experience. Board Director of Pure Drinks Group. Chairperson &amp; MD, Le Meridien Hotel, New Delhi. Mahila Shiromani Award 1993.</p>
+                    </div>
+                </div>
+                <div class="pc" data-aos="fade-up" data-aos-delay="240">
+                    <div class="pc-av"><img src="assets/council_choudhury.png?v=6" alt="Mr. Sougata Roy Choudhury"></div>
+                    <div>
+                        <div class="pc-name">Mr. Sougata Roy Choudhury</div>
+                        <div class="pc-role">Advisory Council Member</div>
+                        <p class="pc-bio">Executive Director, CII. 28+ years experience. Led skill policy recommendations to the GoI on the Apprenticeship Act, National Skills Policy, and Make in India.</p>
+                    </div>
+                </div>
+                <div class="pc" data-aos="fade-up" data-aos-delay="320">
+                    <div class="pc-av"><img src="assets/council_bhavna.png?v=6" alt="Ms. Bhavna Chopra Srikrishna"></div>
+                    <div>
+                        <div class="pc-name">Ms. Bhavna Chopra Srikrishna</div>
+                        <div class="pc-role">Advisory Council Member</div>
+                        <p class="pc-bio">GM &amp; Head of Skill Development, CII. 20+ years in skill policy formulation, scheme implementation, and multi-stakeholder coordination with Government ministries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SKILL PROJECTS ═════════════════════════════════════════ -->
+<section class="section" id="skills">
+    <div class="wrap">
+        <div data-aos="fade-up">
+            <span class="sec-eye">Industry Partnerships</span>
+            <h2 class="sec-h2" style="margin-top:.5rem">Skill Development <em>Projects</em></h2>
+            <p class="sec-p">1,800+ candidates trained across CSR-funded, government-sponsored, and sector skill council programs since 2021.</p>
+        </div>
+        <div class="sk-grid">
+            <div class="sk-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="sk-num">01</div>
+                <div class="sk-title">Hair Styling — REC Foundation</div>
+                <p class="sk-desc">150 women certified in professional hair styling under REC Foundation CSR, boosting self-employment and salon placements across HP.</p>
+            </div>
+            <div class="sk-card" data-aos="fade-up" data-aos-delay="60">
+                <div class="sk-num">02</div>
+                <div class="sk-title">Kaushal Sambal — M3M Foundation</div>
+                <p class="sk-desc">300 students trained in Electrical Technician (150) and Cutting &amp; Tailoring (150). 75+ placed in organized industries immediately post-training.</p>
+            </div>
+            <div class="sk-card" data-aos="fade-up" data-aos-delay="120">
+                <div class="sk-num">03</div>
+                <div class="sk-title">Smart Energy Meter Technician — PFC</div>
+                <p class="sk-desc">First Smart Energy Meter Technician Course in HP, 100 students equipped with grid technology skills under Power Finance Corporation sponsorship.</p>
+            </div>
+            <div class="sk-card" data-aos="fade-up" data-aos-delay="180">
+                <div class="sk-num">04</div>
+                <div class="sk-title">HPKVN Multi-Trade Programs</div>
+                <p class="sk-desc">630-student target: Cabling Technician (240), SPA Therapy (100), Bridal Fashion &amp; Makeup (100), EV Charging Station Technician (90).</p>
+            </div>
+            <div class="sk-card" data-aos="fade-up" data-aos-delay="240">
+                <div class="sk-num">05</div>
+                <div class="sk-title">Rehabilitation — District Jail, Dharamshala</div>
+                <p class="sk-desc">Dedicated training for incarcerated women in stitching and tailoring, with sewing machine donations, facilitating dignified reintegration post-release.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══════════════════════════════════════════ -->
+<section class="section bg-light" id="testimonials">
+    <div class="wrap">
+        <div style="text-align:center" data-aos="fade-up">
+            <span class="sec-eye" style="justify-content:center">Success Stories</span>
+            <h2 class="sec-h2" style="margin-top:.5rem">Voices of <em>Change</em></h2>
+            <p class="sec-p" style="margin:.75rem auto 0;text-align:center">Real lives transformed — in their own words.</p>
+        </div>
+        <div class="testi-grid">
+            <div class="tc" data-aos="fade-up" data-aos-delay="0">
+                <div class="tc-ico"><i data-lucide="quote" style="width:28px;height:28px"></i></div>
+                <p class="tc-text">"The stitching program gave me the confidence and skills to start my own boutique in Dharamshala. I am now financially independent and supporting my family — something I never imagined possible."</p>
+                <div class="tc-user">
+                    <div class="tc-av"><img src="assets/student_avatar_1.png" alt="Aarti Sharma"></div>
+                    <div>
+                        <div class="tc-name">Aarti Sharma</div>
+                        <div class="tc-course">Stitching &amp; Tailoring Graduate</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tc" data-aos="fade-up" data-aos-delay="100">
+                <div class="tc-ico"><i data-lucide="quote" style="width:28px;height:28px"></i></div>
+                <p class="tc-text">"The IT course at CII-MCM opened up new career paths for me. The practical, hands-on training with modern computer systems prepared me perfectly for my corporate role in Delhi."</p>
+                <div class="tc-user">
+                    <div class="tc-av"><img src="assets/student_avatar_2.png" alt="Karan Singh"></div>
+                    <div>
+                        <div class="tc-name">Karan Singh</div>
+                        <div class="tc-course">IT Skills Graduate</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tc" data-aos="fade-up" data-aos-delay="200">
+                <div class="tc-ico"><i data-lucide="quote" style="width:28px;height:28px"></i></div>
+                <p class="tc-text">"I learned professional makeup, skincare, and salon management. The support from the instructors was incredible. I got employed at a premium salon immediately after graduation."</p>
+                <div class="tc-user">
+                    <div class="tc-av"><img src="assets/student_avatar_3.png" alt="Pooja Devi"></div>
+                    <div>
+                        <div class="tc-name">Pooja Devi</div>
+                        <div class="tc-course">Beauty &amp; Wellness Graduate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
+<footer class="footer">
+    <div class="container footer-top">
+        <div class="footer-col">
+            <a href="index.html" class="logo" style="margin-bottom: 1rem; display: inline-block;">
+                <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="main-logo" style="height: 60px; width: auto; object-fit: contain;">
+            </a>
+            <p style="margin-top: 1rem;">Empowering the youth and women of Himachal Pradesh through excellence in skill development and vocational training.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="trust-profile.html">Trust Profile</a></li>
+                <li><a href="index.html#courses">Programs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <ul class="contact-list">
+                <li><i data-lucide="map-pin"></i> VPO Khaniara, Dharamshala, District Kangra, HP - 176218</li>
+                <li><i data-lucide="phone"></i> +91 - 858 072 6048</li>
+                <li><i data-lucide="mail"></i> info@mehrchandmahajan.org</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2026 CII MCM Trust Dharamshala. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+    AOS.init({once:true,easing:'ease-out-cubic',offset:50,duration:700});
+
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll',()=>{
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+    },{passive:true});
+
+    // Tab switcher
+    function switchTab(e, id){
+        document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+        document.querySelectorAll('.tab-b').forEach(b=>b.classList.remove('on'));
+        document.getElementById(id).classList.add('on');
+        e.currentTarget.classList.add('on');
+    }
+
+    // Animated counters
+    function animSingleCount(el){
+        const t=parseInt(el.dataset.t,10);
+        const suffix=el.dataset.suffix || '';
+        const dur=2000,start=performance.now();
+        (function step(now){
+            const p=Math.min((now-start)/dur,1);
+            const ease=1-Math.pow(1-p,3);
+            const v=Math.round(ease*t);
+            el.textContent = v.toLocaleString() + suffix;
+            if(p<1) requestAnimationFrame(step);
+        })(start);
+    }
+
+    const countObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animSingleCount(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.ctr').forEach(el => countObserver.observe(el));
+
+    // Timeline reveal
+    const tli=document.querySelectorAll('.tl-item');
+    const tlObs=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+    },{threshold:.1});
+    tli.forEach(i=>tlObs.observe(i));
+</script>
+</body>
+</html>

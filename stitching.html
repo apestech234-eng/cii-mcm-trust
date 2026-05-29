@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.9">
     
     <style>
         /* ===== SINGER INDIA RED/CHARCOAL THEME OVERRIDES ===== */
@@ -244,42 +244,65 @@
 </head>
 <body>
     <!-- Topbar -->
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <div class="contact-info">
-                <span><i data-lucide="phone" class="icon-sm"></i> +91 - 858 072 6048</span>
-                <span><i data-lucide="mail" class="icon-sm"></i> info@mehrchandmahajan.org</span>
-            </div>
-            <div class="social-links">
-                <a href="https://www.facebook.com/ciimcm" target="_blank"><i data-lucide="facebook" class="icon-sm"></i></a>
+    <a href="apply.html" class="topbar-ticker-link">
+        <div class="topbar">
+            <div class="ticker-wrap">
+                <div class="ticker-track">
+                    <div class="ticker-content">
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                    </div>
+                    <div class="ticker-content" aria-hidden="true">
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 60px; width: auto; object-fit: contain;">
+                <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="main-logo" style="height: 130px; width: auto; object-fit: contain;">
             </a>
             <div class="nav-links">
-                <a href="index.html">Back to Home</a>
-                <a href="index.html#courses" class="active" style="color: var(--clr-primary);">All Programs</a>
+                <a href="index.html#home">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="trust-profile.html">Trust Profile</a>
+                <a href="index.html#courses">Programs</a>
+                <a href="contact.html">Contact</a>
             </div>
+            <a href="apply.html?course=Stitching%20%26%20Tailoring" class="btn btn-primary nav-cta" style="background-color: var(--clr-primary); box-shadow: 0 4px 15px rgba(227, 24, 55, 0.4); text-decoration: none;">Apply Now</a>
         </div>
     </nav>
 
     <!-- Course Hero -->
     <header class="course-hero">
+        <canvas class="hero-mesh" data-mesh-color="rgba(227, 24, 55, 0.08)"></canvas>
         <div class="container course-hero-container">
             <div class="course-hero-content">
-                <div class="singer-badge">
-                    <i data-lucide="award" style="width: 18px; height: 18px;"></i> In Collaboration with Singer India
+                <div class="singer-badge" style="background-color: #ffffff; color: var(--clr-primary); border: 1px solid rgba(227,24,55,0.15); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                    <img src="assets/singer_nobg.png" alt="Singer Logo" style="height: 18px; width: auto; object-fit: contain; margin-right: 0.25rem;">
+                    <span>In Collaboration with Singer India</span>
                 </div>
                 <h1>Stitching & Tailoring</h1>
                 <p>Learn the art of fashion design and garment construction using world-class Singer sewing machines. This intensive vocational program equips you with the practical skills needed to start your own boutique or excel in the textile industry.</p>
                 <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                    <a href="#enroll" class="btn btn-primary" style="background-color: var(--clr-primary); box-shadow: 0 4px 15px rgba(227, 24, 55, 0.4);">Enroll Today <i data-lucide="arrow-right"></i></a>
+                    <a href="apply.html?course=Stitching%20%26%20Tailoring" class="btn btn-primary" style="background-color: var(--clr-primary); box-shadow: 0 4px 15px rgba(227, 24, 55, 0.4);">Enroll Today <i data-lucide="arrow-right"></i></a>
                 </div>
             </div>
             <div class="course-hero-image reveal reveal-delay-2 card-3d-hover hero-carousel">
@@ -298,28 +321,50 @@
                     <div class="detail-icon"><i data-lucide="clock"></i></div>
                     <div class="detail-content">
                         <h4>Duration</h4>
-                        <p>6 Months</p>
+                        <div class="fee-tiers" style="display: flex; flex-direction: column; gap: 0.25rem; margin-top: 0.15rem;">
+                            <div style="font-size: 0.95rem; font-weight: 700; color: var(--clr-heading); display: flex; align-items: center; gap: 0.35rem;">
+                                <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; background: #e0f2fe; color: #0369a1; padding: 0.1rem 0.35rem; border-radius: 4px; display: inline-block;">Basic</span>
+                                <span>3 Months</span>
+                            </div>
+                            <div style="font-size: 0.95rem; font-weight: 700; color: var(--clr-heading); display: flex; align-items: center; gap: 0.35rem;">
+                                <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; background: #fef3c7; color: #b45309; padding: 0.1rem 0.35rem; border-radius: 4px; display: inline-block;">Advance</span>
+                                <span>6 Months</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-icon"><i data-lucide="indian-rupee"></i></div>
                     <div class="detail-content">
                         <h4>Course Fee</h4>
-                        <p>₹1,500 / Month</p>
+                        <div class="fee-tiers" style="display: flex; flex-direction: column; gap: 0.25rem; margin-top: 0.15rem;">
+                            <div style="font-size: 0.95rem; font-weight: 700; color: var(--clr-heading); display: flex; align-items: center; gap: 0.35rem;">
+                                <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; background: #e0f2fe; color: #0369a1; padding: 0.1rem 0.35rem; border-radius: 4px; display: inline-block;">Basic</span>
+                                <span>&#8377;1,020<span style="font-size: 0.75rem; font-weight: 500; color: var(--clr-text-muted);">/Mo.</span></span>
+                            </div>
+                            <div style="font-size: 0.95rem; font-weight: 700; color: var(--clr-heading); display: flex; align-items: center; gap: 0.35rem;">
+                                <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; background: #fef3c7; color: #b45309; padding: 0.1rem 0.35rem; border-radius: 4px; display: inline-block;">Advance</span>
+                                <span>&#8377;2,000<span style="font-size: 0.75rem; font-weight: 500; color: var(--clr-text-muted);">/Mo.</span></span>
+                            </div>
+                            <div style="font-size: 0.95rem; font-weight: 700; color: var(--clr-heading); display: flex; align-items: center; gap: 0.35rem;">
+                                <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; background: #dcfce7; color: #15803d; padding: 0.1rem 0.35rem; border-radius: 4px; display: inline-block;">BPL</span>
+                                <span>&#8377;1,000<span style="font-size: 0.75rem; font-weight: 500; color: var(--clr-text-muted);">/Mo.</span></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-icon"><i data-lucide="graduation-cap"></i></div>
                     <div class="detail-content">
                         <h4>Eligibility</h4>
-                        <p>Open for All (8th+)</p>
+                        <p>18+ Years</p>
                     </div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-icon"><i data-lucide="file-check"></i></div>
                     <div class="detail-content">
                         <h4>Certification</h4>
-                        <p>Singer India Joint Cert.</p>
+                        <p>Singer India Cert.</p>
                     </div>
                 </div>
             </div>
@@ -362,7 +407,7 @@
                     <div id="enroll" class="enroll-sidebar">
                         <h3>Start Your Fashion Journey</h3>
                         <p>Transform your creativity into a profession. Admissions are open for the current batch. Limited seats available to ensure personalized machine time.</p>
-                        <button class="btn">Apply for Admission</button>
+                        <a href="apply.html?course=Stitching%20%26%20Tailoring" class="btn" style="text-decoration: none; text-align: center; display: flex;">Apply for Admission</a>
                         
                         <div class="partnership-box">
                             <i data-lucide="shield-check"></i>
@@ -379,7 +424,7 @@
         <div class="container footer-top">
             <div class="footer-col">
                 <a href="index.html" class="logo" style="margin-bottom: 1rem; display: inline-block;">
-                    <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="main-logo" style="height: 60px; width: auto; object-fit: contain;">
                 </a>
                 <p style="margin-top: 1rem;">Empowering the youth and women of Himachal Pradesh through excellence in skill development and vocational training.</p>
             </div>
@@ -388,7 +433,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#courses">Programs</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -407,6 +452,6 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=1.4"></script>
 </body>
 </html>

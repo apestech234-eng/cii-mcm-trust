@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.9">
     
     <style>
         /* ===== TALLY NAVY & ORANGE THEME ===== */
@@ -139,36 +139,64 @@
     </style>
 </head>
 <body>
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <div class="contact-info">
-                <span><i data-lucide="phone" class="icon-sm"></i> +91 - 858 072 6048</span>
-                <span><i data-lucide="mail" class="icon-sm"></i> info@mehrchandmahajan.org</span>
+    <!-- Topbar -->
+    <a href="apply.html" class="topbar-ticker-link">
+        <div class="topbar">
+            <div class="ticker-wrap">
+                <div class="ticker-track">
+                    <div class="ticker-content">
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                    </div>
+                    <div class="ticker-content" aria-hidden="true">
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 60px; width: auto; object-fit: contain;">
+                <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="main-logo" style="height: 130px; width: auto; object-fit: contain;">
             </a>
             <div class="nav-links">
-                <a href="index.html">Back to Home</a>
+                <a href="index.html#home">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="trust-profile.html">Trust Profile</a>
+                <a href="index.html#courses">Programs</a>
+                <a href="contact.html">Contact</a>
             </div>
+            <a href="apply.html?course=Tally%20%26%20Accounting" class="btn btn-primary nav-cta" style="background-color: var(--clr-secondary); box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4); text-decoration: none;">Apply Now</a>
         </div>
     </nav>
 
     <header class="course-hero">
+        <canvas class="hero-mesh" data-mesh-color="rgba(255, 107, 0, 0.08)"></canvas>
         <div class="container course-hero-container">
             <div class="course-hero-content reveal">
-                <div class="tally-badge">
-                    <i data-lucide="bar-chart-3" style="width: 18px; height: 18px;"></i> Certified Accounting Professional
+                <div class="tally-badge" style="background-color: #ffffff; color: var(--clr-primary); border: 1px solid rgba(10, 37, 64, 0.15); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                    <img src="assets/tally.png" alt="Tally Logo" style="height: 18px; width: auto; object-fit: contain; margin-right: 0.25rem;">
+                    <span>Certified Accounting Professional</span>
                 </div>
                 <h1>Tally & Accounting</h1>
                 <p>Become a highly sought-after professional accountant with our intensive training on Tally Prime ERP, GST filing, and corporate financial management.</p>
                 <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                    <a href="#enroll" class="btn btn-primary" style="background-color: var(--clr-secondary); box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);">Start Accounting Journey <i data-lucide="arrow-right"></i></a>
+                    <a href="apply.html?course=Tally%20%26%20Accounting" class="btn btn-primary" style="background-color: var(--clr-secondary); box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);">Start Accounting Journey <i data-lucide="arrow-right"></i></a>
                 </div>
             </div>
             <div class="course-hero-image reveal reveal-delay-2 card-3d-hover hero-carousel">
@@ -183,7 +211,7 @@
         <div class="container">
             <div class="quick-details-grid">
                 <div class="detail-item"><div class="detail-icon"><i data-lucide="clock"></i></div><div class="detail-content"><h4>Duration</h4><p>3 Months</p></div></div>
-                <div class="detail-item"><div class="detail-icon"><i data-lucide="indian-rupee"></i></div><div class="detail-content"><h4>Course Fee</h4><p>₹3,000 / Month</p></div></div>
+                <div class="detail-item"><div class="detail-icon"><i data-lucide="indian-rupee"></i></div><div class="detail-content"><h4>Course Fee</h4><p>&#8377;3,000 <span style="font-size: 0.8rem; font-weight: 500; color: var(--clr-text-muted);">/ Month</span></p></div></div>
                 <div class="detail-item"><div class="detail-icon"><i data-lucide="graduation-cap"></i></div><div class="detail-content"><h4>Eligibility</h4><p>12th Pass (Comm)</p></div></div>
                 <div class="detail-item"><div class="detail-icon"><i data-lucide="file-check"></i></div><div class="detail-content"><h4>Certification</h4><p>CII MCM Diploma</p></div></div>
             </div>
@@ -223,7 +251,7 @@
                     <div id="enroll" class="enroll-sidebar card-3d-hover">
                         <h3>Secure Your Future</h3>
                         <p>High demand for accountants means rapid placement. Join the next batch today.</p>
-                        <button class="btn">Apply for Admission</button>
+                        <a href="apply.html?course=Tally%20%26%20Accounting" class="btn" style="text-decoration: none; text-align: center; display: flex;">Apply for Admission</a>
                         <div class="partnership-box">
                             <i data-lucide="briefcase"></i>
                             <p>100% Placement Assistance provided for top-performing students in local and national firms.</p>
@@ -237,6 +265,6 @@
     <!-- Simplified Footer -->
     <footer class="footer"><div class="footer-bottom"><div class="container"><p>&copy; 2026 CII MCM Trust Dharamshala.</p></div></div></footer>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=1.4"></script>
 </body>
 </html>

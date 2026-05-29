@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.9">
 
     <style>
         /* ===== NIIT FOUNDATION GREEN/BLUE THEME OVERRIDES ===== */
@@ -27,11 +27,11 @@
 
         /* ===== COURSE HERO ===== */
         .course-hero {
-            background-color: var(--clr-bg-light);
+            background: linear-gradient(135deg, #E2F1FD 0%, #E8F5E9 100%);
             padding: 4rem 0 6rem;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 75, 135, 0.1);
         }
 
         .course-hero-container {
@@ -286,56 +286,691 @@
             font-weight: 600;
             line-height: 1.4;
         }
+
+        /* ===================================================
+           PREMIUM CAROUSEL SECTION
+        =================================================== */
+        .courses-catalog-section {
+            padding: 5rem 0 6rem;
+            background: linear-gradient(180deg, #F0F6FF 0%, #F8FAFC 100%);
+            border-top: 1px solid rgba(0, 75, 135, 0.07);
+            overflow: hidden;
+        }
+
+        /* ---- Section Header ---- */
+        .catalog-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .catalog-header .sub-label {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0, 75, 135, 0.1), rgba(0, 166, 81, 0.1));
+            color: var(--clr-primary);
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 75, 135, 0.12);
+        }
+
+        .catalog-header h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--clr-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .catalog-header p {
+            color: var(--clr-text-muted);
+            font-size: 1.05rem;
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ---- Category Filter Pills ---- */
+        .catalog-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2.75rem;
+        }
+
+        .filter-btn {
+            background: var(--clr-white);
+            color: var(--clr-text-main);
+            border: 1.5px solid rgba(0, 75, 135, 0.12);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--clr-primary);
+            color: var(--clr-primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 75, 135, 0.1);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--clr-primary), #0066B3);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(0, 75, 135, 0.35);
+        }
+
+        /* ---- Carousel Wrapper ---- */
+        .carousel-outer {
+            position: relative;
+            padding: 0 4rem;
+        }
+
+        @media (max-width: 640px) {
+            .carousel-outer {
+                padding: 0 0.5rem;
+            }
+        }
+
+        .carousel-viewport {
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        /* ---- Nav Arrows ---- */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--clr-white);
+            border: 1.5px solid rgba(0, 75, 135, 0.14);
+            box-shadow: 0 6px 24px rgba(0, 75, 135, 0.12);
+            color: var(--clr-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: var(--clr-primary);
+            color: #fff;
+            box-shadow: 0 8px 28px rgba(0, 75, 135, 0.3);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .carousel-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2.5;
+        }
+
+        .carousel-btn-prev {
+            left: 0;
+        }
+
+        .carousel-btn-next {
+            right: 0;
+        }
+
+        /* ---- Carousel Dots ---- */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 1.75rem;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 75, 135, 0.18);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            width: 28px;
+            border-radius: 4px;
+            background: var(--clr-primary);
+        }
+
+        /* ---- Course Card (compact) ---- */
+        .cc-card {
+            background: #fff;
+            border-radius: 20px;
+            border: 1.5px solid rgba(0, 75, 135, 0.07);
+            box-shadow: 0 4px 24px rgba(0, 75, 135, 0.05);
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: 0;
+            overflow: hidden;
+            transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.32s ease,
+                border-color 0.25s ease;
+            cursor: default;
+        }
+
+        @media (max-width: 900px) {
+            .cc-card {
+                flex: 0 0 calc(50% - 0.75rem);
+            }
+        }
+
+        @media (max-width: 580px) {
+            .cc-card {
+                flex: 0 0 calc(100% - 0rem);
+            }
+        }
+
+        .cc-card:hover {
+            transform: translateY(-7px) scale(1.01);
+            box-shadow: 0 18px 48px rgba(0, 75, 135, 0.11);
+            border-color: rgba(0, 75, 135, 0.2);
+        }
+
+        /* Top accent bar per category */
+        .cc-card-accent {
+            height: 5px;
+            width: 100%;
+        }
+
+        .cc-card[data-cat="web-dev"] .cc-card-accent {
+            background: linear-gradient(90deg, #004B87, #00A651);
+        }
+
+        .cc-card[data-cat="basics"] .cc-card-accent {
+            background: linear-gradient(90deg, #0EA5E9, #38BDF8);
+        }
+
+        .cc-card[data-cat="office"] .cc-card-accent {
+            background: linear-gradient(90deg, #7C3AED, #A78BFA);
+        }
+
+        .cc-card[data-cat="programming"].cc-card-accent {
+            background: linear-gradient(90deg, #F59E0B, #FCD34D);
+        }
+
+        .cc-card-body {
+            padding: 1.5rem 1.6rem 0.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Badges row */
+        .cc-badges {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.85rem;
+        }
+
+        .cc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.28rem 0.65rem;
+            border-radius: 30px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+
+        .cc-badge.duration {
+            background: rgba(0, 75, 135, 0.07);
+            color: var(--clr-primary);
+            border: 1px solid rgba(0, 75, 135, 0.12);
+        }
+
+        .cc-badge.mode {
+            background: rgba(0, 166, 81, 0.08);
+            color: #008040;
+            border: 1px solid rgba(0, 166, 81, 0.15);
+        }
+
+        .cc-badge.free {
+            background: rgba(245, 158, 11, 0.12);
+            color: #D97706;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
+        .cc-badge svg {
+            width: 11px;
+            height: 11px;
+        }
+
+        /* Course title */
+        .cc-title {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--clr-heading);
+            line-height: 1.35;
+            margin-bottom: 0.6rem;
+        }
+
+        /* Summary */
+        .cc-summary {
+            font-size: 0.875rem;
+            color: var(--clr-text-muted);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Key skills chips */
+        .cc-skills-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--clr-text-muted);
+            margin-bottom: 0.45rem;
+        }
+
+        .cc-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .cc-skill-chip {
+            background: #F0F6FF;
+            color: var(--clr-primary);
+            border: 1px solid rgba(0, 75, 135, 0.1);
+            padding: 0.22rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.73rem;
+            font-weight: 600;
+        }
+
+        /* Footer buttons */
+        .cc-card-footer {
+            padding: 0.85rem 1.6rem 1.4rem;
+            display: flex;
+            gap: 0.6rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: auto;
+        }
+
+        .cc-btn {
+            flex: 1;
+            padding: 0.55rem 0.5rem;
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.82rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.22s ease;
+            text-align: center;
+        }
+
+        .cc-btn-outline {
+            background: transparent;
+            border: 1.5px solid rgba(0, 75, 135, 0.2);
+            color: var(--clr-primary);
+        }
+
+        .cc-btn-outline:hover {
+            background: rgba(0, 75, 135, 0.06);
+            border-color: var(--clr-primary);
+        }
+
+        .cc-btn-solid {
+            background: linear-gradient(135deg, var(--clr-primary), #0066B3);
+            color: #fff;
+            box-shadow: 0 3px 12px rgba(0, 75, 135, 0.25);
+        }
+
+        .cc-btn-solid:hover {
+            background: linear-gradient(135deg, #003d73, var(--clr-primary));
+            box-shadow: 0 5px 18px rgba(0, 75, 135, 0.35);
+            transform: translateY(-1px);
+        }
+
+        /* ================================================
+           CURRICULUM MODAL
+        ================================================ */
+        .curr-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 15, 35, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 9000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .curr-modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .curr-modal {
+            background: #fff;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 680px;
+            max-height: 88vh;
+            overflow-y: auto;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.2);
+            transform: translateY(30px) scale(0.97);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            scroll-behavior: smooth;
+        }
+
+        .curr-modal-overlay.open .curr-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .curr-modal-head {
+            padding: 1.8rem 2rem 1.25rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .curr-modal-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--clr-primary), #0066B3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #fff;
+        }
+
+        .curr-modal-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .curr-modal-title-block {
+            flex: 1;
+        }
+
+        .curr-modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--clr-heading);
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+
+        .curr-modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .curr-modal-close {
+            background: rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--clr-text-muted);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .curr-modal-close:hover {
+            background: rgba(220, 0, 0, 0.08);
+            color: #dc2626;
+        }
+
+        .curr-modal-close svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .curr-modal-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .curr-section-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--clr-text-muted);
+            margin-bottom: 0.75rem;
+            margin-top: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .curr-section-title:first-child {
+            margin-top: 0;
+        }
+
+        .curr-topics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .curr-topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .curr-modal-head {
+                padding: 1.25rem;
+            }
+
+            .curr-modal-body {
+                padding: 1rem 1.25rem 1.5rem;
+            }
+        }
+
+        .curr-topic-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #F7F9FC;
+            border: 1px solid rgba(0, 75, 135, 0.07);
+            border-radius: 10px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.83rem;
+            color: var(--clr-text-main);
+            font-weight: 500;
+        }
+
+        .curr-topic-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--clr-primary);
+            flex-shrink: 0;
+        }
+
+        .curr-includes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .curr-include-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(0, 166, 81, 0.08);
+            border: 1px solid rgba(0, 166, 81, 0.15);
+            color: #006830;
+            border-radius: 8px;
+            padding: 0.38rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .curr-include-chip svg {
+            width: 13px;
+            height: 13px;
+            color: var(--clr-secondary);
+        }
+
+        /* Entrance animation for cards */
+        @keyframes ccSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cc-card.animating {
+            animation: ccSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        .cc-card.is-hidden {
+            display: none !important;
+        }
+
+        .cc-card.is-entering {
+            animation: ccSlideIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        /* ---- Suitable for (keep class) ---- */
+        .suitable-section {
+            display: none;
+        }
+
+        .suitable-tags {
+            display: none;
+        }
+
+        .suitable-tag {
+            display: none;
+        }
     </style>
 </head>
 
 <body>
     <!-- Topbar -->
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <div class="contact-info">
-                <span><i data-lucide="phone" class="icon-sm"></i> +91 - 858 072 6048</span>
-                <span><i data-lucide="mail" class="icon-sm"></i> info@mehrchandmahajan.org</span>
-            </div>
-            <div class="social-links">
-                <a href="https://www.facebook.com/ciimcm" target="_blank"><i data-lucide="facebook"
-                        class="icon-sm"></i></a>
+    <a href="apply.html" class="topbar-ticker-link">
+        <div class="topbar">
+            <div class="ticker-wrap">
+                <div class="ticker-track">
+                    <div class="ticker-content">
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                    </div>
+                    <div class="ticker-content" aria-hidden="true">
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 60px; width: auto; object-fit: contain;">
+                <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="main-logo"
+                    style="height: 130px; width: auto; object-fit: contain;">
             </a>
             <div class="nav-links">
-                <a href="index.html">Back to Home</a>
-                <a href="index.html#courses" class="active">All Programs</a>
+                <a href="index.html#home">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="trust-profile.html">Trust Profile</a>
+                <a href="index.html#courses">Programs</a>
+                <a href="contact.html">Contact</a>
             </div>
+            <a href="apply.html?course=IT%20%26%20Computing" class="btn btn-primary nav-cta"
+                style="text-decoration: none;">Apply Now</a>
         </div>
     </nav>
 
     <!-- Course Hero -->
     <header class="course-hero">
+        <canvas class="hero-mesh" data-mesh-color="rgba(0, 75, 135, 0.08)"></canvas>
         <div class="container course-hero-container">
             <div class="course-hero-content">
-                <div class="niit-badge">
-                    <i data-lucide="award" style="width: 18px; height: 18px;"></i> In Collaboration with NIIT Foundation
+                <div class="niit-badge"
+                    style="background-color: #ffffff; color: var(--clr-primary); border: 1px solid rgba(0, 75, 135, 0.15); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                    <img src="assets/niit.png" alt="NIIT Logo"
+                        style="height: 18px; width: auto; object-fit: contain; margin-right: 0.25rem;">
+                    <span>In Collaboration with NIIT Foundation</span>
                 </div>
                 <h1>IT & Computing</h1>
                 <p>Master essential digital skills, computer fundamentals, and modern workplace software. This highly
                     structured program, backed by the NIIT Foundation, is designed to take you from absolute basics to
                     corporate-ready proficiency.</p>
                 <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                    <a href="#enroll" class="btn btn-primary">Enroll Today <i data-lucide="arrow-right"></i></a>
+                    <a href="apply.html?course=IT%20%26%20Computing" class="btn btn-primary">Enroll Today <i
+                            data-lucide="arrow-right"></i></a>
                 </div>
             </div>
             <div class="course-hero-image reveal reveal-delay-2 card-3d-hover hero-carousel">
                 <img src="assets/it_lab.png" class="carousel-slide active" alt="IT Lab photo 1">
-                <img src="https://placehold.co/800x600/eeeeee/999999?text=Upload+Photo+2" class="carousel-slide" alt="IT Lab photo 2">
-                <img src="https://placehold.co/800x600/eeeeee/999999?text=Upload+Photo+3" class="carousel-slide" alt="IT Lab photo 3">
+                <img src="assets/it_lab_2.png" class="carousel-slide" alt="IT Lab photo 2">
+                <img src="assets/it_lab_3.png" class="carousel-slide" alt="IT Lab photo 3">
             </div>
         </div>
     </header>
@@ -345,17 +980,17 @@
         <div class="container">
             <div class="quick-details-grid">
                 <div class="detail-item">
-                    <div class="detail-icon"><i data-lucide="clock"></i></div>
+                    <div class="detail-icon"><i data-lucide="laptop"></i></div>
                     <div class="detail-content">
-                        <h4>Duration</h4>
-                        <p>12 Months</p>
+                        <h4>Course Format</h4>
+                        <p>Online / Offline</p>
                     </div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-icon"><i data-lucide="indian-rupee"></i></div>
+                    <div class="detail-icon"><i data-lucide="rocket"></i></div>
                     <div class="detail-content">
-                        <h4>Course Fee</h4>
-                        <p>₹2,500 / Month</p>
+                        <h4>Career Track</h4>
+                        <p>Industry Focused</p>
                     </div>
                 </div>
                 <div class="detail-item">
@@ -366,7 +1001,7 @@
                     </div>
                 </div>
                 <div class="detail-item">
-                    <div class="detail-icon"><i data-lucide="file-check"></i></div>
+                    <div class="detail-icon"><i data-lucide="award"></i></div>
                     <div class="detail-content">
                         <h4>Certification</h4>
                         <p>NIIT Foundation</p>
@@ -391,25 +1026,13 @@
                         operate operating systems, master office productivity suites, understand fundamental coding
                         logic, and manage network security basics.</p>
 
-                    <h2 style="margin-top: 4rem;">What You Will Learn</h2>
-                    <div class="curriculum-list">
-                        <div class="module-item">
-                            <h4><i data-lucide="monitor-play"></i> Computer Fundamentals</h4>
-                            <p>Hardware, Software, OS basics, and understanding how computers process data.</p>
-                        </div>
-                        <div class="module-item">
-                            <h4><i data-lucide="file-spreadsheet"></i> Office Productivity Suites</h4>
-                            <p>Advanced MS Word formatting, Excel logic/formulas, and PowerPoint presentations.</p>
-                        </div>
-                        <div class="module-item">
-                            <h4><i data-lucide="globe"></i> Internet & Networking</h4>
-                            <p>Navigating the web safely, email etiquette, and basic network troubleshooting.</p>
-                        </div>
-                        <div class="module-item">
-                            <h4><i data-lucide="code"></i> Coding Logic & Basics</h4>
-                            <p>Introduction to programming concepts, variables, and logic gates.</p>
-                        </div>
-                    </div>
+                    <h2 style="margin-top: 3rem; margin-bottom: 1rem;">Comprehensive IT Training</h2>
+                    <p>We offer a wide range of specialized IT, computing, accounting, and professional development
+                        programs in partnership with the NIIT Foundation. Each program is designed to deliver
+                        industry-relevant skills and practical expertise.</p>
+                    <a href="#courses-offered" class="btn btn-primary"
+                        style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 0.75rem 1.5rem; margin-top: 1rem;">View
+                        Course Catalog <i data-lucide="arrow-down"></i></a>
                 </div>
 
                 <!-- Sidebar -->
@@ -418,7 +1041,8 @@
                         <h3>Start Your Tech Journey</h3>
                         <p>Admissions are currently open for the upcoming batch. Seats are strictly limited to ensure
                             personal attention in the lab.</p>
-                        <button class="btn btn-primary">Apply for Admission</button>
+                        <a href="apply.html?course=IT%20%26%20Computing" class="btn btn-primary"
+                            style="text-decoration: none; text-align: center; display: flex;">Apply for Admission</a>
 
                         <div class="partnership-box">
                             <i data-lucide="shield-check"></i>
@@ -431,12 +1055,563 @@
         </div>
     </section>
 
+    <!-- Courses Offered Catalog Section -->
+    <section class="courses-catalog-section" id="courses-offered">
+        <div class="container">
+            <div class="section-title" style="margin-bottom: 3.5rem;">
+                <span class="sub-title"
+                    style="color: var(--clr-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; display: block; margin-bottom: 0.75rem;">Program
+                    Catalog</span>
+                <h2 style="font-size: 2.75rem; color: var(--clr-primary); margin-bottom: 1.25rem;">Our Courses</h2>
+                <p
+                    style="max-width: 650px; margin: 0 auto 2.5rem; color: var(--clr-text-muted); line-height: 1.7; font-size: 1.1rem;">
+                    Browse our selection of highlighted certification programs. Filter by category to find the perfect
+                    course to upgrade your skills.
+                </p>
+
+                <!-- Category Filters -->
+                <div class="catalog-filters">
+                    <button class="filter-btn active" data-category="all">All Programs</button>
+                    <button class="filter-btn" data-category="web-dev">Web & Development</button>
+                    <button class="filter-btn" data-category="basics">Computer Basics</button>
+                </div>
+            </div>
+
+            <!-- Course Cards Carousel -->
+            <div class="carousel-outer">
+                <!-- Prev Button -->
+                <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide" disabled>
+                    <i data-lucide="chevron-left"></i>
+                </button>
+
+                <!-- Viewport -->
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="carousel-track">
+
+                        <!-- Card 1: Web Development -->
+                        <div class="cc-card" data-cat="web-dev">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 294 Hours</span>
+                                    <span class="cc-badge mode"><i data-lucide="map-pin"></i> Offline/Online</span>
+                                </div>
+                                <h3 class="cc-title">Certificate Course in Web Development</h3>
+                                <p class="cc-summary">Build a strong foundation in modern web technologies. Learn
+                                    programming logic in C and Java, design responsive frontends, and develop dynamic
+                                    server-side applications.</p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">C Programming</span>
+                                    <span class="cc-skill-chip">Core Java</span>
+                                    <span class="cc-skill-chip">HTML5 & CSS3</span>
+                                    <span class="cc-skill-chip">JavaScript</span>
+                                    <span class="cc-skill-chip">Servlets & JSP</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>C Programming</span>
+                                        <span>Core Java</span>
+                                        <span>HTML5</span>
+                                        <span>CSS3</span>
+                                        <span>JavaScript</span>
+                                        <span>jQuery</span>
+                                        <span>Advanced Java Servlets</span>
+                                        <span>JSP</span>
+                                        <span>Frameworks</span>
+                                        <span>Web Hosting</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>Lab Practice</span>
+                                        <span>Live Projects</span>
+                                        <span>Assessments</span>
+                                        <span>Certificate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=Certificate%20Course%20in%20Web%20Development"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Certificate Course in Web Designing -->
+                        <div class="cc-card" data-cat="web-dev">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 52 Hours • 1
+                                        Month</span>
+                                    <span class="cc-badge mode"><i data-lucide="map-pin"></i> Offline Only</span>
+                                </div>
+                                <h3 class="cc-title">Certificate Course in Web Designing</h3>
+                                <p class="cc-summary">Master the aesthetics and technical basics of layout planning,
+                                    homepage structure, FrontPage development, and publishing websites online.</p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">Homepage Design</span>
+                                    <span class="cc-skill-chip">Layout Planning</span>
+                                    <span class="cc-skill-chip">Basic HTML</span>
+                                    <span class="cc-skill-chip">FrontPage</span>
+                                    <span class="cc-skill-chip">Web Publishing</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>Demystifying Your Future</span>
+                                        <span>Home Page Design</span>
+                                        <span>Creating and Shaping Web Pages</span>
+                                        <span>Creating and Using Art on the Web</span>
+                                        <span>Stockpiling the Goods</span>
+                                        <span>Planning Your Attack</span>
+                                        <span>Basic HTML</span>
+                                        <span>Creating Websites with FrontPage</span>
+                                        <span>Publishing Websites Online</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>Lab Practice</span>
+                                        <span>Site Hosting</span>
+                                        <span>Assessments</span>
+                                        <span>Certificate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=Certificate%20Course%20in%20Web%20Designing"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Certificate Course in JAVA Fundamentals -->
+                        <div class="cc-card" data-cat="web-dev">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 144 Hours • 3
+                                        Months</span>
+                                    <span class="cc-badge mode"><i data-lucide="map-pin"></i> Offline Only</span>
+                                </div>
+                                <h3 class="cc-title">Certificate Course in JAVA Fundamentals</h3>
+                                <p class="cc-summary">Build a strong base in object-oriented programming. Learn Java
+                                    variables, conditionals, loops, constructors, class properties, and method design.
+                                </p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">OOP Principles</span>
+                                    <span class="cc-skill-chip">Variables & Types</span>
+                                    <span class="cc-skill-chip">Loops & Arrays</span>
+                                    <span class="cc-skill-chip">Classes & Objects</span>
+                                    <span class="cc-skill-chip">Methods & Strings</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>OOP Concepts</span>
+                                        <span>Java Programming Language Introduction</span>
+                                        <span>Variables & Data Types</span>
+                                        <span>Arrays</span>
+                                        <span>Classes & Objects</span>
+                                        <span>Access Specifiers</span>
+                                        <span>Constructors</span>
+                                        <span>Conditional Statements & Loops</span>
+                                        <span>Operators</span>
+                                        <span>Strings</span>
+                                        <span>Methods</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>Code Labs</span>
+                                        <span>Syntax Practice</span>
+                                        <span>Assessments</span>
+                                        <span>Java Cert.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=Certificate%20Course%20in%20JAVA%20Fundamentals"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Certificate Course in JAVA Programming -->
+                        <div class="cc-card" data-cat="web-dev">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 144 Hours • 3
+                                        Months</span>
+                                    <span class="cc-badge mode"><i data-lucide="map-pin"></i> Offline Only</span>
+                                </div>
+                                <h3 class="cc-title">Certificate Course in JAVA Programming</h3>
+                                <p class="cc-summary">Develop graphical applications and robust backend code. Learn
+                                    inheritance, overrides, interfaces, packages, exception handling, and AWT control
+                                    design.</p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">Inheritance</span>
+                                    <span class="cc-skill-chip">Interfaces</span>
+                                    <span class="cc-skill-chip">Exception Handling</span>
+                                    <span class="cc-skill-chip">AWT Controls</span>
+                                    <span class="cc-skill-chip">Event Handling</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>Inheritance</span>
+                                        <span>Method Overriding</span>
+                                        <span>Interfaces</span>
+                                        <span>Exception Handling</span>
+                                        <span>Packages</span>
+                                        <span>Applets</span>
+                                        <span>AWT Controls</span>
+                                        <span>Event Handling</span>
+                                        <span>Adapter Classes</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>App Projects</span>
+                                        <span>GUI Design Lab</span>
+                                        <span>Assessments</span>
+                                        <span>Advanced Cert.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=Certificate%20Course%20in%20JAVA%20Programming"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: CyberAwareness with AI Basic -->
+                        <div class="cc-card" data-cat="basics">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 2 Hours</span>
+                                    <span class="cc-badge mode"><i data-lucide="globe"></i> Online Only</span>
+                                    <span class="cc-badge free"><i data-lucide="gift"></i> Free</span>
+                                </div>
+                                <h3 class="cc-title">CyberAwareness with AI Basic</h3>
+                                <p class="cc-summary">Learn to navigate the digital world safely. Understand online
+                                    threats, secure your personal data, browse safely, and build social media awareness.
+                                </p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">Cyber Security</span>
+                                    <span class="cc-skill-chip">Safe Browsing</span>
+                                    <span class="cc-skill-chip">Data Protection</span>
+                                    <span class="cc-skill-chip">Social Media Safety</span>
+                                    <span class="cc-skill-chip">AI Safety Basics</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>Understanding cyber threats and online safety</span>
+                                        <span>Safe browsing and protecting personal information</span>
+                                        <span>Social media awareness</span>
+                                        <span>Cyberbullying prevention</span>
+                                        <span>Interactive sessions with real-life case studies</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>Case Studies</span>
+                                        <span>Online Seminar</span>
+                                        <span>Safety Handout</span>
+                                        <span>Certificate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=CyberAwareness%20with%20AI%20Basic"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Certificate Course in Computer Essentials and Office Productivity -->
+                        <div class="cc-card" data-cat="basics">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 80 Hours • 3
+                                        Months</span>
+                                    <span class="cc-badge mode"><i data-lucide="map-pin"></i> Offline Only</span>
+                                </div>
+                                <h3 class="cc-title">Certificate Course in Computer Essentials and Office Productivity
+                                </h3>
+                                <p class="cc-summary">Develop baseline digital competency. Learn basic computer
+                                    hardware, safe web browsing, online shopping, and Microsoft Word, Excel, and
+                                    PowerPoint.</p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">Computer Basics</span>
+                                    <span class="cc-skill-chip">Internet Safety</span>
+                                    <span class="cc-skill-chip">MS Word</span>
+                                    <span class="cc-skill-chip">MS Excel</span>
+                                    <span class="cc-skill-chip">MS PowerPoint</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>Computer basics</span>
+                                        <span>Internet and online communication</span>
+                                        <span>Buying and selling online</span>
+                                        <span>Online safety and antivirus</span>
+                                        <span>MS Word</span>
+                                        <span>MS Excel</span>
+                                        <span>MS PowerPoint</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>Lab Workspace</span>
+                                        <span>Practical Tasks</span>
+                                        <span>Assessments</span>
+                                        <span>Certificate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=Certificate%20Course%20in%20Computer%20Essentials%20and%20Office%20Productivity"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 7: Certificate Course in IT for Beginners (CCIB) -->
+                        <div class="cc-card" data-cat="basics">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 78 Hours • 3
+                                        Months</span>
+                                    <span class="cc-badge mode"><i data-lucide="map-pin"></i> Offline Only</span>
+                                    <span class="cc-badge free"><i data-lucide="gift"></i> Free</span>
+                                </div>
+                                <h3 class="cc-title">Certificate Course in IT for Beginners (CCIB)</h3>
+                                <p class="cc-summary">Perfect starting point for newcomers. Learn computer fundamentals,
+                                    operating systems, word processing, basic spreadsheets, and graphics/multimedia
+                                    tools.</p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">OS Fundamentals</span>
+                                    <span class="cc-skill-chip">Internet & Email</span>
+                                    <span class="cc-skill-chip">Word Processing</span>
+                                    <span class="cc-skill-chip">Spreadsheets</span>
+                                    <span class="cc-skill-chip">Multimedia Basics</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>Computer fundamentals</span>
+                                        <span>Operating systems</span>
+                                        <span>Internet and email</span>
+                                        <span>Word processing</span>
+                                        <span>Typing and formatting</span>
+                                        <span>Working with tables and graphics</span>
+                                        <span>Presentations</span>
+                                        <span>Spreadsheets</span>
+                                        <span>Multimedia</span>
+                                        <span>Graphics and web technologies</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>Lab Practice</span>
+                                        <span>Assignments</span>
+                                        <span>Basic Exams</span>
+                                        <span>Certificate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=Certificate%20Course%20in%20IT%20for%20Beginners%20%28CCIB%29"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 8: Certificate Course in Active Basic IT (CCAB) -->
+                        <div class="cc-card" data-cat="basics">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 98 Hours • 3
+                                        Months</span>
+                                    <span class="cc-badge mode"><i data-lucide="map-pin"></i> Offline/Online</span>
+                                    <span class="cc-badge free"><i data-lucide="gift"></i> Free</span>
+                                </div>
+                                <h3 class="cc-title">Certificate Course in Active Basic IT (CCAB)</h3>
+                                <p class="cc-summary">Build real-world design, spreadsheet, and communication skills.
+                                    Master document reviews, layout design, advanced formulas, and Google workspace
+                                    utility.</p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">Office Suite</span>
+                                    <span class="cc-skill-chip">HLOOKUP & VLOOKUP</span>
+                                    <span class="cc-skill-chip">Business Collateral</span>
+                                    <span class="cc-skill-chip">Google Workspace</span>
+                                    <span class="cc-skill-chip">PC Peripherals</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>Introduction to Computers & Operating Systems</span>
+                                        <span>Software</span>
+                                        <span>Word Processing (Editing, Formatting, Reviewing)</span>
+                                        <span>Business Asset Design (Cards, Brochures, Flyers)</span>
+                                        <span>Mail Merge</span>
+                                        <span>Spreadsheets (Formulas, Mark Sheets, Pivot Tables)</span>
+                                        <span>HLOOKUP & VLOOKUP</span>
+                                        <span>Conditional Formatting & Budgets</span>
+                                        <span>PowerPoint Presentations</span>
+                                        <span>Internet, Gmail & Google Meet</span>
+                                        <span>Asset Creation (Invitation, Poster, Logo, Resume)</span>
+                                        <span>Printer & Scanner Management</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>Deep Practice</span>
+                                        <span>Asset Creation</span>
+                                        <span>Practical Exams</span>
+                                        <span>CCAB Cert.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=Certificate%20Course%20in%20Active%20Basic%20IT%20%28CCAB%29"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 9: Certificate Course in Microsoft Office 2010 (CCMO 2010) -->
+                        <div class="cc-card" data-cat="basics">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 80 Hours • 3
+                                        Months</span>
+                                    <span class="cc-badge mode"><i data-lucide="map-pin"></i> Offline Only</span>
+                                    <span class="cc-badge free"><i data-lucide="gift"></i> Free</span>
+                                </div>
+                                <h3 class="cc-title">Certificate Course in Microsoft Office 2010 (CCMO 2010)</h3>
+                                <p class="cc-summary">Traditional office training program focusing on Windows 7 utility,
+                                    MS Paint, document layouts, spreadsheet modeling, presentations, and email handling
+                                    with Outlook.</p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">Windows 7</span>
+                                    <span class="cc-skill-chip">MS Word 2010</span>
+                                    <span class="cc-skill-chip">MS Excel 2010</span>
+                                    <span class="cc-skill-chip">MS PowerPoint 2010</span>
+                                    <span class="cc-skill-chip">Outlook 2010</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>Computer Fundamentals</span>
+                                        <span>Windows 7 (Paint, Files/Folders, Taskbar, Settings)</span>
+                                        <span>MS Word 2010</span>
+                                        <span>MS Excel 2010</span>
+                                        <span>MS PowerPoint 2010</span>
+                                        <span>Internet & Web Search</span>
+                                        <span>Outlook 2010</span>
+                                        <span>Communication Skills</span>
+                                        <span>PC Maintenance</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>Lab Practice</span>
+                                        <span>System Care</span>
+                                        <span>Revision & Tests</span>
+                                        <span>CCMO Cert.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=Certificate%20Course%20in%20Microsoft%20Office%202010%20%28CCMO%202010%29"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 10: Certificate Course in Advance Word and Excel (CCAWE) -->
+                        <div class="cc-card" data-cat="basics">
+                            <div class="cc-card-accent"></div>
+                            <div class="cc-card-body">
+                                <div class="cc-badges">
+                                    <span class="cc-badge duration"><i data-lucide="clock"></i> 72 Hours • 3
+                                        Months</span>
+                                    <span class="cc-badge mode"><i data-lucide="map-pin"></i> Offline Only</span>
+                                    <span class="cc-badge free"><i data-lucide="gift"></i> Free</span>
+                                </div>
+                                <h3 class="cc-title">Certificate Course in Advance Word and Excel (CCAWE)</h3>
+                                <p class="cc-summary">Specialized office skill upgrade. Master complex lookup functions,
+                                    data validation, linking worksheets, worksheet protection, and advanced document
+                                    layout tools.</p>
+
+                                <div class="cc-skills-label">Key Skills</div>
+                                <div class="cc-skills">
+                                    <span class="cc-skill-chip">Lookup Functions</span>
+                                    <span class="cc-skill-chip">Linking Worksheets</span>
+                                    <span class="cc-skill-chip">Data Validation</span>
+                                    <span class="cc-skill-chip">Worksheet Protection</span>
+                                    <span class="cc-skill-chip">Mail Merge</span>
+                                </div>
+
+                                <div class="modal-data" style="display: none;">
+                                    <div class="modal-topics">
+                                        <span>Advanced Excel Functions</span>
+                                        <span>Lookup Functions & Array Formulas</span>
+                                        <span>Linking Worksheets & External Data</span>
+                                        <span>Data Validation & Protection</span>
+                                        <span>Comments, Notes & Collaboration</span>
+                                        <span>Advanced Word Formatting</span>
+                                        <span>Document Navigation & Mail Merge</span>
+                                        <span>Reviewing and Tracking Changes</span>
+                                    </div>
+                                    <div class="modal-includes">
+                                        <span>Lab Practice</span>
+                                        <span>Excel templates</span>
+                                        <span>Assessments</span>
+                                        <span>CCAWE Cert.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-card-footer">
+                                <button class="cc-btn cc-btn-outline view-curriculum-btn">View Curriculum</button>
+                                <a href="apply.html?course=Certificate%20Course%20in%20Advance%20Word%20and%20Excel%20%28CCAWE%29"
+                                    class="cc-btn cc-btn-solid" style="text-decoration: none;">Enroll Now</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Next Button -->
+                <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Dots -->
+            <div class="carousel-dots" id="carousel-dots"></div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-top">
             <div class="footer-col">
                 <a href="index.html" class="logo" style="margin-bottom: 1rem; display: inline-block;">
-                    <img src="assets/logo.png" alt="CII MCM Trust Logo" class="main-logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="main-logo"
+                        style="height: 60px; width: auto; object-fit: contain;">
                 </a>
                 <p style="margin-top: 1rem;">Empowering the youth and women of Himachal Pradesh through excellence in
                     skill development and vocational training.</p>
@@ -446,7 +1621,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#courses">Programs</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -465,7 +1640,327 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=1.4"></script>
+
+    <!-- Curriculum Modal Overlay -->
+    <div id="curriculum-modal" class="curr-modal-overlay">
+        <div class="curr-modal">
+            <div class="curr-modal-head">
+                <div class="curr-modal-icon">
+                    <i data-lucide="book-open"></i>
+                </div>
+                <div class="curr-modal-title-block">
+                    <h3 class="curr-modal-title" id="modal-course-title">Course Title</h3>
+                    <div class="curr-modal-meta" id="modal-course-meta">
+                        <!-- Badges will be dynamically inserted here -->
+                    </div>
+                </div>
+                <button class="curr-modal-close" id="close-modal-btn" aria-label="Close modal">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="curr-modal-body">
+                <h4 class="curr-section-title">
+                    <i data-lucide="list"></i> What You'll Learn (Syllabus)
+                </h4>
+                <div class="curr-topics-grid" id="modal-topics-grid">
+                    <!-- Topics will be dynamically inserted here -->
+                </div>
+
+                <h4 class="curr-section-title" style="margin-top: 2rem;">
+                    <i data-lucide="award"></i> Course Includes
+                </h4>
+                <div class="curr-includes" id="modal-includes-list">
+                    <!-- Includes will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Catalog Carousel & Modal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- CAROUSEL AND FILTERING LOGIC ---
+            const track = document.getElementById('carousel-track');
+            const cards = Array.from(track.querySelectorAll('.cc-card'));
+            const prevBtn = document.querySelector('.carousel-btn-prev');
+            const nextBtn = document.querySelector('.carousel-btn-next');
+            const dotsContainer = document.getElementById('carousel-dots');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            let currentIndex = 0;
+            let visibleCards = cards;
+            let isAnimating = false;
+            let isProgrammaticScroll = false;
+
+            function getItemsPerView() {
+                const width = window.innerWidth;
+                if (width > 900) return 3;
+                if (width > 580) return 2;
+                return 1;
+            }
+
+            function updateActiveFilterButton() {
+                if (isProgrammaticScroll) return;
+
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                const currentCard = cards[currentIndex];
+                if (!currentCard) return;
+
+                const cardCat = currentCard.getAttribute('data-cat');
+                if (currentIndex === 0) {
+                    const allBtn = document.querySelector('.filter-btn[data-category="all"]');
+                    if (allBtn) allBtn.classList.add('active');
+                } else {
+                    const btn = document.querySelector(`.filter-btn[data-category="${cardCat}"]`);
+                    if (btn) btn.classList.add('active');
+                }
+            }
+
+            function updateCarousel() {
+                const itemsPerView = getItemsPerView();
+                visibleCards = cards; // All cards are always visible in scroll anchor mode
+                const totalVisible = visibleCards.length;
+                const maxIndex = Math.max(0, totalVisible - itemsPerView);
+
+                if (currentIndex > maxIndex) {
+                    currentIndex = maxIndex;
+                }
+
+                if (totalVisible > 0) {
+                    const cardWidth = visibleCards[0].getBoundingClientRect().width;
+                    const gap = 24; // 1.5rem gap
+                    const translateOffset = currentIndex * (cardWidth + gap);
+                    track.style.transform = `translateX(-${translateOffset}px)`;
+                } else {
+                    track.style.transform = 'translateX(0)';
+                }
+
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex >= maxIndex;
+
+                updateDots(totalVisible, itemsPerView);
+                updateActiveFilterButton();
+            }
+
+            function updateDots(totalVisible, itemsPerView) {
+                dotsContainer.innerHTML = '';
+                const pages = Math.max(0, totalVisible - itemsPerView + 1);
+
+                if (pages <= 1) return;
+
+                for (let i = 0; i < pages; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'carousel-dot';
+                    if (i === currentIndex) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateCarousel();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            nextBtn.addEventListener('click', () => {
+                const itemsPerView = getItemsPerView();
+                const maxIndex = Math.max(0, visibleCards.length - itemsPerView);
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (button.classList.contains('active')) return;
+
+                    isProgrammaticScroll = true;
+
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const category = button.getAttribute('data-category');
+                    let targetIndex = 0;
+
+                    if (category === 'web-dev') {
+                        targetIndex = cards.findIndex(card => card.getAttribute('data-cat') === 'web-dev');
+                    } else if (category === 'basics') {
+                        targetIndex = cards.findIndex(card => card.getAttribute('data-cat') === 'basics');
+                    }
+
+                    currentIndex = targetIndex;
+                    updateCarousel();
+
+                    setTimeout(() => {
+                        isProgrammaticScroll = false;
+                    }, 550);
+                });
+            });
+
+            // --- TOUCH SWIPE / DRAG SUPPORT ---
+            let startX = 0;
+            let isDragging = false;
+            let startTranslate = 0;
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                track.style.transition = 'none';
+
+                const style = window.getComputedStyle(track);
+                const matrix = new WebKitCSSMatrix(style.transform);
+                startTranslate = matrix.m41;
+            }, { passive: true });
+
+            track.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const currentX = e.touches[0].clientX;
+                const diff = currentX - startX;
+                track.style.transform = `translateX(${startTranslate + diff}px)`;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                track.style.transition = '';
+
+                const endX = e.changedTouches[0].clientX;
+                const diff = endX - startX;
+
+                const itemsPerView = getItemsPerView();
+                const maxIndex = Math.max(0, visibleCards.length - itemsPerView);
+
+                if (diff < -50 && currentIndex < maxIndex) {
+                    currentIndex++;
+                } else if (diff > 50 && currentIndex > 0) {
+                    currentIndex--;
+                }
+
+                updateCarousel();
+            });
+
+            // Mouse Drag Support for Desktop
+            track.addEventListener('mousedown', (e) => {
+                startX = e.clientX;
+                isDragging = true;
+                track.style.transition = 'none';
+                track.style.cursor = 'grabbing';
+
+                const style = window.getComputedStyle(track);
+                const matrix = new WebKitCSSMatrix(style.transform);
+                startTranslate = matrix.m41;
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const currentX = e.clientX;
+                const diff = currentX - startX;
+                track.style.transform = `translateX(${startTranslate + diff}px)`;
+            });
+
+            window.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                track.style.transition = '';
+                track.style.cursor = 'grab';
+
+                const endX = e.clientX;
+                const diff = endX - startX;
+
+                const itemsPerView = getItemsPerView();
+                const maxIndex = Math.max(0, visibleCards.length - itemsPerView);
+
+                if (diff < -50 && currentIndex < maxIndex) {
+                    currentIndex++;
+                } else if (diff > 50 && currentIndex > 0) {
+                    currentIndex--;
+                }
+
+                updateCarousel();
+            });
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(updateCarousel, 100);
+            });
+
+            // --- CURRICULUM MODAL DYNAMIC POPULATION ---
+            const modalOverlay = document.getElementById('curriculum-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            function closeModal() {
+                modalOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+                    closeModal();
+                }
+            });
+
+            track.addEventListener('click', (e) => {
+                const btn = e.target.closest('.view-curriculum-btn');
+                if (!btn) return;
+
+                const card = btn.closest('.cc-card');
+                const title = card.querySelector('.cc-title').textContent;
+                const badgesHTML = card.querySelector('.cc-badges').innerHTML;
+
+                const topics = Array.from(card.querySelectorAll('.modal-data .modal-topics span')).map(span => span.textContent);
+                const includes = Array.from(card.querySelectorAll('.modal-data .modal-includes span')).map(span => span.textContent);
+
+                document.getElementById('modal-course-title').textContent = title;
+                document.getElementById('modal-course-meta').innerHTML = badgesHTML;
+
+                const topicsGrid = document.getElementById('modal-topics-grid');
+                topicsGrid.innerHTML = '';
+                topics.forEach(topic => {
+                    const item = document.createElement('div');
+                    item.className = 'curr-topic-item';
+                    item.innerHTML = `<span class="curr-topic-dot"></span><span>${topic}</span>`;
+                    topicsGrid.appendChild(item);
+                });
+
+                const includesList = document.getElementById('modal-includes-list');
+                includesList.innerHTML = '';
+                includes.forEach(inc => {
+                    const chip = document.createElement('div');
+                    chip.className = 'curr-include-chip';
+                    chip.innerHTML = `<i data-lucide="check-square"></i><span>${inc}</span>`;
+                    includesList.appendChild(chip);
+                });
+
+                modalOverlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+
+                // Reinitialize dynamic Lucide icons inside the modal
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            });
+
+            // Initialize Carousel
+            updateCarousel();
+        });
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Mehr Chand Mahajan Trust</title>
+    <meta name="description" content="Learn about Justice Mehr Chand Mahajan â€” the 3rd Chief Justice of India, 1st Prime Minister of J&K, and the legacy behind MCM Trust.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css?v=1.8">
+    <style>
+        /* ===== ABOUT PAGE STYLES ===== */
+        .about-hero {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232,52,78,0.12), transparent 70%);
+            border-radius: 50%;
+            animation: heroFloat 10s ease-in-out infinite alternate;
+        }
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232,52,78,0.08), transparent 70%);
+            border-radius: 50%;
+            animation: heroFloat 12s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes heroFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, -30px) scale(1.15); }
+        }
+        .about-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .about-hero h1 span { color: #E8344E; }
+        .about-hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .about-hero .breadcrumb {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.4);
+            position: relative;
+            z-index: 2;
+        }
+        .about-hero .breadcrumb a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .about-hero .breadcrumb a:hover { color: #E8344E; }
+
+        /* BIOGRAPHY SECTION */
+        .bio-section {
+            padding: 5rem 2rem;
+            background: #F8FAFC;
+        }
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 3.5rem;
+            align-items: start;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .bio-grid { grid-template-columns: 1fr; }
+            .bio-portrait { max-width: 280px; margin: 0 auto; }
+        }
+        .bio-portrait {
+            text-align: center;
+            position: sticky;
+            top: 100px;
+        }
+        .bio-portrait img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 5px solid #E8344E;
+        }
+        .bio-portrait .name {
+            margin-top: 1.5rem;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #1E293B;
+        }
+        .bio-portrait .years {
+            font-size: 0.9rem;
+            color: #94A3B8;
+            margin-top: 0.3rem;
+        }
+        .bio-portrait .title-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #E8344E, #C92842);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-top: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .bio-content h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1E293B;
+            margin: 2rem 0 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #FECDD3;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .bio-content h3:first-child { margin-top: 0; }
+        .bio-content h3 i { color: #E8344E; width: 22px; height: 22px; }
+        .bio-content p {
+            color: #475569;
+            line-height: 1.85;
+            margin-bottom: 1rem;
+            font-size: 1.02rem;
+        }
+
+        /* TIMELINE */
+        .timeline-section {
+            padding: 5rem 2rem;
+            background: #fff;
+        }
+        .timeline-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .timeline-title h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #1E293B;
+        }
+        .timeline-title p {
+            color: #64748B;
+            margin-top: 0.5rem;
+        }
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 50px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #E8344E, #F59E0B, #22C55E, #3B82F6);
+            border-radius: 3px;
+        }
+        .tl-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem 2rem;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+        .tl-item:hover {
+            transform: translateX(8px);
+            border-color: #E8344E;
+            box-shadow: 0 8px 30px rgba(232,52,78,0.08);
+        }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 1.8rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #E8344E;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px #FECDD3;
+        }
+        .tl-year {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #E8344E;
+            margin-bottom: 0.3rem;
+        }
+        .tl-item h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 0.3rem;
+        }
+        .tl-item p {
+            font-size: 0.92rem;
+            color: #64748B;
+            line-height: 1.6;
+        }
+
+        /* POSITIONS */
+        .positions-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            color: #fff;
+        }
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+            max-width: 1100px;
+            margin: 2rem auto 0;
+        }
+        .pos-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+        .pos-card:hover {
+            background: rgba(232,52,78,0.08);
+            border-color: rgba(232,52,78,0.3);
+            transform: translateY(-4px);
+        }
+        .pos-year {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #E8344E;
+            background: rgba(232,52,78,0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .pos-card p {
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+        }
+
+        /* MISSION */
+        .mission-section {
+            padding: 5rem 2rem;
+            background: #F8FAFC;
+        }
+        .mission-box {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) { .mission-box { grid-template-columns: 1fr; } }
+        .mission-card {
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .mission-card:hover {
+            border-color: #E8344E;
+            box-shadow: 0 12px 40px rgba(232,52,78,0.08);
+            transform: translateY(-6px);
+        }
+        .mission-card .m-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FFF1F2, #FECDD3);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #E8344E;
+            margin-bottom: 1rem;
+        }
+        .mission-card .m-icon i { width: 24px; height: 24px; }
+        .mission-card h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 0.5rem;
+        }
+        .mission-card p {
+            color: #64748B;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #E8344E, #C92842);
+        }
+        .cta-section h2 { color: #fff; font-size: 2rem; font-weight: 900; margin-bottom: 0.8rem; }
+        .cta-section p { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; max-width: 500px; margin-inline: auto; }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #fff;
+            color: #E8344E;
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .cta-btn i { width: 18px; height: 18px; }
+
+        /* PUBLICATIONS */
+        .pub-list {
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .pub-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        .pub-link:hover {
+            background: rgba(232,52,78,0.1);
+            border-color: rgba(232,52,78,0.3);
+            color: #fff;
+            transform: translateX(5px);
+        }
+        .pub-link i { width: 18px; height: 18px; color: #E8344E; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="main-logo" style="height: 130px; width: auto; object-fit: contain;">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About Us</a>
+                <a href="trust-profile.html">Trust Profile</a>
+                <a href="index.html#courses">Programs</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="apply.html" class="btn btn-primary nav-cta">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="about-hero">
+        <canvas class="hero-mesh" data-mesh-color="rgba(232, 52, 78, 0.12)"></canvas>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <span>About Us</span>
+        </div>
+        <h1>About <span>Mehr Chand Mahajan</span> Trust</h1>
+        <p>The inspiring legacy behind our mission to empower youth and women through vocational skill development</p>
+    </section>
+
+    <!-- Biography -->
+    <section class="bio-section">
+        <div class="bio-grid">
+            <div class="bio-portrait">
+                <img src="assets/mcm.png" alt="Justice Mehr Chand Mahajan">
+                <p class="name">Justice Mehr Chand Mahajan</p>
+                <p class="years">23 Dec 1889 â€“ 11 Apr 1967</p>
+                <span class="title-badge">3rd Chief Justice of India</span>
+            </div>
+            <div class="bio-content">
+                <h3><i data-lucide="book-open"></i> Early Life</h3>
+                <p>
+                    Mehr Chand Mahajan was born in 1889 at Tika Nagrota in the Kangra district of Punjab, British India (now in Himachal Pradesh). His father, Lala Brij Lal, was an advocate who later established a reputed legal practice at Dharamsala. After completing middle school, Mahajan went on to study at the Government College, Lahore, graduating in 1910. He initially enrolled for M.Sc. Chemistry, but switched to law following persuasion from his father. He earned his LL.B. degree in 1912.
+                </p>
+
+                <h3><i data-lucide="scale"></i> Career as a Lawyer</h3>
+                <p>
+                    Mahajan started his career as a lawyer in 1913 in Dharamsala, where he spent a year practising. He spent the next four years (1914â€“1918) as a lawyer in Gurdaspur. He then practised law in Lahore from 1918 to 1943. During his time there, he served as President of the High Court Bar Association of Lahore from 1938 to 1943.
+                </p>
+
+                <h3><i data-lucide="landmark"></i> Prime Minister of Jammu & Kashmir</h3>
+                <p>
+                    Mahajan visited Kashmir on invitation of the Maharani in September 1947 and was asked to be the Prime Minister of Jammu and Kashmir, which he accepted. On 15 October 1947, Mahajan was appointed the Prime Minister of Jammu & Kashmir and played a pivotal role in the accession of the state to India. Jammu & Kashmir acceded to India in October 1947 and Mahajan thus became the <strong>1st Prime Minister of the Indian state of Jammu and Kashmir</strong>, serving in that post until 5 March 1948.
+                </p>
+
+                <h3><i data-lucide="gavel"></i> Chief Justice of India</h3>
+                <p>
+                    Mahajan took office as the <strong>3rd Chief Justice of India</strong> on 4 January 1954. He was the head of India's judicial system for almost a year, until his retirement on 22 December 1954. Before becoming Chief Justice, he served as one of the first Judges of the Supreme Court of independent India from 4 October 1948 to 3 January 1954.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <div class="timeline-title">
+            <h2>Key Milestones</h2>
+            <p>A timeline of service spanning law, politics, and the highest judiciary</p>
+        </div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-year">1912</div>
+                <h4>Earned LL.B. Degree</h4>
+                <p>Graduated in law from Government College, Lahore</p>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1913</div>
+                <h4>Legal Career Begins</h4>
+                <p>Started practising law in Dharamsala, his hometown</p>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1938</div>
+                <h4>President, Lahore High Court Bar</h4>
+                <p>Led the prestigious bar association until 1943</p>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1943</div>
+                <h4>Judge, Lahore High Court</h4>
+                <p>Elevated to the bench of Lahore High Court</p>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1947</div>
+                <h4>Prime Minister of Jammu & Kashmir</h4>
+                <p>Played a pivotal role in J&K's accession to India</p>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1948</div>
+                <h4>Supreme Court Judge</h4>
+                <p>One of the first Judges of the Supreme Court of independent India</p>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1954</div>
+                <h4>3rd Chief Justice of India</h4>
+                <p>Headed the nation's judicial system until retirement</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eminent Positions -->
+    <section class="positions-section">
+        <div style="text-align:center; max-width:1100px; margin:0 auto;">
+            <h2 style="font-size:2.2rem; font-weight:900; margin-bottom:0.5rem;">Other Eminent Positions</h2>
+            <p style="color:rgba(255,255,255,0.5); margin-bottom:1rem;">A lifetime of distinguished service across law, education, and governance</p>
+        </div>
+        <div class="positions-grid">
+            <div class="pos-card"><span class="pos-year">1933â€“43</span><p>Director, Punjab National Bank</p></div>
+            <div class="pos-card"><span class="pos-year">1938â€“43</span><p>President, D.A.V. College Managing Committee</p></div>
+            <div class="pos-card"><span class="pos-year">1940â€“47</span><p>Fellow and Syndic, Punjab University</p></div>
+            <div class="pos-card"><span class="pos-year">1945</span><p>All India Fruit Products Association, Bombay Session</p></div>
+            <div class="pos-card"><span class="pos-year">1946</span><p>Member, R.I.N. Mutiny Commission</p></div>
+            <div class="pos-card"><span class="pos-year">1947</span><p>Punjab Boundary Commission</p></div>
+            <div class="pos-card"><span class="pos-year">1947â€“48</span><p>Dewan, Jammu and Kashmir State</p></div>
+            <div class="pos-card"><span class="pos-year">1947â€“50</span><p>Syndic, East Punjab University</p></div>
+            <div class="pos-card"><span class="pos-year">1948</span><p>Constitutional Adviser to Maharaja of Bikaner</p></div>
+            <div class="pos-card"><span class="pos-year">1948</span><p>Honorary LL.D. from Punjab University</p></div>
+            <div class="pos-card"><span class="pos-year">â€”</span><p>Member, Fruit Development Board, Punjab</p></div>
+            <div class="pos-card"><span class="pos-year">1967</span><p>Commission on Belgaum (Karnatakaâ€“Maharashtra dispute)</p></div>
+        </div>
+
+        <div style="text-align:center; max-width:1100px; margin:3rem auto 0;">
+            <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:1rem;">Publications & References</h3>
+            <div class="pub-list">
+                <a href="https://www.indianculture.gov.in/archives/punjab-partition-mr-justice-meherchand-mahajans-opinion" target="_blank" class="pub-link">
+                    <i data-lucide="file-text"></i> Punjab Partition â€” Mr. Justice Meherchand Mahajan's Opinion
+                </a>
+                <a href="http://webcast.pu.ac.in/documents/Justice%20Mehr%20Chand%20Mahajan.pdf" target="_blank" class="pub-link">
+                    <i data-lucide="file-text"></i> A Tribute to Justice Mehar Chand Mahajan â€” By Justice Jagdish Singh Khehar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Mission -->
+    <section class="mission-section">
+        <div style="text-align:center; margin-bottom:2.5rem;">
+            <h2 style="font-size:2.2rem; font-weight:900; color:#1E293B;">Our Trust's Mission</h2>
+            <p style="color:#64748B; margin-top:0.5rem;">Carrying forward the legacy through empowerment and skill development</p>
+        </div>
+        <div class="mission-box">
+            <div class="mission-card">
+                <div class="m-icon"><i data-lucide="heart-handshake"></i></div>
+                <h3>Women Empowerment</h3>
+                <p>Rooted in the core purpose of women empowerment, the MCM Charitable Trust strives to tap into the talents of poor, marginalised women as a means of making them economically independent and skilled.</p>
+            </div>
+            <div class="mission-card">
+                <div class="m-icon"><i data-lucide="graduation-cap"></i></div>
+                <h3>Skill Development</h3>
+                <p>In partnership with CII, the Trust operates the CII-MCM Multi-Skill Training Institute in Dharamshala, providing vocational training in stitching, beauty, IT, accounting, JCB operation, and electrical trades.</p>
+            </div>
+            <div class="mission-card">
+                <div class="m-icon"><i data-lucide="home"></i></div>
+                <h3>Community Welfare</h3>
+                <p>Beyond skills, the Trust runs hygiene programs, destitute girl marriage assistance, cow donation drives, and other social welfare initiatives across Himachal Pradesh.</p>
+            </div>
+            <div class="mission-card">
+                <div class="m-icon"><i data-lucide="map-pin"></i></div>
+                <h3>Based in Dharamshala</h3>
+                <p>VPO Khaniara, Dharamshala, District Kangra, Himachal Pradesh â€” 176218. The same town where Justice Mahajan began his illustrious legal career in 1913.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Ready to Build Your Future?</h2>
+        <p>Join the CII-MCM Multi-Skill Training Institute and learn from the best</p>
+        <a href="index.html#courses" class="cta-btn">
+            <i data-lucide="arrow-right"></i> Explore Programs
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background:#0F172A; color:rgba(255,255,255,0.5); text-align:center; padding:2rem;">
+        <p>&copy; 2026 Mehr Chand Mahajan Trust. All rights reserved.</p>
+        <p style="margin-top:0.5rem; font-size:0.85rem;">
+            <a href="https://www.mehrchandmahajan.org" target="_blank" style="color:#E8344E; text-decoration:none;">mehrchandmahajan.org</a>
+        </p>
+    </footer>
+
+    <script src="main.js?v=1.4"></script>
+    <script>
+        lucide.createIcons();
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.tl-item, .pos-card, .mission-card, .bio-content h3, .bio-content p').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Stagger timeline items
+        document.querySelectorAll('.tl-item').forEach((el, i) => {
+            el.style.transitionDelay = (i * 0.1) + 's';
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>
