@@ -1286,9 +1286,14 @@ ul { list-style: none; }
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
 }
-.footer-socials a i {
+.footer-socials a i,
+.footer-socials a svg {
     width: 20px;
     height: 20px;
+    display: block;
+    stroke: currentColor;
+    stroke-width: 2px;
+    fill: none;
 }
 
 
