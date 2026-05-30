@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #070a13;
+    color: #f3f4f6;
+    font-family: 'Outfit', sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070a13;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #111827;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f59e0b;
+  }
+}
+
+/* Centered Journey Ribbon Timeline Layout */
+.journey-ribbon-container {
+  position: relative;
+  width: 100%;
+  background-color: #070a13;
+  overflow: hidden;
+}
+
+.ribbon-svg-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.milestone-row {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Desktop row heights and positioning with 3D perspective context */
+@media (min-width: 1024px) {
+  .milestone-row {
+    height: 80vh;
+    min-height: 580px;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  .milestone-year-capsule {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 30;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Even rows: capsule on left (35%), card on right */
+  .milestone-row.even .milestone-year-capsule {
+    left: 35%;
+  }
+
+  /* Odd rows: capsule on right (65%), card on left */
+  .milestone-row.odd .milestone-year-capsule {
+    left: 65%;
+  }
+
+  .milestone-card-wrapper {
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    max-width: 460px;
+    transform: translateY(-50%);
+    z-index: 30;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+  }
+
+  .milestone-row.even .milestone-card-wrapper {
+    left: 52%; /* card starts on the right of the center line */
+  }
+
+  .milestone-row.odd .milestone-card-wrapper {
+    right: 52%; /* card ends on the left of the center line */
+  }
+
+  /* 3D Inward Card Tilt when inactive */
+  .milestone-row.even .story-card-panel {
+    transform: rotateY(-8deg) rotateX(4deg) translateZ(-60px) scale(0.95);
+  }
+
+  .milestone-row.odd .story-card-panel {
+    transform: rotateY(8deg) rotateX(4deg) translateZ(-60px) scale(0.95);
+  }
+
+  /* Active flat state */
+  .milestone-row.even .story-card-panel.active,
+  .milestone-row.odd .story-card-panel.active {
+    transform: rotateY(0deg) rotateX(0deg) translateZ(0) scale(1);
+  }
+}
+
+/* Mobile responsive layout */
+@media (max-width: 1023px) {
+  .milestone-row {
+    padding: 3.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  }
+
+  .milestone-year-capsule {
+    position: relative;
+    z-index: 30;
+    transform: scale(1);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .milestone-card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    z-index: 30;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Premium Capsule Node Styling in Dark Mode */
+.milestone-year-capsule {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 2rem;
+  background: #0d1321;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 1.25rem;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.milestone-year-capsule:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+/* Visited / Reached past milestones */
+.milestone-year-capsule.past {
+  background: #2563eb;
+  border-color: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+}
+
+.milestone-year-capsule.past:hover {
+  background: #3b82f6;
+  border-color: #60a5fa;
+  color: #ffffff;
+}
+
+/* Active / Current milestone styling */
+@media (min-width: 1024px) {
+  .milestone-year-capsule.active {
+    background: linear-gradient(135deg, #f59e0b, #ea580c);
+    border-color: #f59e0b;
+    color: #ffffff;
+    font-weight: 900;
+    transform: translate(-50%, -50%) scale(1.18);
+    box-shadow: 0 0 35px rgba(245, 158, 11, 0.45), 0 10px 25px rgba(245, 158, 11, 0.25);
+  }
+}
+
+@media (max-width: 1023px) {
+  .milestone-year-capsule.active {
+    background: linear-gradient(135deg, #f59e0b, #ea580c);
+    border-color: #f59e0b;
+    color: #ffffff;
+    font-weight: 900;
+    transform: scale(1.15);
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.4), 0 8px 20px rgba(245, 158, 11, 0.2);
+  }
+}
+
+/* Premium Card Panel Styling in Dark Mode */
+.story-card-panel {
+  background: rgba(13, 19, 33, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  opacity: 0.12; /* Dimmed but visible when inactive */
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .story-card-panel {
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+}
+
+.story-card-panel.active {
+  opacity: 1;
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 45px rgba(245, 158, 11, 0.08);
+}
+
+.story-card-panel h3 {
+  color: #ffffff;
+}
+
+.story-card-panel p {
+  color: #94a3b8;
+}
+
+.story-card-panel span.text-amber-500 {
+  color: #f59e0b;
+}
+
+.story-card-panel span.text-amber-400 {
+  color: #fbbf24;
+}
