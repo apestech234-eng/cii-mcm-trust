@@ -19,7 +19,7 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
           style={{ width: `${((activeIndex + 1) / (milestones.length + 1)) * 100}%` }}
         />
         <div className="absolute top-2 right-4 text-xs font-semibold tracking-wider text-amber-500 bg-slate-900/90 px-2 py-0.5 rounded-full border border-amber-500/20">
-          {milestones[activeIndex]?.year || 'Stats'}
+          {activeIndex === -1 ? 'Journey' : (milestones[activeIndex]?.year || 'Stats')}
         </div>
       </div>
     </>

@@ -10,7 +10,7 @@ import { ArrowLeft, ArrowUp, MousePointer } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(-1);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const pathRef = useRef<SVGPathElement>(null);
 
@@ -95,6 +95,9 @@ const App: React.FC = () => {
           end: 'bottom 50%',
           onEnter: () => setActiveIndex(idx),
           onEnterBack: () => setActiveIndex(idx),
+          onLeaveBack: () => {
+            if (idx === 0) setActiveIndex(-1);
+          }
         });
 
         // 3. Parallax effect for card image
