@@ -39,13 +39,17 @@ const App: React.FC = () => {
 
   // Construct winding Bezier curve spline
   let pathD = "M 500,0";
-  points.forEach((pt, idx) => {
-    const prevPt = idx === 0 ? { x: 500, y: 0 } : points[idx - 1];
-    const cpY1 = prevPt.y + (pt.y - prevPt.y) / 2;
-    const cpY2 = pt.y - (pt.y - prevPt.y) / 2;
-    pathD += ` C ${prevPt.x},${cpY1} ${pt.x},${cpY2} ${pt.x},${pt.y}`;
-  });
-  pathD += ` L 500,${svgHeight}`;
+  if (isMobile) {
+    pathD = `M 500,0 L 500,${svgHeight}`;
+  } else {
+    points.forEach((pt, idx) => {
+      const prevPt = idx === 0 ? { x: 500, y: 0 } : points[idx - 1];
+      const cpY1 = prevPt.y + (pt.y - prevPt.y) / 2;
+      const cpY2 = pt.y - (pt.y - prevPt.y) / 2;
+      pathD += ` C ${prevPt.x},${cpY1} ${pt.x},${cpY2} ${pt.x},${pt.y}`;
+    });
+    pathD += ` L 500,${svgHeight}`;
+  }
 
   const scrollToSection = (index: number) => {
     if (index === journeyData.length) {
