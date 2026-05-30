@@ -53,93 +53,67 @@
   box-sizing: border-box;
 }
 
-/* Desktop row heights and positioning with 3D perspective context */
-@media (min-width: 1024px) {
-  .milestone-row {
-    height: 80vh;
-    min-height: 580px;
-    perspective: 1200px;
-    transform-style: preserve-3d;
-  }
-
-  .milestone-year-capsule {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 30;
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  /* Even rows: capsule on left (35%), card on right */
-  .milestone-row.even .milestone-year-capsule {
-    left: 35%;
-  }
-
-  /* Odd rows: capsule on right (65%), card on left */
-  .milestone-row.odd .milestone-year-capsule {
-    left: 65%;
-  }
-
-  .milestone-card-wrapper {
-    position: absolute;
-    top: 50%;
-    width: 45%;
-    max-width: 460px;
-    transform: translateY(-50%);
-    z-index: 30;
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    transform-style: preserve-3d;
-  }
-
-  .milestone-row.even .milestone-card-wrapper {
-    left: 52%; /* card starts on the right of the center line */
-  }
-
-  .milestone-row.odd .milestone-card-wrapper {
-    right: 52%; /* card ends on the left of the center line */
-  }
-
-  /* 3D Inward Card Tilt when inactive */
-  .milestone-row.even .story-card-panel {
-    transform: rotateY(-8deg) rotateX(4deg) translateZ(-60px) scale(0.95);
-  }
-
-  .milestone-row.odd .story-card-panel {
-    transform: rotateY(8deg) rotateX(4deg) translateZ(-60px) scale(0.95);
-  }
-
-  /* Active flat state */
-  .milestone-row.even .story-card-panel.active,
-  .milestone-row.odd .story-card-panel.active {
-    transform: rotateY(0deg) rotateX(0deg) translateZ(0) scale(1);
-  }
+/* Universal Desktop & Mobile row positioning with 3D perspective context */
+.milestone-row {
+  height: 80vh;
+  min-height: 580px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
-/* Mobile responsive layout */
-@media (max-width: 1023px) {
-  .milestone-row {
-    padding: 3.5rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-  }
+.milestone-year-capsule {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 30;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  .milestone-year-capsule {
-    position: relative;
-    z-index: 30;
-    transform: scale(1);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+.milestone-card-wrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
 
-  .milestone-card-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    z-index: 30;
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+/* Desktop layout (>= 768px) */
+@media (min-width: 768px) {
+  .milestone-row.even .milestone-year-capsule { left: 35%; }
+  .milestone-row.odd .milestone-year-capsule { left: 65%; }
+
+  .milestone-card-wrapper { width: 45%; max-width: 460px; }
+  .milestone-row.even .milestone-card-wrapper { left: 52%; }
+  .milestone-row.odd .milestone-card-wrapper { right: 52%; }
+}
+
+/* Mobile layout (< 768px) */
+@media (max-width: 767px) {
+  .milestone-row { min-height: 480px; }
+  
+  /* On mobile, ribbon snakes wider: 20% and 80% */
+  .milestone-row.even .milestone-year-capsule { left: 20%; padding: 0.5rem 1.25rem; font-size: 1.1rem; }
+  .milestone-row.odd .milestone-year-capsule { left: 80%; padding: 0.5rem 1.25rem; font-size: 1.1rem; }
+  
+  .milestone-card-wrapper { width: 65%; }
+  .milestone-row.even .milestone-card-wrapper { left: 30%; }
+  .milestone-row.odd .milestone-card-wrapper { right: 30%; }
+}
+
+/* 3D Inward Card Tilt when inactive */
+.milestone-row.even .story-card-panel {
+  transform: rotateY(-8deg) rotateX(4deg) translateZ(-60px) scale(0.95);
+}
+
+.milestone-row.odd .story-card-panel {
+  transform: rotateY(8deg) rotateX(4deg) translateZ(-60px) scale(0.95);
+}
+
+/* Active flat state */
+.milestone-row.even .story-card-panel.active,
+.milestone-row.odd .story-card-panel.active {
+  transform: rotateY(0deg) rotateX(0deg) translateZ(0) scale(1);
 }
 
 /* Premium Capsule Node Styling in Dark Mode */

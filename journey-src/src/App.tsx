@@ -20,7 +20,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
+      setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -29,25 +29,23 @@ const App: React.FC = () => {
 
   // Points along the path
   const points = journeyData.map((_, idx) => {
-    // Alternates X coordinate left and right from center (500)
-    const x = isMobile ? 500 : 500 + (idx % 2 === 0 ? -150 : 150);
+    // On mobile (<768px), swing wider (offset 300) so there's room for cards.
+    // On desktop, swing normal (offset 150)
+    const offset = isMobile ? 300 : 150;
+    const x = 500 + (idx % 2 === 0 ? -offset : offset);
     const y = idx * 800 + 400; // Centered inside each 800 unit segment
     return { x, y };
   });
 
   // Construct winding Bezier curve spline
   let pathD = "M 500,0";
-  if (isMobile) {
-    pathD = `M 500,0 L 500,${svgHeight}`;
-  } else {
-    points.forEach((pt, idx) => {
-      const prevPt = idx === 0 ? { x: 500, y: 0 } : points[idx - 1];
-      const cpY1 = prevPt.y + (pt.y - prevPt.y) / 2;
-      const cpY2 = pt.y - (pt.y - prevPt.y) / 2;
-      pathD += ` C ${prevPt.x},${cpY1} ${pt.x},${cpY2} ${pt.x},${pt.y}`;
-    });
-    pathD += ` L 500,${svgHeight}`;
-  }
+  points.forEach((pt, idx) => {
+    const prevPt = idx === 0 ? { x: 500, y: 0 } : points[idx - 1];
+    const cpY1 = prevPt.y + (pt.y - prevPt.y) / 2;
+    const cpY2 = pt.y - (pt.y - prevPt.y) / 2;
+    pathD += ` C ${prevPt.x},${cpY1} ${pt.x},${cpY2} ${pt.x},${pt.y}`;
+  });
+  pathD += ` L 500,${svgHeight}`;
 
   const scrollToSection = (index: number) => {
     if (index === journeyData.length) {
