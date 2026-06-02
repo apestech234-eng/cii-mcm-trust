@@ -297,14 +297,30 @@ if (navToggle && navLinks) {
         }
     });
 
-    // Close menu on link clicks
-    navLinks.querySelectorAll('a').forEach(link => {
+    // Close menu on link clicks (except dropdown toggle)
+    navLinks.querySelectorAll('a:not(.nav-dropdown-toggle)').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
             navToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
         });
     });
 }
+
+// Dropdown Toggles for Mobile
+document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        if (window.innerWidth < 992) {
+            e.preventDefault();
+            const container = toggle.closest('.nav-dropdown');
+            const menu = container ? container.querySelector('.nav-dropdown-menu') : null;
+            if (container && menu) {
+                container.classList.toggle('open');
+                menu.classList.toggle('active');
+            }
+        }
+    });
+});
+
 
 
 

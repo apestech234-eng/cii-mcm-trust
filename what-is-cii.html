@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is CII | Skill Development & MSTI Initiatives</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=2.0">
+    
+    <!-- Blue-White Theme Specific Overrides -->
+    <style>
+        :root {
+            --cii-blue-dark: #1E3A8A;
+            --cii-blue-medium: #2563EB;
+            --cii-blue-light: #3B82F6;
+            --cii-blue-soft: #EFF6FF;
+            --cii-white: #FFFFFF;
+            --cii-slate: #0F172A;
+            --cii-gray-light: #F8FAFC;
+            --cii-gray-border: #E2E8F0;
+            --cii-text: #334155;
+        }
+
+        /* Hero Banner Style */
+        .cii-hero {
+            background: linear-gradient(135deg, var(--cii-blue-dark) 0%, #1e293b 100%);
+            color: var(--cii-white);
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cii-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cii-hero .breadcrumb {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .cii-hero .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s;
+        }
+
+        .cii-hero .breadcrumb a:hover {
+            color: var(--cii-blue-light);
+        }
+
+        .cii-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--cii-white);
+            letter-spacing: -0.5px;
+        }
+
+        .cii-hero h1 span {
+            color: var(--cii-blue-light);
+        }
+
+        .cii-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* Overview Grid Section */
+        .cii-overview-section {
+            padding: 5rem 2rem;
+            background-color: var(--cii-white);
+        }
+
+        .cii-overview-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .cii-overview-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        .cii-overview-text h2 {
+            font-size: 2.2rem;
+            color: var(--cii-slate);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .cii-overview-text h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--cii-blue-medium);
+            border-radius: 2px;
+        }
+
+        .cii-overview-text p {
+            color: var(--cii-text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .cii-badge-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .cii-badge {
+            background-color: var(--cii-blue-soft);
+            color: var(--cii-blue-dark);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        .cii-overview-visual {
+            background: linear-gradient(135deg, var(--cii-blue-soft) 0%, rgba(255,255,255,1) 100%);
+            border: 1px solid var(--cii-gray-border);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .cii-visual-card {
+            background-color: var(--cii-white);
+            border-left: 5px solid var(--cii-blue-medium);
+            padding: 1.5rem;
+            border-radius: 0 16px 16px 0;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cii-visual-card:hover {
+            transform: translateX(8px);
+        }
+
+        .cii-visual-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .cii-visual-card h4 {
+            font-size: 1.15rem;
+            color: var(--cii-slate);
+            margin-bottom: 0.4rem;
+        }
+
+        .cii-visual-card p {
+            color: var(--cii-text);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Objectives Section */
+        .cii-objectives-section {
+            padding: 5rem 2rem;
+            background-color: var(--cii-gray-light);
+        }
+
+        .cii-section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .cii-section-header h2 {
+            font-size: 2.2rem;
+            color: var(--cii-slate);
+            margin-bottom: 1rem;
+        }
+
+        .cii-section-header p {
+            color: var(--cii-text-muted);
+            font-size: 1.1rem;
+        }
+
+        .cii-objectives-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .cii-obj-card {
+            background-color: var(--cii-white);
+            border: 1px solid var(--cii-gray-border);
+            border-radius: 16px;
+            padding: 2.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .cii-obj-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--cii-blue-medium), var(--cii-blue-light));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .cii-obj-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .cii-obj-card:hover::before {
+            opacity: 1;
+        }
+
+        .cii-obj-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background-color: var(--cii-blue-soft);
+            color: var(--cii-blue-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cii-obj-icon i {
+            width: 24px;
+            height: 24px;
+        }
+
+        .cii-obj-card h3 {
+            font-size: 1.3rem;
+            color: var(--cii-slate);
+        }
+
+        .cii-obj-card p {
+            color: var(--cii-text);
+            font-size: 0.975rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* MSTI Section */
+        .cii-msti-section {
+            padding: 6rem 2rem;
+            background-color: var(--cii-white);
+            border-top: 1px solid var(--cii-gray-border);
+        }
+
+        .cii-msti-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .cii-msti-hero-card {
+            background: linear-gradient(135deg, var(--cii-blue-soft) 0%, rgba(255,255,255,1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        @media (max-width: 768px) {
+            .cii-msti-hero-card {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
+        }
+
+        .cii-msti-hero-text h3 {
+            font-size: 1.8rem;
+            color: var(--cii-slate);
+            margin-bottom: 1.2rem;
+        }
+
+        .cii-msti-hero-text p {
+            font-size: 1.05rem;
+            color: var(--cii-text);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .cii-msti-grid-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .cii-msti-grid-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cii-msti-feature {
+            background-color: var(--cii-white);
+            border: 1px solid var(--cii-gray-border);
+            padding: 1.5rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .cii-msti-feature:hover {
+            border-color: var(--cii-blue-light);
+            transform: translateY(-3px);
+        }
+
+        .cii-msti-feature i {
+            color: var(--cii-blue-medium);
+            width: 22px;
+            height: 22px;
+        }
+
+        .cii-msti-feature h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--cii-slate);
+        }
+
+        .cii-msti-feature p {
+            font-size: 0.875rem;
+            color: var(--cii-text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* MSTI Centres Showcase */
+        .cii-centres-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .cii-centres-title h4 {
+            font-size: 1.6rem;
+            color: var(--cii-slate);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .cii-centres-title h4::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--cii-blue-medium);
+            border-radius: 2px;
+        }
+
+        .cii-centres-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .cii-centre-card {
+            background-color: var(--cii-white);
+            border: 1px solid var(--cii-gray-border);
+            border-radius: 20px;
+            padding: 2.2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cii-centre-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(59, 130, 246, 0.25);
+        }
+
+        .cii-centre-tag {
+            align-self: flex-start;
+            background-color: var(--cii-blue-soft);
+            color: var(--cii-blue-medium);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cii-centre-card h4 {
+            font-size: 1.3rem;
+            color: var(--cii-slate);
+        }
+
+        .cii-centre-card p {
+            color: var(--cii-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .cii-centre-meta {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--cii-gray-border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--cii-blue-medium);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .cii-centre-meta i {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Call To Action Block */
+        .cii-cta-block {
+            background: linear-gradient(135deg, var(--cii-blue-dark) 0%, var(--cii-blue-medium) 100%);
+            color: var(--cii-white);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-radius: 24px;
+            max-width: 1100px;
+            margin: 4rem auto;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cii-cta-block h2 {
+            font-size: 2.2rem;
+            color: var(--cii-white);
+            margin-bottom: 1rem;
+        }
+
+        .cii-cta-block p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        .cii-cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cii-cta-buttons .btn-white {
+            background-color: var(--cii-white);
+            color: var(--cii-blue-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .cii-cta-buttons .btn-white:hover {
+            background-color: var(--cii-blue-soft);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topbar -->
+    <a href="apply.html" class="topbar-ticker-link">
+        <div class="topbar">
+            <div class="ticker-wrap">
+                <div class="ticker-track">
+                    <div class="ticker-content">
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                    </div>
+                    <div class="ticker-content" aria-hidden="true">
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                        <span>ADMISSIONS OPEN FOR 2026-2027 BATCH , <span class="ticker-highlight">CLICK HERE TO APPLY NOW</span></span>
+                        <span class="ticker-star">&#9733;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="main-logo" style="height: 130px; width: auto; object-fit: contain;">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-dropdown-toggle">About <i data-lucide="chevron-down"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="about.html">About Us</a>
+                        <a href="journey/">Our Journey</a>
+                        <a href="trust-profile.html">Trust Profile</a>
+                    </div>
+                </div>
+                <a href="what-is-cii.html" class="active">What is CII</a>
+                <a href="index.html#courses">Programs</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="apply.html" class="btn btn-primary nav-cta">Apply Now</a>
+
+            <button class="nav-toggle" aria-label="Toggle Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <header class="cii-hero">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <span>What is CII</span>
+        </div>
+        <h1><span>Confederation of Indian Industry</span> (CII)</h1>
+        <p>Driving India's industrial excellence and fostering a future-ready, industry-aligned skill development ecosystem since 1895.</p>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="cii-overview-section">
+        <div class="cii-overview-container">
+            <div class="cii-overview-text">
+                <h2>CII & CII CoE Skills</h2>
+                <p>
+                    The **Confederation of Indian Industry (CII)** is a non-governmental, not-for-profit, industry-led, and industry-managed organization. Acting as a major catalyst for India's economic growth, it plays an influential role in policy advocacy, trade partnerships, and human capital development.
+                </p>
+                <p>
+                    Through the **CII - Rahul Bajaj Centre of Excellence on Skills** (CII CoE Skills), CII serves as a critical bridge between industry opportunities and youth aspirations. Active in the national skills agenda since 1987, CII implements diverse, scalable models to upgrade training quality and ensure sustainable employment for millions of Indian youth.
+                </p>
+                <div class="cii-badge-group">
+                    <span class="cii-badge">Established 1895</span>
+                    <span class="cii-badge">10M Youth Target</span>
+                    <span class="cii-badge">Industry-Led</span>
+                    <span class="cii-badge">CSR Collaborator</span>
+                </div>
+            </div>
+            
+            <div class="cii-overview-visual">
+                <div class="cii-visual-card">
+                    <h4>Centres of Excellence Model</h4>
+                    <p>Established starting in 1995 to drive industry competitiveness, capability building, and specialized skill delivery.</p>
+                </div>
+                <div class="cii-visual-card">
+                    <h4>Model Career Centres (MCCs)</h4>
+                    <p>Operating since 2016 in partnership with the government to provide job-aligned counseling and placement assistance.</p>
+                </div>
+                <div class="cii-visual-card">
+                    <h4>National Standardization</h4>
+                    <p>Aligning vocational curricula with the National Skills Qualifications Framework (NSQF) for validated credits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section class="cii-objectives-section">
+        <div class="cii-section-header">
+            <h2>Core Operational Objectives</h2>
+            <p>Bridging the industry-talent mismatch through systematic, national-level interventions.</p>
+        </div>
+        
+        <div class="cii-objectives-grid">
+            <!-- Objective 1 -->
+            <div class="cii-obj-card">
+                <div class="cii-obj-icon">
+                    <i data-lucide="award"></i>
+                </div>
+                <h3>Bridging the Skill Gap</h3>
+                <p>Designing structured skilling, re-skilling, and up-skilling programs to equip youth with trades currently in demand across key economic sectors.</p>
+            </div>
+            
+            <!-- Objective 2 -->
+            <div class="cii-obj-card">
+                <div class="cii-obj-icon">
+                    <i data-lucide="users"></i>
+                </div>
+                <h3>Talent Sourcing</h3>
+                <p>Leveraging specialized "Recruit-Train-Deploy" (RTD) models to map employer requirements directly to candidate mobilization pipelines.</p>
+            </div>
+            
+            <!-- Objective 3 -->
+            <div class="cii-obj-card">
+                <div class="cii-obj-icon">
+                    <i data-lucide="briefcase"></i>
+                </div>
+                <h3>Employment Placement</h3>
+                <p>Working alongside Model Career Centres to provide counseling, soft skills, and direct interviews, enabling seamless entry into the workforce.</p>
+            </div>
+
+            <!-- Objective 4 -->
+            <div class="cii-obj-card">
+                <div class="cii-obj-icon">
+                    <i data-lucide="settings"></i>
+                </div>
+                <h3>Standardized Curricula</h3>
+                <p>Structuring training to match NSQF standards and facilitating government-validated, credit-based certifications for students.</p>
+            </div>
+
+            <!-- Objective 5 -->
+            <div class="cii-obj-card">
+                <div class="cii-obj-icon">
+                    <i data-lucide="trending-up"></i>
+                </div>
+                <h3>Policy Partnering</h3>
+                <p>Serving as a strategic partner to MSDE, MoE, and MoLE on national skill policies, including the Prime Minister's Internship Scheme.</p>
+            </div>
+
+            <!-- Objective 6 -->
+            <div class="cii-obj-card">
+                <div class="cii-obj-icon">
+                    <i data-lucide="book-open"></i>
+                </div>
+                <h3>Inclusive Human Capital</h3>
+                <p>Expanding vocational reach to marginalized groups, rural youth, and women, prioritizing development in India's aspirational districts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MSTI Section -->
+    <section class="cii-msti-section">
+        <div class="cii-msti-container">
+            <div class="cii-section-header">
+                <h2>Multi-Skill Training Institutes (MSTI)</h2>
+                <p>A flagship model driving multi-corporate, multi-trade vocational excellence.</p>
+            </div>
+
+            <div class="cii-msti-hero-card">
+                <div class="cii-msti-hero-text">
+                    <h3>The MSTI Delivery Model</h3>
+                    <p>
+                        CII Multi-Skill Training Institutes operate on a unique **multi-corporate, multi-skilling model** designed to address the specific job needs of local youth while catering to different industry sectors under one roof.
+                    </p>
+                    <p>
+                        These institutes combine high-end vocational training, government sponsorships, and corporate CSR funding to run specialized programs in manufacturing, hospitality, IT-ITeS, retail, logistics, and technical trades.
+                    </p>
+                </div>
+                
+                <div class="cii-msti-grid-features">
+                    <div class="cii-msti-feature">
+                        <i data-lucide="shield-check"></i>
+                        <h5>Industry Alignment</h5>
+                        <p>Curriculum is reviewed continuously by partnering corporates to ensure relevant, up-to-date training.</p>
+                    </div>
+                    <div class="cii-msti-feature">
+                        <i data-lucide="wrench"></i>
+                        <h5>State-of-the-Art Labs</h5>
+                        <p>Equipped with advanced technical setups and machinery for hands-on, practical expertise.</p>
+                    </div>
+                    <div class="cii-msti-feature">
+                        <i data-lucide="user-check"></i>
+                        <h5>Placement Support</h5>
+                        <p>Direct placement linkages and employer tie-ups to ensure immediate hiring post-completion.</p>
+                    </div>
+                    <div class="cii-msti-feature">
+                        <i data-lucide="handshake"></i>
+                        <h5>CSR Collaborations</h5>
+                        <p>Supported by leading corporate social responsibility initiatives and municipal agreements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured MSTIs -->
+            <div class="cii-centres-title">
+                <h4>Prominent MSTI Centres</h4>
+            </div>
+
+            <div class="cii-centres-grid">
+                <!-- Centre 1: Dharamshala -->
+                <div class="cii-centre-card">
+                    <span class="cii-centre-tag" style="background-color: var(--cii-blue-medium); color: white;">Featured</span>
+                    <h4>CII MCM Skill Training Centre</h4>
+                    <p>Established in partnership with Mehr Chand Mahajan (MCM) Trust, providing high-quality vocational training in stitching, beauty, IT, accounting, and technical trades to empower local youth and women.</p>
+                    <div class="cii-centre-meta">
+                        <i data-lucide="map-pin"></i> Dharamshala, Himachal Pradesh
+                    </div>
+                </div>
+
+                <!-- Centre 2: Mumbai -->
+                <div class="cii-centre-card">
+                    <span class="cii-centre-tag">Mumbai</span>
+                    <h4>Atal Bihari Vajpayee Kaushalya Vikas Kendra</h4>
+                    <p>A premier urban skill development centre in Maharashtra providing advanced technical, IT, and AI/Networking courses in partnership with municipal bodies and Cisco.</p>
+                    <div class="cii-centre-meta">
+                        <i data-lucide="map-pin"></i> Mumbai, Maharashtra
+                    </div>
+                </div>
+
+                <!-- Centre 3: New Delhi -->
+                <div class="cii-centre-card">
+                    <span class="cii-centre-tag">New Delhi</span>
+                    <h4>CII-NBCC Multi Skill Training Institute (CNMSTI)</h4>
+                    <p>Jointly established with the National Buildings Construction Corporation (NBCC) in Ghitorni/Okhla to deliver quality vocational training and job assistance in construction, service trades, and digital literacy.</p>
+                    <div class="cii-centre-meta">
+                        <i data-lucide="map-pin"></i> Ghitorni, New Delhi
+                    </div>
+                </div>
+
+                <!-- Centre 4: Sambalpur -->
+                <div class="cii-centre-card">
+                    <span class="cii-centre-tag">Sambalpur</span>
+                    <h4>CII Sambalpur Multi Skill Institute</h4>
+                    <p>Focuses on rural youth mobilization, providing advanced vocational trades, soft skill career coaching, and placement linkages to match regional industrial requirements.</p>
+                    <div class="cii-centre-meta">
+                        <i data-lucide="map-pin"></i> Sambalpur, Odisha
+                    </div>
+                </div>
+
+                <!-- Centre 5: Digboi -->
+                <div class="cii-centre-card">
+                    <span class="cii-centre-tag">Digboi</span>
+                    <h4>IOCL (AOD) CII Multi Skill Training Institute</h4>
+                    <p>A collaborative initiative with Indian Oil Corporation Limited (Assam Oil Division) delivering specialized technical and safety-focused vocational training in the North-East.</p>
+                    <div class="cii-centre-meta">
+                        <i data-lucide="map-pin"></i> Digboi, Assam
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3.5rem;">
+                <a href="https://ciiskills.in/multi-skill-training-institutes" target="_blank" rel="noopener noreferrer" class="btn" style="background-color: var(--cii-blue-medium); border: none; padding: 0.9rem 2.2rem; font-weight: 700; border-radius: 8px; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25); display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white;">
+                    <span>Explore All MSTI Initiatives</span>
+                    <i data-lucide="external-link" style="width: 18px; height: 18px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="cii-cta-block">
+        <h2>Advance Your Career With Us</h2>
+        <p>Explore the diverse range of industry-aligned vocational programs run at Mehr Chand Mahajan Trust under the guidance of CII.</p>
+        <div class="cii-cta-buttons">
+            <a href="index.html#courses" class="btn btn-white">Explore Programs</a>
+            <a href="apply.html" class="btn btn-outline">Apply Now <i data-lucide="arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <img src="assets/logo_nobg.png?v=2" alt="CII MCM Trust Logo" class="footer-logo" style="height: 120px; width: auto; object-fit: contain;">
+                <p>An initiative of Mehr Chand Mahajan Trust in collaboration with Confederation of Indian Industry (CII) to empower youth through vocational skilling.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="what-is-cii.html">What is CII</a></li>
+                    <li><a href="journey/">Our Journey</a></li>
+                    <li><a href="trust-profile.html">Trust Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Programs</h3>
+                <ul class="footer-links">
+                    <li><a href="stitching.html">Stitching & Tailoring</a></li>
+                    <li><a href="beauty.html">Beauty Therapist</a></li>
+                    <li><a href="it.html">IT & Software Systems</a></li>
+                    <li><a href="tally.html">Tally Accounting</a></li>
+                    <li><a href="electrician.html">Assistant Electrician</a></li>
+                    <li><a href="jcb.html">JCB Operator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul class="footer-contact">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>CII MCM Skill Training Centre, Dharamshala, HP, India</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>+91 1892 224888</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <span>info@ciimcmtrust.org</span>
+                    </li>
+                </ul>
+                <div class="social-links" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <a href="#" style="color: rgba(255,255,255,0.6); hover:color: #fff;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" style="color: rgba(255,255,255,0.6); hover:color: #fff;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" style="color: rgba(255,255,255,0.6); hover:color: #fff;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/><path d="m10 15 5-3-5-3z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js?v=1.4"></script>
+    <script>
+        lucide.createIcons();
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.cii-obj-card, .cii-visual-card, .cii-centre-card, .cii-overview-text h2, .cii-overview-text p, .cii-msti-hero-text h3, .cii-msti-hero-text p, .cii-msti-feature').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Stagger list/grid animations
+        document.querySelectorAll('.cii-obj-card, .cii-centre-card, .cii-msti-feature').forEach((el, i) => {
+            el.style.transitionDelay = (i * 0.08) + 's';
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

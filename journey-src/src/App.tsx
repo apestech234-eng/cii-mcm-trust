@@ -5,13 +5,15 @@ import { journeyData } from './data/journeyData';
 import { ProgressIndicator } from './components/ProgressIndicator';
 import { MilestoneCard } from './components/MilestoneSection';
 import { ImpactStats } from './components/ImpactStats';
-import { ArrowLeft, ArrowUp, MousePointer } from 'lucide-react';
+import { ArrowUp, MousePointer, ChevronDown, Menu, X } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(-1);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState<boolean>(true);
   const pathRef = useRef<SVGPathElement>(null);
 
   // ViewBox coordinates (width = 1000, height = 8000)
@@ -76,9 +78,34 @@ const App: React.FC = () => {
       });
     }
 
+    // Pre-compute the fractional position of each milestone along the SVG path
+    // Each milestone point sits at y = idx * 800 + 400 within the path
+    const milestonePathFractions: number[] = [];
+    if (pathRef.current) {
+      const totalLength = pathRef.current.getTotalLength();
+      journeyData.forEach((_, idx) => {
+        const targetY = idx * 800 + 400;
+        // Binary search for the point along the path closest to this y-coordinate
+        let lo = 0;
+        let hi = totalLength;
+        for (let i = 0; i < 50; i++) {
+          const mid = (lo + hi) / 2;
+          const pt = pathRef.current!.getPointAtLength(mid);
+          if (pt.y < targetY) {
+            lo = mid;
+          } else {
+            hi = mid;
+          }
+        }
+        milestonePathFractions.push((lo + hi) / 2 / totalLength);
+      });
+    }
+
     const ctx = gsap.context(() => {
       // 1. Progressively draw the center timeline ribbon path on scroll
+      //    AND sync activeIndex with how far the ribbon has drawn
       if (pathRef.current) {
+
         gsap.to(pathRef.current, {
           strokeDashoffset: 0,
           ease: 'none',
@@ -87,24 +114,25 @@ const App: React.FC = () => {
             start: 'top 50%',
             end: 'bottom 50%',
             scrub: 0.5,
+            onUpdate: (self) => {
+              // self.progress goes from 0 → 1 as the ribbon draws
+              const progress = self.progress;
+
+              // Find the highest milestone index whose path fraction has been reached
+              let newActive = -1;
+              for (let i = 0; i < milestonePathFractions.length; i++) {
+                if (progress >= milestonePathFractions[i]) {
+                  newActive = i;
+                }
+              }
+              setActiveIndex(newActive);
+            },
           },
         });
       }
 
-      // 2. Track scroll position to update active checkpoint row
+      // 2. Parallax effect for card images (kept as before)
       journeyData.forEach((_, idx) => {
-        ScrollTrigger.create({
-          trigger: `#milestone-row-${idx}`,
-          start: 'top 50%',
-          end: 'bottom 50%',
-          onEnter: () => setActiveIndex(idx),
-          onEnterBack: () => setActiveIndex(idx),
-          onLeaveBack: () => {
-            if (idx === 0) setActiveIndex(-1);
-          }
-        });
-
-        // 3. Parallax effect for card image
         gsap.fromTo(
           `.parallax-img-${idx}`,
           { y: '-10%', scale: 1.08 },
@@ -161,22 +189,165 @@ const App: React.FC = () => {
           </div>
         </a>
 
-        <div className="flex items-center gap-6">
+        {/* Desktop Menu links */}
+        <div className="hidden lg:flex items-center gap-8">
           <a
-            href="../index.html"
-            className="flex items-center gap-1 text-slate-300 hover:text-white font-semibold text-sm transition-colors duration-200"
+            href="../index.html#home"
+            className="text-slate-300 hover:text-white font-semibold text-sm transition-colors duration-200"
           >
-            <ArrowLeft className="w-4 h-4" />
             Home
           </a>
+
+          {/* About Dropdown (hover-based on desktop) */}
+          <div className="relative group py-2">
+            <button className="flex items-center gap-1.5 text-amber-500 font-semibold text-sm transition-colors duration-200 cursor-pointer">
+              About <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+            </button>
+            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="bg-slate-900 border border-white/10 rounded-xl py-2 w-48 shadow-2xl flex flex-col">
+                <a href="../about.html" className="px-4 py-2 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors font-medium">About Us</a>
+                <a href="#" className="px-4 py-2 text-xs text-amber-500 bg-white/5 font-semibold">Our Journey</a>
+                <a href="../trust-profile.html" className="px-4 py-2 text-xs text-slate-300 hover:text-white hover:bg-white/5 transition-colors font-medium">Trust Profile</a>
+              </div>
+            </div>
+          </div>
+
+          <a
+            href="../what-is-cii.html"
+            className="text-slate-300 hover:text-white font-semibold text-sm transition-colors duration-200"
+          >
+            What is CII
+          </a>
+
+          <a
+            href="../index.html#courses"
+            className="text-slate-300 hover:text-white font-semibold text-sm transition-colors duration-200"
+          >
+            Programs
+          </a>
+          <a
+            href="../contact.html"
+            className="text-slate-300 hover:text-white font-semibold text-sm transition-colors duration-200"
+          >
+            Contact
+          </a>
+        </div>
+
+        {/* Apply Button & Mobile Menu Toggle */}
+        <div className="flex items-center gap-4">
           <a
             href="../apply.html"
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold text-xs md:text-sm uppercase tracking-wider hover:from-amber-600 hover:to-orange-700 transition-all duration-300 shadow-[0_4px_15px_rgba(245,158,11,0.25)]"
+            className="hidden sm:inline-block px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold text-xs md:text-sm uppercase tracking-wider hover:from-amber-600 hover:to-orange-700 transition-all duration-300 shadow-[0_4px_15px_rgba(245,158,11,0.25)]"
           >
             Apply Now
           </a>
+
+          {/* Hamburger Menu Icon */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 text-slate-300 hover:text-white transition-colors"
+            aria-label="Toggle Navigation"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </header>
+
+      {/* Mobile Drawer Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+        />
+      )}
+
+      {/* Mobile Drawer */}
+      <div
+        className={`fixed inset-y-0 right-0 w-72 bg-slate-950 border-l border-white/5 z-50 p-6 flex flex-col gap-6 shadow-2xl transition-transform duration-300 lg:hidden ${
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex justify-between items-center pb-4 border-b border-white/5">
+          <span className="font-extrabold text-sm uppercase tracking-wider text-amber-500">Menu</span>
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="p-1 text-slate-400 hover:text-white transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        <nav className="flex flex-col gap-4">
+          <a
+            href="../index.html#home"
+            className="text-slate-300 hover:text-white font-semibold text-sm transition-colors py-1"
+          >
+            Home
+          </a>
+
+          {/* Mobile Dropdown */}
+          <div className="flex flex-col">
+            <button
+              onClick={() => setIsAboutDropdownOpen(!isAboutDropdownOpen)}
+              className="flex justify-between items-center text-amber-500 font-semibold text-sm transition-colors py-1"
+            >
+              <span>About</span>
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <div
+              className={`flex flex-col pl-4 gap-2.5 mt-2 border-l border-white/5 overflow-hidden transition-all duration-300 ${
+                isAboutDropdownOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+              }`}
+            >
+              <a
+                href="../about.html"
+                className="text-slate-400 hover:text-white text-xs transition-colors py-0.5"
+              >
+                About Us
+              </a>
+              <a
+                href="#"
+                className="text-amber-500 font-semibold text-xs py-0.5"
+              >
+                Our Journey
+              </a>
+              <a
+                href="../trust-profile.html"
+                className="text-slate-400 hover:text-white text-xs transition-colors py-0.5"
+              >
+                Trust Profile
+              </a>
+            </div>
+          </div>
+
+          <a
+            href="../what-is-cii.html"
+            className="text-slate-300 hover:text-white font-semibold text-sm transition-colors py-1"
+          >
+            What is CII
+          </a>
+
+          <a
+            href="../index.html#courses"
+            className="text-slate-300 hover:text-white font-semibold text-sm transition-colors py-1"
+          >
+            Programs
+          </a>
+          <a
+            href="../contact.html"
+            className="text-slate-300 hover:text-white font-semibold text-sm transition-colors py-1"
+          >
+            Contact
+          </a>
+        </nav>
+
+        <a
+          href="../apply.html"
+          className="mt-4 w-full text-center py-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold text-xs uppercase tracking-wider hover:from-amber-600 hover:to-orange-700 transition-all duration-300"
+        >
+          Apply Now
+        </a>
+      </div>
 
       {/* Main Flow */}
       <main className="pt-20">
